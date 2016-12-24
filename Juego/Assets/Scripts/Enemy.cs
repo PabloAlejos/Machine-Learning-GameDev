@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
             {
                 deathEvent(scorePoints, this);
             }
-            
+            Instantiate(destroyAnimation, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
             
@@ -35,9 +35,10 @@ public class Enemy : MonoBehaviour
         return health <= 0;
     }
 
+
+    //Función que elimina al enemigo cuando da
     void OnBecameInvisible()
     {
-        Instantiate(destroyAnimation, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
