@@ -4,6 +4,8 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+
+
     Animator anim;
     public float speed = 5;
     Gun gun;

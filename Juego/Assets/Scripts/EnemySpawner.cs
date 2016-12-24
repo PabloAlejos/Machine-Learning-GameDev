@@ -3,6 +3,9 @@ using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public delegate void SpawnDelegate(Enemy e);
+    public event SpawnDelegate spawnEvent;
+
 
     public GameObject[] enemies;
     public float SpwanRate = 1;
@@ -25,7 +28,8 @@ public class EnemySpawner : MonoBehaviour
         Vector3 spawnPosition = new Vector3(xPos, transform.position.y,transform.position.z);
         if (Time.time > nextSpawnTime && enemiesOnScreen() <= 4)
         {
-            Instantiate(randomEnemy(), spawnPosition, Quaternion.identity);
+            Enemy enemy = Instantiate(randomEnemy(), spawnPosition, Quaternion.identity) as Enemy;
+            spawnEvent(enemy);
             nextSpawnTime = Time.time + SpwanRate / 10;
         }
 

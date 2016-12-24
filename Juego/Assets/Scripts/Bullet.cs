@@ -22,6 +22,7 @@ public class Bullet : MonoBehaviour {
     {
         if(hit.tag == "Enemy")
         {
+            Instantiate(hitEffect, transform.position, Quaternion.identity);
             hit.transform.SendMessage("TakeDamage", damage);
         }
         Destroy(gameObject);

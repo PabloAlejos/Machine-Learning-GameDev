@@ -191,6 +191,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  destroyAnimation: {fileID: 1000011229681388, guid: aed1c5dc7fcc93242a2b7a524fa25952,
+    type: 2}
+  scorePoints: 1
 --- !u!212 &212000010805976098
 SpriteRenderer:
   m_ObjectHideFlags: 1

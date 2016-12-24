@@ -142,7 +142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3822e3f3628cab45b998a4b8fb24f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 4
+  destroyAnimation: {fileID: 1000011229681388, guid: aed1c5dc7fcc93242a2b7a524fa25952,
+    type: 2}
+  scorePoints: 3
 --- !u!212 &212000012609961472
 SpriteRenderer:
   m_ObjectHideFlags: 1
