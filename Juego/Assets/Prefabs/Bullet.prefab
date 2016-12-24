@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000010571013752}
   - 212: {fileID: 212000013855899394}
   - 114: {fileID: 114000010943919754}
+  - 65: {fileID: 65000012678187128}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -41,6 +42,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!65 &65000012678187128
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010062686030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114000010943919754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53,6 +66,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  damage: 1
+  hitEffect: {fileID: 1000012468803140, guid: 2814c5a458e6d34409241eb95598baa4, type: 2}
 --- !u!212 &212000013855899394
 SpriteRenderer:
   m_ObjectHideFlags: 1

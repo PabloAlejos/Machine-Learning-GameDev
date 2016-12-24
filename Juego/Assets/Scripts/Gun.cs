@@ -14,12 +14,6 @@ public class Gun : MonoBehaviour
         nextShotTime = Time.time + fireRate / 10;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-
-    }
 
     public void Shoot()
     {
