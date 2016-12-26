@@ -9,6 +9,8 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject[] enemies;
     public float SpwanRate = 1;
+    public int maxEnemiesOnScreen;
+
     private float nextSpawnTime;
     private float ScreenHalfSizeInWorldUnits;
 
@@ -25,11 +27,12 @@ public class EnemySpawner : MonoBehaviour
     {
 
         float xPos = Random.Range(-ScreenHalfSizeInWorldUnits, ScreenHalfSizeInWorldUnits);
-        Vector3 spawnPosition = new Vector3(xPos, transform.position.y,transform.position.z);
-        if (Time.time > nextSpawnTime && enemiesOnScreen() <= 4)
+        Vector3 spawnPosition = new Vector3(xPos, transform.position.y, transform.position.z);
+        if (Time.time > nextSpawnTime && CountenemiesOnScreen() < maxEnemiesOnScreen)
         {
-            Enemy enemy = Instantiate(randomEnemy(), spawnPosition, Quaternion.identity) as Enemy;
-            spawnEvent(enemy);
+            GameObject enemy = (GameObject)Instantiate(randomEnemy(), spawnPosition, Quaternion.identity);
+
+            spawnEvent(enemy.GetComponent<Enemy>());
             nextSpawnTime = Time.time + SpwanRate / 10;
         }
 
@@ -43,7 +46,7 @@ public class EnemySpawner : MonoBehaviour
         return enemies[Random.Range(0, enemies.Length)];
     }
 
-    private int enemiesOnScreen()
+    private int CountenemiesOnScreen()
     {
         return FindObjectsOfType<Enemy>().Length;
     }

@@ -6,11 +6,9 @@ public class Enemy : MonoBehaviour
     public delegate void DeathDelegate(float points, Enemy e);
     public event DeathDelegate deathEvent;
 
-
     public float health = 3;
     public GameObject destroyAnimation;
     public float scorePoints = 1;
-
 
     // Update is called once per frame
     void Update()
@@ -18,20 +16,20 @@ public class Enemy : MonoBehaviour
 
         if (IsDead())
         {
-          
-          if (deathEvent != null)
+
+            if (deathEvent != null)
             {
                 deathEvent(scorePoints, this);
             }
             Instantiate(destroyAnimation, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-            
+
     }
 
     private bool IsDead()
     {
-       
+
         return health <= 0;
     }
 
@@ -39,13 +37,17 @@ public class Enemy : MonoBehaviour
     //Función que elimina al enemigo cuando da
     void OnBecameInvisible()
     {
+        if (deathEvent != null)
+        {
+            deathEvent(0, this);
+        }
         Destroy(gameObject);
     }
 
     public void TakeDamage(float amount)
     {
         health -= amount;
-        
+
     }
 
 }
