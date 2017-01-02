@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using LitJson;
 using System.Text;
 using System;
 
@@ -12,7 +11,7 @@ public class GameState
 
     private KeyCode lastHitKey;
 
-    public GameState(Vector2 playerPosition, List<Enemy> enemiesPosition, KeyCode lastHitKey)
+    public GameState(Vector2 playerPosition, List<Enemy> enemiesPosition,double score, KeyCode lastHitKey)
     {
         this.playerPosition = playerPosition;
         this.enemiesPosition = enemiesPosition;
@@ -30,7 +29,10 @@ public class GameState
 
         foreach (Enemy v in enemiesPosition)
         {
+            if ( v!= null)
             sb.Append(MakeValueCsvFriendly((Vector2)v.transform.position)).Append(",");
+            else
+                sb.Append(MakeValueCsvFriendly(v)).Append(",");
         }
 
         sb.Append(MakeValueCsvFriendly(lastHitKey)).Append(",");
@@ -53,7 +55,7 @@ public class GameState
 
         if (value is KeyCode)
         {
-            return ("#" + value);
+            return value.ToString();
         }
 
         if (value == null) return "";

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 48e900d462278964f8b9a01b86c67615
-timeCreated: 1482591289
+guid: 22d115f0b5ff0094089b7004c4e7b7d3
+timeCreated: 1482767965
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -10,7 +10,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Press Start 2P
+  - Orbitron
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -14,10 +15,10 @@ public class EnemySpawner : MonoBehaviour
     private float nextSpawnTime;
     private float ScreenHalfSizeInWorldUnits;
 
-
     // Use this for initialization
     void Start()
     {
+
         ScreenHalfSizeInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize;
         nextSpawnTime = Time.time + SpwanRate / 10;
     }
@@ -50,4 +51,5 @@ public class EnemySpawner : MonoBehaviour
     {
         return FindObjectsOfType<Enemy>().Length;
     }
+
 }

@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         }
 
 
-        lasHitKey = KeyCode.A;
+       lasHitKey = KeyCode.None;
 
         if (Input.GetKeyDown("space"))
         {
@@ -63,7 +63,6 @@ public class Player : MonoBehaviour
         {
             lasHitKey = KeyCode.RightArrow;
         }
-
 
     }
 
