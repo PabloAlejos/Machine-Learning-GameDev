@@ -14,24 +14,21 @@ public class GameStateController : MonoBehaviour
     private int maxEnemies;
     void Start()
     {
-
+        
         sfm = FindObjectOfType<StatesFileManager>();
         FindObjectOfType<EnemySpawner>().spawnEvent += OnEnemySpawn;
         maxEnemies = FindObjectOfType<EnemySpawner>().maxEnemiesOnScreen;
         player = FindObjectOfType<Player>();
+        player.playerInputEvent += OnPlayerInput;
     }
 
 
-    //Se ejecutará al final de cada Frame
-    void FixedUpdate()
+    //Se crea un nuevo estado con cada tecla que pulsa el jugador
+    void OnPlayerInput(KeyCode k)
     {
         
         Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-
-        KeyCode k = player.lasHitKey;
-
         gs = new GameState(playerPos, makeEnemiesCsvFriendly(), FindObjectOfType<ScoreController>().score , k);
-
         sfm.AddState(gs.State2csv());
 
 

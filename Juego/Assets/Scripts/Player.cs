@@ -13,6 +13,12 @@ public class Player : MonoBehaviour
     Gun gun;
     private float ScreenHalfSizeInWorldUnits;
 
+    //Eventos
+    public delegate void PlayerInputDelegate(KeyCode k);
+    public event PlayerInputDelegate playerInputEvent;
+    public delegate void DeathDelegate();
+    public event DeathDelegate playerDeath;
+
 
 
     void Start()
@@ -21,12 +27,14 @@ public class Player : MonoBehaviour
         gun = FindObjectOfType<Gun>();
         anim = GetComponent<Animator>();
         ScreenHalfSizeInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize;
+        FindObjectOfType<EnemySpawner>().spawnEvent += OnEnemySpawn;
+
     }
 
 
     void Update()
     {
-        
+
         //Control de movimiento
         float directon = Input.GetAxis("Horizontal");
         Vector2 move = Vector2.right * directon * speed * Time.deltaTime;
@@ -48,22 +56,49 @@ public class Player : MonoBehaviour
         }
 
 
-       lasHitKey = KeyCode.None;
+        lasHitKey = KeyCode.None;
+
+        if (Input.GetKey("left"))
+        {
+            if (playerInputEvent != null)
+                playerInputEvent(KeyCode.LeftArrow);
+        }
+
+        if (Input.GetKey("right"))
+        {
+            if (playerInputEvent != null)
+                playerInputEvent(KeyCode.RightArrow);
+        }
+
 
         if (Input.GetKeyDown("space"))
         {
-            lasHitKey = KeyCode.Space;
-            gun.Shoot();
+            if (playerInputEvent != null)
+            {
+                playerInputEvent(KeyCode.Space);
+                gun.Shoot();
+            }
+
         }
-        if (Input.GetKeyDown("left"))
-        {
-            lasHitKey = KeyCode.LeftArrow;
-        }
-        if (Input.GetKeyDown("right"))
-        {
-            lasHitKey = KeyCode.RightArrow;
-        }
+
+
 
     }
 
+    void onPassTrough()
+    {
+        Debug.Log("Death");
+        if (playerDeath != null)
+        {
+            playerDeath();
+        }
+    }
+
+
+    //Evento que es llamado cuando aparece un enemigo
+    //Es se suscribe a la lista de enventos para ver cuando es destruido
+    void OnEnemySpawn(Enemy e)
+    {
+        e.passTroughEvent += onPassTrough;
+    }
 }
