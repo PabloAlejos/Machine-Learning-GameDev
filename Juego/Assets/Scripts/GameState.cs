@@ -10,13 +10,14 @@ public class GameState
     public List<Enemy> enemiesPosition;
 
     private KeyCode lastHitKey;
+    double score;
 
     public GameState(Vector2 playerPosition, List<Enemy> enemiesPosition,double score, KeyCode lastHitKey)
     {
         this.playerPosition = playerPosition;
         this.enemiesPosition = enemiesPosition;
         this.lastHitKey = lastHitKey;
-
+        this.score = score;
     }
 
 
@@ -34,8 +35,8 @@ public class GameState
             else
                 sb.Append(MakeValueCsvFriendly(v)).Append(",");
         }
-
-        sb.Append(MakeValueCsvFriendly(lastHitKey)).Append(",");
+        sb.Append(MakeValueCsvFriendly(score)).Append(",");
+        sb.Append(MakeValueCsvFriendly(lastHitKey));
 
         return sb.ToString();
     }
@@ -50,12 +51,17 @@ public class GameState
 
         if (value is Vector2)
         {
-            return ((Vector2)value).x.ToString("n2") + "," + (((Vector2)value).y).ToString("n2");
+            return ((Vector2)value).x.ToString("0.00") + "," + (((Vector2)value).y).ToString("0.00");
         }
 
         if (value is KeyCode)
         {
             return value.ToString();
+        }
+
+        if (value is double)
+        {
+            return (value.ToString());
         }
 
         if (value == null) return "";

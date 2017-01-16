@@ -28,7 +28,7 @@ public class GameStateController : MonoBehaviour
     {
         
         Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-        gs = new GameState(playerPos, makeEnemiesCsvFriendly(), FindObjectOfType<ScoreController>().score , k);
+        gs = new GameState(playerPos, makeEnemiesCsvFriendly(), FindObjectOfType<ScoreController>().score/Time.timeSinceLevelLoad , k);
         sfm.AddState(gs.State2csv());
 
 
@@ -57,6 +57,7 @@ public class GameStateController : MonoBehaviour
     private void OnEnemyDie(float points, Enemy e)
     {
         enemies.Remove(e);
+
         e.deathEvent -= OnEnemyDie;
     }
 
