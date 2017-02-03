@@ -6,57 +6,62 @@ using System;
 [RequireComponent(typeof(StatesFileManager))]
 public class GameStateController : MonoBehaviour
 {
-    StatesFileManager sfm;
-    public GameState gs;
-    private Player player;
-    public List<Enemy> enemies;
+    private StatesFileManager sfm;
+    private PlayerController player;
+   
+    private float nextStateRead;
 
-    private int maxEnemies;
+    public float stateReadRate = .1f;
+   
+
     void Start()
     {
-
-        sfm = FindObjectOfType<StatesFileManager>();
-        FindObjectOfType<EnemySpawner>().spawnEvent += OnEnemySpawn;
-        maxEnemies = FindObjectOfType<EnemySpawner>().maxEnemiesOnScreen;
-        player = FindObjectOfType<Player>();
-        player.playerInputEvent += OnPlayerInput;
+        sfm = FindObjectOfType<StatesFileManager>(); //Encargado de escribir el estado en el csv
+        player = FindObjectOfType<PlayerController>();
+        nextStateRead = stateReadRate + Time.time;
     }
 
 
-    //Se crea un nuevo estado con cada tecla que pulsa el jugador
-    void OnPlayerInput(KeyCode k)
+    //Método que es llamado al final de cada fotograma, es decir, cuando todas las fisicas han sido calculadas.
+    void FixedUpdate()
     {
-        Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-        gs = new GameState(playerPos, makeEnemiesCsvFriendly(), k);
-        sfm.AddState(gs.State2csv());
-    }
-
-    
-    //
-    private List<Enemy> makeEnemiesCsvFriendly()
-    {
-        List<Enemy> output = new List<Enemy>(enemies);
-
-        while (output.Count <= maxEnemies)
+        GameState gs;
+        GameObject[] enemies;
+        if (Time.time > nextStateRead)
         {
-            output.Add(null);
+            enemies = MakeEnemyList(); 
+            
+            Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
+            gs = new GameState(playerPos, enemies , ReadKey() );
+            sfm.AddState(gs.State2csv());
+            nextStateRead = stateReadRate + Time.time;
         }
-        return output;
+    }
+    
+    private GameObject[] MakeEnemyList()
+    {
+        return GameObject.FindGameObjectsWithTag("Enemy");
     }
 
 
-    //Función que hace que GameSateControlles se suscriba al enemigo que acaba de aparecer.
-    private void OnEnemySpawn(Enemy e)
+    KeyCode ReadKey()
     {
-        e.deathEvent += OnEnemyDie;
-        enemies.Add(e);
-    }
 
-    //Cuando el enemigo muere se desuscribe.
-    private void OnEnemyDie(float points, Enemy e)
-    {
-        enemies.Remove(e);
-        e.deathEvent -= OnEnemyDie;
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            return KeyCode.LeftArrow;
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            return KeyCode.RightArrow;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            return KeyCode.Space;
+        }
+        return KeyCode.None;
     }
 
 }

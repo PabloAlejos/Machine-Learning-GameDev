@@ -7,10 +7,11 @@ using System;
 public class GameState
 {
     public Vector2 playerPosition;
-    public List<Enemy> enemiesPosition;
+    public GameObject[] enemiesPosition;
     private KeyCode lastHitKey;
+    public int maxEnemies = 4 ;
 
-    public GameState(Vector2 playerPosition, List<Enemy> enemiesPosition, KeyCode lastHitKey)
+    public GameState(Vector2 playerPosition, GameObject[] enemiesPosition, KeyCode lastHitKey)
     {
         this.playerPosition = playerPosition;
         this.enemiesPosition = enemiesPosition;
@@ -25,16 +26,26 @@ public class GameState
 
         sb.Append(MakeValueCsvFriendly(playerPosition)).Append(",");
 
-        foreach (Enemy v in enemiesPosition)
+        for (int i = 0; i < maxEnemies; i++)
         {
-            if (v != null)
-                sb.Append(MakeValueCsvFriendly((Vector2)v.transform.position));
+            if (i >= enemiesPosition.Length)
+            {
+                sb.Append((",A,"));
+            }
             else
-                sb.Append(MakeValueCsvFriendly(v)).Append("," + ",");
+            {
+                if (enemiesPosition[i] != null)
+                    sb.Append(MakeValueCsvFriendly((Vector2)enemiesPosition[i].transform.position)).Append(",");
+                else
+                    sb.Append(MakeValueCsvFriendly(enemiesPosition[i])).Append(",");
+            }
+
         }
         sb.Append(MakeValueCsvFriendly(lastHitKey));
 
+        Debug.Log(sb.ToString().Split(',').Length - 1);
         return sb.ToString();
+
     }
 
     //
@@ -47,7 +58,7 @@ public class GameState
 
         if (value is Vector2)
         {
-            return ((Vector2)value).x.ToString("0.00") + "," + (((Vector2)value).y).ToString("0.00")+",";
+            return ((Vector2)value).x.ToString("0.00") + "," + (((Vector2)value).y).ToString("0.00");
         }
 
         if (value is KeyCode)

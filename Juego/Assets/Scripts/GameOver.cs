@@ -14,7 +14,7 @@ public class GameOver : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         gsc = FindObjectOfType<GameStateController>();
-        FindObjectOfType<Player>().playerDeath += OnGameOver;
+        FindObjectOfType<PlayerController>().playerDeath += OnGameOver;
 	}
 	
 
