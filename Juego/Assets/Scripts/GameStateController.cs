@@ -11,7 +11,7 @@ public class GameStateController : MonoBehaviour
    
     private float nextStateRead;
 
-    public float stateReadRate = .1f;
+    public float stateReadRate;
    
 
     void Start()
@@ -46,21 +46,22 @@ public class GameStateController : MonoBehaviour
 
     KeyCode ReadKey()
     {
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             return KeyCode.LeftArrow;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             return KeyCode.RightArrow;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             return KeyCode.Space;
         }
+
         return KeyCode.None;
     }
 

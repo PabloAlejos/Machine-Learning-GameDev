@@ -30,7 +30,7 @@ public class GameState
         {
             if (i >= enemiesPosition.Length)
             {
-                sb.Append((",A,"));
+                sb.Append(("999,999,"));
             }
             else
             {
