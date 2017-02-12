@@ -8,9 +8,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public KeyCode lasHitKey;
 
-    Animator anim;
+// Animator anim;
     public float speed = 5;
-    Gun gun;
+    GameObject[] guns;
     private float ScreenHalfSizeInWorldUnits;
 
     //Eventos
@@ -24,8 +24,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         lasHitKey = KeyCode.None;
-        gun = FindObjectOfType<Gun>();
-        anim = GetComponent<Animator>();
+        guns = GameObject.FindGameObjectsWithTag("gun");
+  //      anim = GetComponent<Animator>();
         ScreenHalfSizeInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize;
         FindObjectOfType<EnemySpawner>().spawnEvent += OnEnemySpawn;
 
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         Vector2 move = Vector2.right * directon * speed * Time.deltaTime;
         transform.Translate(move);
 
-        anim.SetFloat("direction", directon);//Indica el estado de la nave al Animator 
+    //    anim.SetFloat("direction", directon);//Indica el estado de la nave al Animator 
 
         //Evita que el jugadore se salga de la pantalla
         if (transform.position.x < -ScreenHalfSizeInWorldUnits)
@@ -57,7 +57,10 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-            gun.Shoot();
+            foreach (GameObject gun in guns)
+            {
+                gun.GetComponent<Gun>().Shoot();
+            }
         }
 
     }
