@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 // Animator anim;
     public float speed = 5;
     GameObject[] guns;
-    private float ScreenHalfSizeInWorldUnits;
+    private float ScreenHalfSizeInWorldUnits = 3;
 
     //Eventos
     public delegate void PlayerInputDelegate(KeyCode k);
@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     {
         lasHitKey = KeyCode.None;
         guns = GameObject.FindGameObjectsWithTag("gun");
-  //      anim = GetComponent<Animator>();
-        ScreenHalfSizeInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize;
+  //    anim = GetComponent<Animator>();
+        //ScreenHalfSizeInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize;
         FindObjectOfType<EnemySpawner>().spawnEvent += OnEnemySpawn;
 
     }
@@ -43,13 +43,13 @@ public class PlayerController : MonoBehaviour
     //    anim.SetFloat("direction", directon);//Indica el estado de la nave al Animator 
 
         //Evita que el jugadore se salga de la pantalla
-        if (transform.position.x < -ScreenHalfSizeInWorldUnits)
+        if (transform.position.x < -ScreenHalfSizeInWorldUnits-5)
         {
-            transform.position = new Vector2(-ScreenHalfSizeInWorldUnits, transform.position.y);
+            transform.position = new Vector2(-ScreenHalfSizeInWorldUnits-5, transform.position.y);
         }
-        if (transform.position.x > ScreenHalfSizeInWorldUnits)
+        if (transform.position.x > ScreenHalfSizeInWorldUnits-5)
         {
-            transform.position = new Vector2(ScreenHalfSizeInWorldUnits, transform.position.y);
+            transform.position = new Vector2(ScreenHalfSizeInWorldUnits-5, transform.position.y);
         }
 
 
