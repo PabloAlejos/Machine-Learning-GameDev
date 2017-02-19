@@ -15,11 +15,15 @@ public class PlayerController : MonoBehaviour
 
     //Eventos
     public delegate void PlayerInputDelegate(KeyCode k);
-    public event PlayerInputDelegate playerInputEvent;
     public delegate void DeathDelegate();
     public event DeathDelegate playerDeath;
 
 
+    //Se ejecuta antes de todo
+    void Awake()
+    {
+        Time.timeScale = 1;
+    }
 
     void Start()
     {
