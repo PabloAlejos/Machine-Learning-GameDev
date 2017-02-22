@@ -5,7 +5,7 @@ public class BackGroundScroller : MonoBehaviour {
 
     MeshRenderer mr;
     Material mat;
-
+    public float speed;
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class BackGroundScroller : MonoBehaviour {
 
         Vector2 offset = mat.mainTextureOffset;
 
-        offset.y = Time.time / 10f;
+        offset.y = Time.time / speed;
 
         mat.mainTextureOffset = offset;
 	
