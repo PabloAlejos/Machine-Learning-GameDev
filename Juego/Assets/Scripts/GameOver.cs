@@ -17,20 +17,21 @@ public class GameOver : MonoBehaviour {
         FindObjectOfType<PlayerController>().playerDeath += OnGameOver;
 	}
 	
-
-    public void ChangeScene(int scene)
+    void Update()
     {
-        if (gameOver)
+        if (Input.GetKey("return"))
         {
-            SceneManager.LoadScene(scene);
+            SceneManager.LoadScene(0);
         }
     }
 
     void OnGameOver()
     {
+
         Debug.Log("GameOver");
         gameOverScreen.SetActive(true);
-        gsc.gameObject.SetActive(false); 
+        gsc.gameObject.SetActive(false);
+        Time.timeScale = 0;
         gameOver = true;
     }
 
