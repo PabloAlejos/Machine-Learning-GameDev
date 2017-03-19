@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 
 df=pd.read_csv('testEstado.csv', sep=',',header=None)
-print(df.values[:10])
+
 df.columns = ['Px', 'Py', 'E1x', 'E1y','E2x', 'E2y','E3x', 'E3y','E4x', 'E4y',"Class"]
 
 train_data = df.drop(["Class"], axis=1)

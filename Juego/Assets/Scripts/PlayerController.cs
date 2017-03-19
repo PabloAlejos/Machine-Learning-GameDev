@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public KeyCode lasHitKey;
 
-// Animator anim;
+    // Animator anim;
     public float speed = 5;
     GameObject[] guns;
     private float ScreenHalfSizeInWorldUnits = 3;
@@ -29,8 +29,6 @@ public class PlayerController : MonoBehaviour
     {
         lasHitKey = KeyCode.None;
         guns = GameObject.FindGameObjectsWithTag("gun");
-  //    anim = GetComponent<Animator>();
-        //ScreenHalfSizeInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize;
         FindObjectOfType<EnemySpawner>().spawnEvent += OnEnemySpawn;
 
     }
@@ -44,16 +42,15 @@ public class PlayerController : MonoBehaviour
         Vector2 move = Vector2.right * directon * speed * Time.deltaTime;
         transform.Translate(move);
 
-    //    anim.SetFloat("direction", directon);//Indica el estado de la nave al Animator 
 
         //Evita que el jugadore se salga de la pantalla
-        if (transform.position.x < -ScreenHalfSizeInWorldUnits-5)
+        if (transform.position.x < -ScreenHalfSizeInWorldUnits - 5)
         {
-            transform.position = new Vector2(-ScreenHalfSizeInWorldUnits-5, transform.position.y);
+            transform.position = new Vector2(-ScreenHalfSizeInWorldUnits - 5, transform.position.y);
         }
-        if (transform.position.x > ScreenHalfSizeInWorldUnits-5)
+        if (transform.position.x > ScreenHalfSizeInWorldUnits - 5)
         {
-            transform.position = new Vector2(ScreenHalfSizeInWorldUnits-5, transform.position.y);
+            transform.position = new Vector2(ScreenHalfSizeInWorldUnits - 5, transform.position.y);
         }
 
 
@@ -61,11 +58,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-            foreach (GameObject gun in guns)
-            {
-                gun.GetComponent<Gun>().Shoot();
-            }
+
+            guns[0].GetComponent<Gun>().Shoot();
+            guns[1].GetComponent<Gun>().Shoot();
+
         }
+
 
     }
 

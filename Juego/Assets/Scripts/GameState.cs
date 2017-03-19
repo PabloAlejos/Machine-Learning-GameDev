@@ -20,6 +20,35 @@ public class GameState
 
 
     //Método que traduce el estado a una cadena de texto csv
+    public String State2String()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        sb.Append(MakeValueCsvFriendly(playerPosition)).Append(",");
+
+        for (int i = 0; i < maxEnemies; i++)
+        {
+            if (i >= enemiesPosition.Length)
+            {
+                sb.Append(("999,999,"));
+            }
+            else
+            {
+                if (enemiesPosition[i] != null)
+                    sb.Append(MakeValueCsvFriendly((Vector2)enemiesPosition[i].transform.position)).Append(",");
+                else
+                    sb.Append(MakeValueCsvFriendly(enemiesPosition[i])).Append(",");
+            }
+
+        }
+
+        Debug.Log(sb.ToString().Split(',').Length - 1);
+        return sb.ToString().TrimEnd(',');
+
+    }
+
+
+    //Método que traduce el estado a una cadena de texto csv
     public String State2csv()
     {
         StringBuilder sb = new StringBuilder();

@@ -13,7 +13,7 @@ public class Gun : MonoBehaviour
     private HeatBar bar;
     private float heatValue;
     [SerializeField]
-    private float coolingTime = 20;
+    private float coolingTime = 500;
     private float startCoolingTime;
     private float maxHeatValue = 100;
     bool overHeat;
@@ -31,7 +31,7 @@ public class Gun : MonoBehaviour
     {
         if (Time.time > nextShotTime && HeatValue < maxHeatValue && !overHeat)
         {
-            HeatValue += 5;
+            HeatValue += 1;
             Instantiate(bulletType, transform.position, Quaternion.identity);
             nextShotTime += fireRate / 10;
             startCoolingTime = Time.time + coolingTime;
@@ -39,14 +39,16 @@ public class Gun : MonoBehaviour
 
         if (HeatValue >= 100)
         {
-            overHeat = true;  
+            overHeat = true;
+            startCoolingTime = Time.time + coolingTime * 2;
         }
     }
 
     void Update()
     {    
-        if (Time.time > coolingTime)
+        if (Time.time > startCoolingTime)
         {
+            overHeat = false;
             if (HeatValue > 0)
             {
                 HeatValue -= 10 * Time.deltaTime;

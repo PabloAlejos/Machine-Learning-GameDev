@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
     public delegate void SpawnDelegate(Enemy e);
     public event SpawnDelegate spawnEvent;
 
-
+    private int MAX_ENEMIES = 4;
     public GameObject[] enemies;
     public float SpwanRate = 1;
     public int maxEnemiesOnScreen;
@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        maxEnemiesOnScreen = Random.Range(1, MAX_ENEMIES);
         //float xPos = Random.Range(-ScreenHalfSizeInWorldUnits, ScreenHalfSizeInWorldUnits);
         float xPos = Random.Range(transform.position.x -2.8f, transform.position.x + 2.8f);
         Vector3 spawnPosition = new Vector3(xPos, transform.position.y, transform.position.z);
@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
-    //Elige un enemigo al aza de la lista
+    //Elige un enemigo al azar de la lista
     private GameObject randomEnemy()
     {
         return enemies[Random.Range(0, enemies.Length)];

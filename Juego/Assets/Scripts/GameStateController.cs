@@ -8,36 +8,50 @@ public class GameStateController : MonoBehaviour
 {
     private StatesFileManager sfm;
     private PlayerController player;
-   
+    private SocketController sc;
+
     private float nextStateRead;
 
     public float stateReadRate;
-   
+    public bool recordStates;
+
 
     void Start()
     {
         sfm = FindObjectOfType<StatesFileManager>(); //Encargado de escribir el estado en el csv
         player = FindObjectOfType<PlayerController>();
         nextStateRead = stateReadRate + Time.time;
+        sc = FindObjectOfType<SocketController>();
     }
 
 
     //Método que es llamado al final de cada fotograma, es decir, cuando todas las fisicas han sido calculadas.
     void FixedUpdate()
     {
+
         GameState gs;
         GameObject[] enemies;
         if (Time.time > nextStateRead)
         {
-            enemies = MakeEnemyList(); 
-            
+            enemies = MakeEnemyList();
+
             Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-            gs = new GameState(playerPos, enemies , ReadKey() );
-            sfm.AddState(gs.State2csv());
+            gs = new GameState(playerPos, enemies, ReadKey());
+
+            if (recordStates)
+                sfm.AddState(gs.State2csv());
+
+
+            if (sc.online)
+            {
+                Debug.Log(gs.State2String());
+                sc.SetMsg(gs.State2String());
+                sc.SendMessage();
+            }
             nextStateRead = stateReadRate + Time.time;
         }
     }
-    
+
     private GameObject[] MakeEnemyList()
     {
         return GameObject.FindGameObjectsWithTag("Enemy");
@@ -46,7 +60,7 @@ public class GameStateController : MonoBehaviour
 
     KeyCode ReadKey()
     {
-        
+
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             return KeyCode.LeftArrow;
@@ -61,7 +75,7 @@ public class GameStateController : MonoBehaviour
         {
             return KeyCode.Space;
         }
-
+        
         return KeyCode.None;
     }
 
