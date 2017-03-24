@@ -11,16 +11,7 @@ public class Enemy : MonoBehaviour
     public float health = 3;
     public GameObject destroyAnimation;
     public float scorePoints = 1;
-
-    float VisibleHeight;
-
-
-    void Start()
-    {
-        VisibleHeight = -Camera.main.orthographicSize - transform.localScale.y;
-    }
-
-    
+  
     void Update()
     {
 
@@ -35,12 +26,11 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            if (transform.position.y < VisibleHeight )
+            if (transform.position.y <  -1)
             {
                 if (passTroughEvent != null)
                 {
-                    passTroughEvent();
-                    Destroy(gameObject);
+                    passTroughEvent();  
                 }
                 
             }

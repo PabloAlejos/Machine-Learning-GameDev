@@ -15,7 +15,7 @@ public class Gun : MonoBehaviour
     [SerializeField]
     private float coolingTime = 500;
     private float startCoolingTime;
-    private float maxHeatValue = 100;
+    private float maxHeatValue = 150;
     bool overHeat;
 
     // Use this for initialization
@@ -33,11 +33,11 @@ public class Gun : MonoBehaviour
         {
             HeatValue += 1;
             Instantiate(bulletType, transform.position, Quaternion.identity);
-            nextShotTime += fireRate / 10;
+            nextShotTime = Time.time + fireRate / 10;
             startCoolingTime = Time.time + coolingTime;
         }
 
-        if (HeatValue >= 100)
+        if (HeatValue >= maxHeatValue)
         {
             overHeat = true;
             startCoolingTime = Time.time + coolingTime * 2;
@@ -54,6 +54,12 @@ public class Gun : MonoBehaviour
                 HeatValue -= 10 * Time.deltaTime;
             } 
         }
+    }
+
+
+    public void CoolGun(float val)
+    {
+        heatValue -= val;
     }
 
     public float HeatValue

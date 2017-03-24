@@ -15,7 +15,7 @@ train_data = train_data.values
 target_data = df["Class"].values
 
 
-forest = RandomForestClassifier(n_estimators=100)
+forest = RandomForestClassifier(n_estimators=1000)
 
 forestDefinitivo = forest.fit(train_data, target_data)
 #hace la predicción

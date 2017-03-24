@@ -7,11 +7,19 @@ public class MainMenuController : MonoBehaviour {
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        StartCoroutine(ChangeLevel());
     }
 
     public void QuitGame()
     {
         Application.Quit();
     }
+
+    IEnumerator ChangeLevel()
+    {
+        float fadeTime = GetComponent<Fading>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        SceneManager.LoadScene(1);
+    }
+
 }

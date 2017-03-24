@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 public class SocketController : MonoBehaviour
 {
-
+    Process p;
     public bool online = false;
     //Variable del editor
     public Text ConnectionText;
@@ -131,12 +131,12 @@ public class SocketController : MonoBehaviour
 
     public void RunSocketServer()
     {
-        Process p = new Process();
+        p = new Process();
         p.StartInfo.FileName = "python";
         p.StartInfo.Arguments = "serverSocket.py";
         // Pipe the output to itself - we will catch this later
-        p.StartInfo.RedirectStandardError = true;
-        p.StartInfo.RedirectStandardOutput = true;
+        //p.StartInfo.RedirectStandardError = false;
+        //p.StartInfo.RedirectStandardOutput = false;
         p.StartInfo.CreateNoWindow = true;
         // Where the script lives
         p.StartInfo.WorkingDirectory = Application.dataPath;
@@ -156,7 +156,14 @@ public class SocketController : MonoBehaviour
         }
 
         //UnityEngine.Debug.Log(p.ToString());
-        //p.Close();
+        
+    }
+
+
+    //Mato el proceso de pythom
+    void OnApplicationQuit()
+    {
+        p.Kill();
     }
 
 

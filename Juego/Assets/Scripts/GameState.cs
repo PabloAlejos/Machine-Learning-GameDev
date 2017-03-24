@@ -42,7 +42,7 @@ public class GameState
 
         }
 
-        Debug.Log(sb.ToString().Split(',').Length - 1);
+
         return sb.ToString().TrimEnd(',');
 
     }

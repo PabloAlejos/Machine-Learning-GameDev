@@ -14,7 +14,9 @@ public class GameStateController : MonoBehaviour
 
     public float stateReadRate;
     public bool recordStates;
-
+    //Variables de ReadKey()
+    float stuckTime;
+    KeyCode k;
 
     void Start()
     {
@@ -22,6 +24,11 @@ public class GameStateController : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
         nextStateRead = stateReadRate + Time.time;
         sc = FindObjectOfType<SocketController>();
+        
+        //Inicialización de ReadKey()
+        stuckTime = 0;
+        k = KeyCode.None;
+
     }
 
 
@@ -44,7 +51,7 @@ public class GameStateController : MonoBehaviour
 
             if (sc.online)
             {
-                Debug.Log(gs.State2String());
+
                 sc.SetMsg(gs.State2String());
                 sc.SendMessage();
             }
@@ -60,23 +67,29 @@ public class GameStateController : MonoBehaviour
 
     KeyCode ReadKey()
     {
+        
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            return KeyCode.LeftArrow;
+            k = KeyCode.LeftArrow;
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            return KeyCode.RightArrow;
+            k = KeyCode.RightArrow;
         }
 
         if (Input.GetKey(KeyCode.Space))
         {
-            return KeyCode.Space;
+            k = KeyCode.Space;
+            stuckTime = Time.time + 0.5f;
         }
         
-        return KeyCode.None;
+        if (Time.time > stuckTime)
+            k = KeyCode.None;
+
+        return k;
+
     }
 
 }

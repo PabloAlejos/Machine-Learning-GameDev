@@ -8,9 +8,13 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public KeyCode lasHitKey;
 
-    // Animator anim;
+    // Animator;
+    public Sprite[] animSprites;
+
+    //propuedades del jugador
     public float speed = 5;
-    GameObject[] guns;
+    [HideInInspector]
+    public GameObject[] guns;
     private float ScreenHalfSizeInWorldUnits = 3;
 
     //Eventos
@@ -30,27 +34,37 @@ public class PlayerController : MonoBehaviour
         lasHitKey = KeyCode.None;
         guns = GameObject.FindGameObjectsWithTag("gun");
         FindObjectOfType<EnemySpawner>().spawnEvent += OnEnemySpawn;
-
     }
 
 
     void Update()
     {
+        InputRead();
+    }
 
-        //Control de movimiento
-        float directon = Input.GetAxis("Horizontal");
-        Vector2 move = Vector2.right * directon * speed * Time.deltaTime;
-        transform.Translate(move);
+    public void InputRead()
+    {
+        Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        PlayerAnimation(movement.x);
+        transform.Translate (movement.normalized * speed * Time.deltaTime);
 
 
         //Evita que el jugadore se salga de la pantalla
-        if (transform.position.x < -ScreenHalfSizeInWorldUnits - 5)
+        if (transform.position.x - transform.localScale.x / 2 < -ScreenHalfSizeInWorldUnits)
         {
-            transform.position = new Vector2(-ScreenHalfSizeInWorldUnits - 5, transform.position.y);
+            transform.position = new Vector2(-ScreenHalfSizeInWorldUnits + transform.localScale.x / 2, transform.position.y);
+        }else if (transform.position.x + transform.localScale.x/2 > ScreenHalfSizeInWorldUnits)
+        {
+            transform.position = new Vector2(ScreenHalfSizeInWorldUnits - transform.localScale.x/2, transform.position.y);
         }
-        if (transform.position.x > ScreenHalfSizeInWorldUnits - 5)
+
+        if (transform.position.y + transform.localScale.y / 2 >= 9)
         {
-            transform.position = new Vector2(ScreenHalfSizeInWorldUnits - 5, transform.position.y);
+            transform.position = new Vector2(transform.position.x, 9 - transform.localScale.y / 2);
+        }else if (transform.position.y - transform.localScale.y/2 <= -1)
+        {
+            transform.position = new Vector2(transform.position.x, -1 + transform.localScale.y / 2);
         }
 
 
@@ -58,22 +72,43 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-
-            guns[0].GetComponent<Gun>().Shoot();
-            guns[1].GetComponent<Gun>().Shoot();
+            foreach (GameObject g in guns)
+            {
+                g.GetComponent<Gun>().Shoot();
+            }
+           
+           
 
         }
-
-
     }
 
     void onPassTrough()
     {
-        Debug.Log("Death");
+        
         if (playerDeath != null)
         {
+            Debug.Log("Death");
             playerDeath();
         }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "Enemy":
+                Debug.Log("Enemy!");
+                //Añadir animacion muerte
+                playerDeath();
+                break;
+            case "PU1":
+                Debug.Log("PU!");
+                guns[0].GetComponent<Gun>().CoolGun(20);
+                guns[1].GetComponent<Gun>().CoolGun(20);
+                Destroy(other.gameObject);
+                break;
+        }
+
     }
 
 
@@ -83,4 +118,21 @@ public class PlayerController : MonoBehaviour
     {
         e.passTroughEvent += onPassTrough;
     }
+
+    void PlayerAnimation(float dirx)
+    {
+        if (dirx > 0.5f)
+        {
+            GetComponent<SpriteRenderer>().sprite = animSprites[1];
+        }
+        else if (dirx < -0.5f)
+        {
+            GetComponent<SpriteRenderer>().sprite = animSprites[2];
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = animSprites[0];
+        }
+    }
+
 }
