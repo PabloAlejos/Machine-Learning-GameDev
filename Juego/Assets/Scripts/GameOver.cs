@@ -21,17 +21,19 @@ public class GameOver : MonoBehaviour {
     {
         if (Input.GetKey("return"))
         {
+            SceneManager.LoadScene(1);
+        }
+        if (Input.GetKey(KeyCode.Escape))
+        {
             SceneManager.LoadScene(0);
         }
     }
 
     void OnGameOver()
     {
-
-        Debug.Log("GameOver");
         gameOverScreen.SetActive(true);
         gsc.gameObject.SetActive(false);
-        Time.timeScale = 0;
+        
         gameOver = true;
     }
 

@@ -7,72 +7,51 @@ using System;
 public class GameState
 {
     public Vector2 playerPosition;
-    public GameObject[] enemiesPosition;
-    private KeyCode lastHitKey;
-    public int maxEnemies = 4 ;
+    public Enemy[] enemies;
+    private KeyCode VKey = KeyCode.None;
+    private KeyCode HKey = KeyCode.None;
+    string timeStamp = "";
+    bool isShooting = false;
+    public int maxEnemies = 6;
+    private float HeatGunValue;
+    private PowerUp[] powerUps;
 
-    public GameState(Vector2 playerPosition, GameObject[] enemiesPosition, KeyCode lastHitKey)
+    public bool botActive = false;
+
+    public GameState(string timeStamp, Vector2 playerPosition, float HeatGunValue, PowerUp[] powerUps, Enemy[] enemies, KeyCode VKey, KeyCode HKey, bool isShooting)
     {
+        this.timeStamp = timeStamp;
         this.playerPosition = playerPosition;
-        this.enemiesPosition = enemiesPosition;
-        this.lastHitKey = lastHitKey;
+        this.HeatGunValue = HeatGunValue;
+        this.powerUps = powerUps;
+        this.enemies = enemies;
+        this.VKey = VKey;
+        this.HKey = HKey;
+        this.isShooting = isShooting;
     }
-
-
-    //Método que traduce el estado a una cadena de texto csv
-    public String State2String()
-    {
-        StringBuilder sb = new StringBuilder();
-
-        sb.Append(MakeValueCsvFriendly(playerPosition)).Append(",");
-
-        for (int i = 0; i < maxEnemies; i++)
-        {
-            if (i >= enemiesPosition.Length)
-            {
-                sb.Append(("999,999,"));
-            }
-            else
-            {
-                if (enemiesPosition[i] != null)
-                    sb.Append(MakeValueCsvFriendly((Vector2)enemiesPosition[i].transform.position)).Append(",");
-                else
-                    sb.Append(MakeValueCsvFriendly(enemiesPosition[i])).Append(",");
-            }
-
-        }
-
-
-        return sb.ToString().TrimEnd(',');
-
-    }
-
 
     //Método que traduce el estado a una cadena de texto csv
     public String State2csv()
     {
         StringBuilder sb = new StringBuilder();
 
+        sb.Append(timeStamp).Append(",");
         sb.Append(MakeValueCsvFriendly(playerPosition)).Append(",");
+        sb.Append(HeatGunValue).Append(",");
+        sb.Append(MakeValueCsvFriendly(powerUps));
+        sb.Append(MakeValueCsvFriendly(enemies));
 
-        for (int i = 0; i < maxEnemies; i++)
+
+
+
+
+
+        if (!botActive)
         {
-            if (i >= enemiesPosition.Length)
-            {
-                sb.Append(("999,999,"));
-            }
-            else
-            {
-                if (enemiesPosition[i] != null)
-                    sb.Append(MakeValueCsvFriendly((Vector2)enemiesPosition[i].transform.position)).Append(",");
-                else
-                    sb.Append(MakeValueCsvFriendly(enemiesPosition[i])).Append(",");
-            }
-
+            sb.Append(MakeValueCsvFriendly(VKey)).Append(",");
+            sb.Append(MakeValueCsvFriendly(HKey)).Append(",");
+            sb.Append(isShooting).Append(",");
         }
-        sb.Append(MakeValueCsvFriendly(lastHitKey));
-
-        Debug.Log(sb.ToString().Split(',').Length - 1);
         return sb.ToString();
 
     }
@@ -84,10 +63,54 @@ public class GameState
     //Método que facilita el paso a csv, tratando cada tipo de dato de una forma diferente
     private string MakeValueCsvFriendly(object value)
     {
-
+        StringBuilder sb = new StringBuilder();
         if (value is Vector2)
         {
             return ((Vector2)value).x.ToString("0.00") + "," + (((Vector2)value).y).ToString("0.00");
+        }
+
+        if (value is PowerUp[])
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                if (i >= powerUps.Length)
+                {
+                    sb.Append(("999,999,"));
+                }
+                else
+                {
+                    if (powerUps[i] != null)
+                    {
+                        sb.Append(powerUps[0].transform.position.x).Append(",").Append(powerUps[0].transform.position.y).Append(",");
+                    }
+                }
+            }
+            return sb.ToString();
+        }
+
+        if (value is Enemy[])
+        {
+            for (int i = 0; i < maxEnemies; i++)
+            {
+                if (i >= enemies.Length)
+                {
+                    sb.Append(("999,999,"));
+                    sb.Append("0").Append(",");
+                }
+                else
+                {
+                    if (enemies[i] != null)
+                    {
+                        sb.Append(MakeValueCsvFriendly((Vector2)enemies[i].transform.position)).Append(",");
+                        sb.Append(MakeValueCsvFriendly(enemies[i].health)).Append(",");
+                    }
+
+                    else
+                        sb.Append(MakeValueCsvFriendly(enemies[i])).Append(",");
+                }
+
+            }
+            return sb.ToString();
         }
 
         if (value is KeyCode)

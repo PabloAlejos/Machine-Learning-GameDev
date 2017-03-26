@@ -42,7 +42,7 @@ PlayerSettings:
   m_SplashScreenBackgroundPortrait: {fileID: 0}
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
-  defaultScreenWidth: 600
+  defaultScreenWidth: 1600
   defaultScreenHeight: 1000
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
@@ -55,7 +55,7 @@ PlayerSettings:
   androidShowActivityIndicatorOnLoading: -1
   tizenShowActivityIndicatorOnLoading: -1
   iosAppInBackgroundBehavior: 0
-  displayResolutionDialog: 0
+  displayResolutionDialog: 1
   iosAllowHTTPDownload: 1
   allowedAutorotateToPortrait: 1
   allowedAutorotateToPortraitUpsideDown: 1
@@ -115,7 +115,7 @@ PlayerSettings:
   m_SupportedAspectRatios:
     4:3: 0
     5:4: 0
-    16:10: 0
+    16:10: 1
     16:9: 0
     Others: 0
   bundleIdentifier: com.Company.ProductName

@@ -13,8 +13,10 @@ public class HeatBar : MonoBehaviour
     [SerializeField]
     private Image content;
 
+    /*
     [SerializeField]
-    Gun gun;
+    Gun[] gun;
+    */
 
     public float MaxValue { get; set; }
     public float Value
@@ -26,10 +28,6 @@ public class HeatBar : MonoBehaviour
 
     }
 
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

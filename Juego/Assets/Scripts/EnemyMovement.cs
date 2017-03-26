@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour {
 
     // Update is called once per frame
 	void Update () {
-        Vector2 target = new Vector2(Mathf.Cos((Time.time * offset) * 2) * 2.8f, -1.5f);
+        Vector2 target = new Vector2(Mathf.Cos((Time.time + offset) * 2) * 2.8f, -1.5f);
         //transform.Translate(movement * speed * Time.deltaTime);
         transform.position = Vector2.MoveTowards(transform.position, target, speed * 0.025f);
 	}

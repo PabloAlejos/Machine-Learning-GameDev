@@ -4,13 +4,25 @@ using System.Collections;
 public class ScoreController : MonoBehaviour
 {
 
-    public double score;
+   
 
+    public double score;
+    public int highScore;
+    string highScoreKey = "HighScore";
     // Use this for initialization
     void Start()
     {
+        FindObjectOfType<PlayerController>().playerDeath += OnGameOver;
         score = 0;
+        highScore = PlayerPrefs.GetInt(highScoreKey, 0);
         FindObjectOfType<EnemySpawner>().spawnEvent += OnEnemySpawn;
+    }
+
+
+    void OnGameOver()
+    {
+        PlayerPrefs.SetInt(highScoreKey, (int)score);
+        PlayerPrefs.Save();
     }
 
     //Evento que es llamado cuando un enemigo muere
@@ -27,5 +39,12 @@ public class ScoreController : MonoBehaviour
     {
         e.deathEvent += OnEnemyDie;
     }
+
+    public int GetHighScore()
+    {
+        return PlayerPrefs.GetInt(highScoreKey, 0);
+    }
+
+
 
 }

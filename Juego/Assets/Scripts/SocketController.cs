@@ -163,7 +163,19 @@ public class SocketController : MonoBehaviour
     //Mato el proceso de pythom
     void OnApplicationQuit()
     {
-        p.Kill();
+        UnityEngine.Debug.Log("process-Kill on Quit");
+        Process[] pname = Process.GetProcessesByName("python");
+        if (pname.Length != 0)
+            p.Kill();
+    }
+
+    //
+    void OnDestroy()
+    {
+        UnityEngine.Debug.Log("process-Kill on Destroy");
+        Process[] pname = Process.GetProcessesByName("python");
+        if (pname.Length != 0)
+            p.Kill();
     }
 
 

@@ -21,4 +21,5 @@ public class PowerUpMovement : MonoBehaviour {
     {
         Destroy(gameObject);
     }
+
 }

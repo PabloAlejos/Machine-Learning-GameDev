@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,40 +11,60 @@ public class PlayerController : MonoBehaviour
     // Animator;
     public Sprite[] animSprites;
 
-    //propuedades del jugador
+
+    //propiedades del jugador
+    public GameObject destroyAnimation;
     public float speed = 5;
     [HideInInspector]
     public GameObject[] guns;
+    public GameObject gunsOP;
+    private float opTime = 0;
+    [HideInInspector]
+    public float heatValue = 0;
     private float ScreenHalfSizeInWorldUnits = 3;
+
 
     //Eventos
     public delegate void PlayerInputDelegate(KeyCode k);
+    public event PlayerInputDelegate playerShoot;
+    public event PlayerInputDelegate playerHorizontal;
+    public event PlayerInputDelegate PlayerVertical;
     public delegate void DeathDelegate();
     public event DeathDelegate playerDeath;
 
+    SoundController sounds;
 
     //Se ejecuta antes de todo
     void Awake()
     {
+        sounds = FindObjectOfType<SoundController>();
+        opTime = 0;
         Time.timeScale = 1;
     }
 
     void Start()
     {
         lasHitKey = KeyCode.None;
-        guns = GameObject.FindGameObjectsWithTag("gun");
         FindObjectOfType<EnemySpawner>().spawnEvent += OnEnemySpawn;
+        FindGuns();
     }
 
 
     void Update()
     {
         InputRead();
+        if (Time.time > opTime)
+        {
+            gunsOP.SetActive(false);
+            FindGuns();
+        }
     }
 
     public void InputRead()
     {
+
         Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        eventInput(movement);
 
         PlayerAnimation(movement.x);
         transform.Translate (movement.normalized * speed * Time.deltaTime);
@@ -54,6 +74,7 @@ public class PlayerController : MonoBehaviour
         if (transform.position.x - transform.localScale.x / 2 < -ScreenHalfSizeInWorldUnits)
         {
             transform.position = new Vector2(-ScreenHalfSizeInWorldUnits + transform.localScale.x / 2, transform.position.y);
+
         }else if (transform.position.x + transform.localScale.x/2 > ScreenHalfSizeInWorldUnits)
         {
             transform.position = new Vector2(ScreenHalfSizeInWorldUnits - transform.localScale.x/2, transform.position.y);
@@ -75,11 +96,24 @@ public class PlayerController : MonoBehaviour
             foreach (GameObject g in guns)
             {
                 g.GetComponent<Gun>().Shoot();
-            }
-           
-           
-
+                heatValue = g.GetComponent<Gun>().heatValue;
+                sounds.gun.Play();
+                playerShoot(KeyCode.Space);
+            }   
         }
+    }
+
+    
+    private void eventInput(Vector2 movement)
+    {
+        if (movement.x > 0.5)
+            playerHorizontal(KeyCode.RightArrow);
+        if (movement.x < -0.5)
+            playerHorizontal(KeyCode.LeftArrow);
+        if (movement.y > 0.5)
+            PlayerVertical(KeyCode.UpArrow);
+        if (movement.y < -0.5)
+            PlayerVertical(KeyCode.DownArrow);
     }
 
     void onPassTrough()
@@ -87,8 +121,9 @@ public class PlayerController : MonoBehaviour
         
         if (playerDeath != null)
         {
-            Debug.Log("Death");
             playerDeath();
+            Instantiate(destroyAnimation, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 
@@ -97,16 +132,28 @@ public class PlayerController : MonoBehaviour
         switch (other.tag)
         {
             case "Enemy":
-                Debug.Log("Enemy!");
                 //Añadir animacion muerte
                 playerDeath();
+                Instantiate(destroyAnimation, transform.position, Quaternion.identity);
+                sounds.audio_playerExlosion.Play();
+                Destroy(gameObject);
+                Destroy(other.gameObject);
                 break;
             case "PU1":
-                Debug.Log("PU!");
                 guns[0].GetComponent<Gun>().CoolGun(20);
                 guns[1].GetComponent<Gun>().CoolGun(20);
                 Destroy(other.gameObject);
+                sounds.itemPickUp.Play();
                 break;
+            case "PU2":
+                gunsOP.SetActive(true);
+                //gunsOP.GetComponent<Gun>().HeatValue =this.heatValue;
+                Destroy(other.gameObject);
+                opTime = Time.time + 5;
+                FindGuns();
+                sounds.itemPickUp.Play();
+                break;
+                
         }
 
     }
@@ -119,20 +166,28 @@ public class PlayerController : MonoBehaviour
         e.passTroughEvent += onPassTrough;
     }
 
+    //Intercambia los srites
     void PlayerAnimation(float dirx)
     {
         if (dirx > 0.5f)
         {
             GetComponent<SpriteRenderer>().sprite = animSprites[1];
+            
         }
         else if (dirx < -0.5f)
         {
             GetComponent<SpriteRenderer>().sprite = animSprites[2];
+           
         }
         else
         {
             GetComponent<SpriteRenderer>().sprite = animSprites[0];
         }
+    }
+
+    void FindGuns()
+    {
+        guns = GameObject.FindGameObjectsWithTag("gun");
     }
 
 }

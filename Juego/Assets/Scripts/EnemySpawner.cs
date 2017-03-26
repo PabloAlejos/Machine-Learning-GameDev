@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public event SpawnDelegate spawnEvent;
 
     //Enemigos
-    private int MAX_ENEMIES = 6;
+    public int MAX_ENEMIES = 6;
     public GameObject[] enemies;
     public float SpwanRate = 1;
     public int maxEnemiesOnScreen;

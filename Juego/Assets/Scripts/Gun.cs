@@ -11,7 +11,7 @@ public class Gun : MonoBehaviour
     //Heat System
     [SerializeField]
     private HeatBar bar;
-    private float heatValue;
+    public float heatValue;
     [SerializeField]
     private float coolingTime = 500;
     private float startCoolingTime;
@@ -72,7 +72,7 @@ public class Gun : MonoBehaviour
         set
         {
             
-            this.heatValue = value;
+            this.heatValue = value;   
             bar.Value = heatValue;
         }
     }

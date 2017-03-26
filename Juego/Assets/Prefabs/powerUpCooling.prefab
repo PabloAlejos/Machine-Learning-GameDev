@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 95132033363806002}
   - component: {fileID: 65024032238225740}
   - component: {fileID: 114137619885171608}
+  - component: {fileID: 114146408061900562}
   m_Layer: 0
   m_Name: powerUpCooling
   m_TagString: PU1
@@ -84,6 +85,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+--- !u!114 &114146408061900562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1689413231525608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c310e346d4ae8f4a9553ca136ebcc93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212065736429549126
 SpriteRenderer:
   m_ObjectHideFlags: 1

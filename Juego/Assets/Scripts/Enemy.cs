@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,10 +9,25 @@ public class Enemy : MonoBehaviour
     public event DeathDelegate deathEvent;
     public event PassTroughDelegate passTroughEvent;
 
-    public float health = 3;
+    [HideInInspector]
+    public float health;
+    public float maxHealth;
+    private Image HealthBar;
+
+
+
     public GameObject destroyAnimation;
     public float scorePoints = 1;
-  
+
+    SoundController sounds;
+
+    void Start()
+    {
+        sounds = FindObjectOfType<SoundController>();
+        HealthBar = transform.FindChild("EnemyHealth").FindChild("HealthBG").FindChild("Health").GetComponent<Image>();
+        health = maxHealth;
+    }
+
     void Update()
     {
 
@@ -22,33 +38,43 @@ public class Enemy : MonoBehaviour
                 deathEvent(scorePoints, this);
             }
             Instantiate(destroyAnimation, transform.position, Quaternion.identity);
+            sounds.enemieExplosion.Play();
             Destroy(gameObject);
         }
         else
         {
-            if (transform.position.y <  -1)
+            if (transform.position.y < -1)
             {
                 if (passTroughEvent != null)
                 {
-                    passTroughEvent();  
+                    passTroughEvent();
                 }
-                
+
             }
-         
+
         }
 
     }
 
     private bool IsDead()
     {
-
         return health <= 0;
     }
 
 
     public void TakeDamage(float amount)
     {
+        PlayHitEffect();
         health -= amount;
+        HealthBar.fillAmount = Health / maxHealth;
+    }
+
+    public float Health { get { return health; } }
+
+    void PlayHitEffect()
+    {
+        if (!sounds.enemieHit.isPlaying)
+            sounds.enemieHit.Play();
     }
 
 }
