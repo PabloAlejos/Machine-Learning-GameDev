@@ -18,27 +18,32 @@ public class GameStateController : MonoBehaviour
     private float nextStateRead;
     public float stateReadRate;
     public bool recordStates;
-   
+
     //Variables de ReadKey()
     bool isShooting;
     KeyCode VerticalInput; //Variable para el eje vertical
     KeyCode HorizontalInput; //Variable para el eje horicontal
 
+    //Para empaquetar los estados
+    float groupSize = 1;
+    int nEstados = 0;
+
     void Start()
     {
+
         player = FindObjectOfType<PlayerController>();
         player.playerHorizontal += playerHorizontal; //Eventos para los controles Horizontales
         player.PlayerVertical += playerVertical; //Eventos para los controles verticales
         player.playerShoot += playerShooting;
-        
+
         sfm = FindObjectOfType<StatesFileManager>(); //Encargado de escribir el estado en el csv
-        
+
         nextStateRead = stateReadRate + Time.time;
         sc = FindObjectOfType<SocketController>();
 
         //Inicialización del input
         ResetKeys();
-       
+
 
     }
 
@@ -49,7 +54,7 @@ public class GameStateController : MonoBehaviour
 
     private void playerVertical(KeyCode k)
     {
-        VerticalInput = k;  
+        VerticalInput = k;
     }
 
     private void playerHorizontal(KeyCode k)
@@ -61,7 +66,7 @@ public class GameStateController : MonoBehaviour
     //Método que es llamado al final de cada fotograma, es decir, cuando todas las fisicas han sido calculadas.
     void FixedUpdate()
     {
-
+        StringBuilder sb = new StringBuilder();
         GameState gs;
         Enemy[] enemies;
         PowerUp[] powerUps;
@@ -74,15 +79,16 @@ public class GameStateController : MonoBehaviour
             powerUps = FindObjectsOfType<PowerUp>();
 
             Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-            gs = new GameState(GenerateTimeStamp(),playerPos, heatValue , powerUps , enemies, VerticalInput,HorizontalInput,isShooting );
+            gs = new GameState(GenerateTimeStamp(), playerPos, heatValue, powerUps, enemies, VerticalInput, HorizontalInput, isShooting);
+
             ResetKeys();
+
             if (recordStates)
                 sfm.AddState(gs.State2csv());
 
-
             if (sc.online)
             {
-                sc.SetMsg(gs.State2csv());
+                sc.SetMsg(gs.State2Bot());
                 sc.SendMessage();
             }
             nextStateRead = stateReadRate + Time.time;

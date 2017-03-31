@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public KeyCode lasHitKey;
 
+    public bool botActive;
+    SocketController sc;
     // Animator;
     public Sprite[] animSprites;
 
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         sounds = FindObjectOfType<SoundController>();
+        sc = FindObjectOfType<SocketController>();
         opTime = 0;
         Time.timeScale = 1;
     }
@@ -62,12 +65,26 @@ public class PlayerController : MonoBehaviour
 
     public void InputRead()
     {
+        Vector2 movement = new Vector2(0, 0);
+        if (botActive && sc.online)
+        {
+            movement = new Vector2(Int32.Parse(sc.sPrueba[1]) , Int32.Parse(sc.sPrueba[3]));
+            Debug.Log(movement);
+            if (Int32.Parse(sc.sPrueba[5])==1){
+                shoot();
+            }
+        }
+        else
+        {
+             movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        }
 
-        Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+
         eventInput(movement);
 
         PlayerAnimation(movement.x);
-        transform.Translate (movement.normalized * speed * Time.deltaTime);
+        transform.Translate(movement.normalized * speed * Time.deltaTime);
 
 
         //Evita que el jugadore se salga de la pantalla
@@ -75,35 +92,40 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector2(-ScreenHalfSizeInWorldUnits + transform.localScale.x / 2, transform.position.y);
 
-        }else if (transform.position.x + transform.localScale.x/2 > ScreenHalfSizeInWorldUnits)
+        }
+        else if (transform.position.x + transform.localScale.x / 2 > ScreenHalfSizeInWorldUnits)
         {
-            transform.position = new Vector2(ScreenHalfSizeInWorldUnits - transform.localScale.x/2, transform.position.y);
+            transform.position = new Vector2(ScreenHalfSizeInWorldUnits - transform.localScale.x / 2, transform.position.y);
         }
 
         if (transform.position.y + transform.localScale.y / 2 >= 9)
         {
             transform.position = new Vector2(transform.position.x, 9 - transform.localScale.y / 2);
-        }else if (transform.position.y - transform.localScale.y/2 <= -1)
+        }
+        else if (transform.position.y - transform.localScale.y / 2 <= -1)
         {
             transform.position = new Vector2(transform.position.x, -1 + transform.localScale.y / 2);
         }
-
 
         lasHitKey = KeyCode.None;
 
         if (Input.GetKeyDown("space"))
         {
-            foreach (GameObject g in guns)
-            {
-                g.GetComponent<Gun>().Shoot();
-                heatValue = g.GetComponent<Gun>().heatValue;
-                sounds.gun.Play();
-                playerShoot(KeyCode.Space);
-            }   
+            shoot();
         }
     }
 
-    
+
+    private void shoot()
+    {
+        foreach (GameObject g in guns)
+        {
+            g.GetComponent<Gun>().Shoot();
+            heatValue = g.GetComponent<Gun>().heatValue;
+            playerShoot(KeyCode.Space);
+        }
+    }
+
     private void eventInput(Vector2 movement)
     {
         if (movement.x > 0.5)
@@ -118,12 +140,13 @@ public class PlayerController : MonoBehaviour
 
     void onPassTrough()
     {
-        
+
         if (playerDeath != null)
         {
-            playerDeath();
-            Instantiate(destroyAnimation, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            Debug.Log("Muerte");
+            //playerDeath();
+            //Instantiate(destroyAnimation, transform.position, Quaternion.identity);
+            //Destroy(gameObject);
         }
     }
 
@@ -133,10 +156,10 @@ public class PlayerController : MonoBehaviour
         {
             case "Enemy":
                 //Añadir animacion muerte
-                playerDeath();
+                //playerDeath();
                 Instantiate(destroyAnimation, transform.position, Quaternion.identity);
                 sounds.audio_playerExlosion.Play();
-                Destroy(gameObject);
+                //Destroy(gameObject);
                 Destroy(other.gameObject);
                 break;
             case "PU1":
@@ -153,7 +176,7 @@ public class PlayerController : MonoBehaviour
                 FindGuns();
                 sounds.itemPickUp.Play();
                 break;
-                
+
         }
 
     }
@@ -172,12 +195,12 @@ public class PlayerController : MonoBehaviour
         if (dirx > 0.5f)
         {
             GetComponent<SpriteRenderer>().sprite = animSprites[1];
-            
+
         }
         else if (dirx < -0.5f)
         {
             GetComponent<SpriteRenderer>().sprite = animSprites[2];
-           
+
         }
         else
         {

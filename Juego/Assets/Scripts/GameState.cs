@@ -6,17 +6,16 @@ using System;
 
 public class GameState
 {
-    public Vector2 playerPosition;
-    public Enemy[] enemies;
+    private Vector2 playerPosition;
+    private Enemy[] enemies;
     private KeyCode VKey = KeyCode.None;
     private KeyCode HKey = KeyCode.None;
     string timeStamp = "";
     bool isShooting = false;
-    public int maxEnemies = 6;
+    private int maxEnemies = 6;
     private float HeatGunValue;
     private PowerUp[] powerUps;
 
-    public bool botActive = false;
 
     public GameState(string timeStamp, Vector2 playerPosition, float HeatGunValue, PowerUp[] powerUps, Enemy[] enemies, KeyCode VKey, KeyCode HKey, bool isShooting)
     {
@@ -41,20 +40,27 @@ public class GameState
         sb.Append(MakeValueCsvFriendly(powerUps));
         sb.Append(MakeValueCsvFriendly(enemies));
 
+        sb.Append(MakeValueCsvFriendly(VKey)).Append(",");
+        sb.Append(MakeValueCsvFriendly(HKey)).Append(",");
+        sb.Append(isShooting);
 
-
-
-
-
-        if (!botActive)
-        {
-            sb.Append(MakeValueCsvFriendly(VKey)).Append(",");
-            sb.Append(MakeValueCsvFriendly(HKey)).Append(",");
-            sb.Append(isShooting).Append(",");
-        }
         return sb.ToString();
-
     }
+
+    //Para el bot
+    public String State2Bot()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        sb.Append(timeStamp).Append(",");
+        sb.Append(MakeValueCsvFriendly(playerPosition)).Append(",");
+        sb.Append(HeatGunValue).Append(",");
+        sb.Append(MakeValueCsvFriendly(powerUps));
+        sb.Append(MakeValueCsvFriendly(enemies));
+
+        return sb.ToString().TrimEnd(',');
+    }
+
 
     //
     //http://stackoverflow.com/questions/2422212/how-to-create-csv-excel-file-c

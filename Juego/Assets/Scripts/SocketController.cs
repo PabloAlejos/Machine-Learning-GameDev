@@ -19,17 +19,22 @@ public class SocketController : MonoBehaviour
     public Button connectedButton;
     public Button SocketButton;
     // Codifica data string into a byte array.
-    private byte[] msg = Encoding.ASCII.GetBytes("0.00,0.00,999,999,999,999,999,999,999,999");
+    private byte[] msg = null;
     //Socket para la conexión
     Socket sender;
     // Data buffer para el incoming data.
     byte[] bytes = new byte[1024];
+    char[] delimiterChars = {',', '[', ']', '(',')', ' '};
+    [HideInInspector]
+    
+    public string[] sPrueba =  new string[10] { "0", " 0", "0", " 0", "0", " 0", "0", " 0", "0", " 0" };
+
 
     private void Start()
     {
         connectedButton.image.color = Color.red;
         SocketButton.image.color = Color.red;
-        RunSocketServer();
+        //RunSocketServer();
     }
 
 
@@ -55,7 +60,7 @@ public class SocketController : MonoBehaviour
                 try
                 {
                     sender.Connect(ipAddress, 8888);
-
+                    sender.ReceiveTimeout = 1;
                     connectedButton.image.color = Color.green;
                     ConnectionText.text = ("Socket connected to  " +
                     sender.RemoteEndPoint.ToString());
@@ -97,7 +102,8 @@ public class SocketController : MonoBehaviour
         {
             // Send the data through the socket.
             sender.Send(msg);
-            returnText.text = receiveMessage();
+            sPrueba = receiveMessage().Split(delimiterChars);
+            returnText.text = retorno2string(sPrueba) ;
 
         }
         catch (SocketException se)
@@ -110,6 +116,7 @@ public class SocketController : MonoBehaviour
     string receiveMessage()
     {
         // Receive the response from the remote device.
+
         int bytesRec = sender.Receive(bytes);
         return (Encoding.ASCII.GetString(bytes, 0, bytesRec));
 
@@ -134,9 +141,6 @@ public class SocketController : MonoBehaviour
         p = new Process();
         p.StartInfo.FileName = "python";
         p.StartInfo.Arguments = "serverSocket.py";
-        // Pipe the output to itself - we will catch this later
-        //p.StartInfo.RedirectStandardError = false;
-        //p.StartInfo.RedirectStandardOutput = false;
         p.StartInfo.CreateNoWindow = true;
         // Where the script lives
         p.StartInfo.WorkingDirectory = Application.dataPath;
@@ -146,16 +150,13 @@ public class SocketController : MonoBehaviour
         {
             p.Start();
             SocketButton.image.color = Color.green;
-
         }
         catch (SocketException e)
         {
             UnityEngine.Debug.Log(e.ToString());
             SocketButton.image.color = Color.red;
-
         }
 
-        //UnityEngine.Debug.Log(p.ToString());
         
     }
 
@@ -178,6 +179,16 @@ public class SocketController : MonoBehaviour
             p.Kill();
     }
 
+     string retorno2string(string[] s) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.Append(s[3]);
+        sb.Append(s[1]);
+        sb.Append(s[5]);
+
+        UnityEngine.Debug.Log(s.Length) ;
+        return sb.ToString();
+    }
 
 
 }

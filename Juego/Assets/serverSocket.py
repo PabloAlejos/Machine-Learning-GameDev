@@ -24,37 +24,19 @@ class ServerSocket:
 	        	print('Connected by', addr)
 	        	while True:
 	        		data = conn.recv(1024)
-	        		if not data: break
 	        		#Llamar a getResult
 	        		text = data.decode("utf-8")
-	        		print(text)
-	        		retorno = (str(self.getResult(text.split(','))))
+	        		retorno = self.getResult(text.split(','))
+	        		
+	        		retorno = str(( int(retorno[0][0]),int(retorno[0][1]),int(retorno[0][2])))
 	        		conn.send(retorno.encode("utf-8"))
+	        		#print(str(self.getResult(text.split(','))))
 	        		#print(data.decode("utf-8")) #Importante el Decode 
 
 
     def getResult(self,data):
-    	return self._p.predict(data)
-        #print(Entrenamiento.predecir(data))
-
-class Trainer:
-
-	def __init__(self,data_file):
-
-		self._dataFile = pd.read_csv(data_file, sep=',',header=None)
-		self._dataFile.columns = ['Px', 'Py', 'E1x', 'E1y', 'E2x', 'E2y', 'E3x', 'E3y', 'E4x', 'E4y', "Class"]
-
-	def train(self):
-		self._train_data = self._dataFile.drop(["Class"], axis=1)
-		# solo queremos los datos
-		self._train_data = self._train_data.values
-		self._target_data = self._dataFile["Class"].values
-		self._forest = RandomForestClassifier(n_estimators=100)
-		self._forestDefinitivo = self._forest.fit(self._train_data, self._target_data)
-
-	def saveFile(self, filename):
-		pickle.dump(self._forestDefinitivo, open(filename, 'wb'))
-
+    	return self._p.predict([data])
+        #print(data)
 
 class Predictor:
 
@@ -65,10 +47,13 @@ class Predictor:
 		return pickle.load(open(filename, 'rb'))
 
 	def predict(self,string):
-		return self._loaded_model.predict([string])
+		return self._loaded_model.predict(string)
 
 
 if __name__ == "__main__":
-    s = ServerSocket('localhost',8888)
+	#p = Predictor("randomForest.sav")
+	#n = p.predict([[86171331,2.26,2.10,4.493064,2.047016,6.213881,999,999,0.52,9.29,5,-0.80,7.79,3,-0.72,8.24,5,-2.19,7.78,3,999,999,0,999,999,0]])
+	#print(n)
+	#print(n[0][0],n[0][1],n[0][2])
 
-    print("Bye")
+	s = ServerSocket('localhost',8888)

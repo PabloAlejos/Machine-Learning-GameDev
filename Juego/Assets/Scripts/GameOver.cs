@@ -2,23 +2,26 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using System;
 
 public class GameOver : MonoBehaviour {
     
     public GameObject gameOverScreen;
     public Text score;
     bool gameOver;
+    ScoreController sc;
     GameStateController gsc;
 
 	// Use this for initialization
 	void Start () {
+        sc = FindObjectOfType<ScoreController>();
         gsc = FindObjectOfType<GameStateController>();
         FindObjectOfType<PlayerController>().playerDeath += OnGameOver;
 	}
 	
     void Update()
     {
+
         if (Input.GetKey("return"))
         {
             SceneManager.LoadScene(1);

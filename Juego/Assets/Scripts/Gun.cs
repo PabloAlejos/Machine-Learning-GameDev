@@ -18,6 +18,8 @@ public class Gun : MonoBehaviour
     private float maxHeatValue = 150;
     bool overHeat;
 
+    SoundController sounds;
+
     // Use this for initialization
     void Start()
     {
