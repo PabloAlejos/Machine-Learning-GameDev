@@ -61,7 +61,13 @@ public class Gun : MonoBehaviour
 
     public void CoolGun(float val)
     {
-        heatValue -= val;
+        if (heatValue - val < 0)
+        {
+            heatValue = 0;
+        }else
+        {
+            heatValue -= val;
+        }
     }
 
     public float HeatValue

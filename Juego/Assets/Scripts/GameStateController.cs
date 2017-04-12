@@ -24,10 +24,6 @@ public class GameStateController : MonoBehaviour
     KeyCode VerticalInput; //Variable para el eje vertical
     KeyCode HorizontalInput; //Variable para el eje horicontal
 
-    //Para empaquetar los estados
-    float groupSize = 1;
-    int nEstados = 0;
-
     void Start()
     {
 

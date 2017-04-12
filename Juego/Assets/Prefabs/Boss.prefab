@@ -92,7 +92,7 @@ Transform:
   m_GameObject: {fileID: 1071905487147738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 10.06, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 224100407486440994}
   m_Father: {fileID: 0}
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 7
   maxHealth: 100
-  destroyAnimation: {fileID: 1000011229681388, guid: aed1c5dc7fcc93242a2b7a524fa25952,
+  destroyAnimation: {fileID: 1844036726354142, guid: e9cbf1425f3aeba4ab7557d1c2807654,
     type: 2}
   scorePoints: 200
 --- !u!114 &114123760455005050

@@ -21,8 +21,11 @@ public class ScoreController : MonoBehaviour
 
     void OnGameOver()
     {
-        PlayerPrefs.SetInt(highScoreKey, (int)score);
-        PlayerPrefs.Save();
+        if(score> PlayerPrefs.GetInt(highScoreKey))
+        {
+            PlayerPrefs.SetInt(highScoreKey, (int)score);
+            PlayerPrefs.Save();
+        }
     }
 
     //Evento que es llamado cuando un enemigo muere

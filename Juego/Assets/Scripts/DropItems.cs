@@ -14,8 +14,7 @@ public class DropItems : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
-            GameObject item = (GameObject)Instantiate(drop, transform.position, Quaternion.identity);
-
+            Instantiate(drop, transform.position, Quaternion.identity);
         }
     }
 

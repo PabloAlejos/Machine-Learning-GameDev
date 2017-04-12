@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+       
         lasHitKey = KeyCode.None;
         FindObjectOfType<EnemySpawner>().spawnEvent += OnEnemySpawn;
         FindGuns();
@@ -68,15 +69,16 @@ public class PlayerController : MonoBehaviour
         Vector2 movement = new Vector2(0, 0);
         if (botActive && sc.online)
         {
-            movement = new Vector2(Int32.Parse(sc.sPrueba[1]) , Int32.Parse(sc.sPrueba[3]));
+            movement = new Vector2(Int32.Parse(sc.sPrueba[1]), Int32.Parse(sc.sPrueba[3]));
             Debug.Log(movement);
-            if (Int32.Parse(sc.sPrueba[5])==1){
+            if (Int32.Parse(sc.sPrueba[5]) == 1)
+            {
                 shoot();
             }
         }
         else
         {
-             movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         }
 
 
@@ -123,6 +125,7 @@ public class PlayerController : MonoBehaviour
             g.GetComponent<Gun>().Shoot();
             heatValue = g.GetComponent<Gun>().heatValue;
             playerShoot(KeyCode.Space);
+            sounds.gun.Play();
         }
     }
 
@@ -144,9 +147,9 @@ public class PlayerController : MonoBehaviour
         if (playerDeath != null)
         {
             Debug.Log("Muerte");
-            //playerDeath();
-            //Instantiate(destroyAnimation, transform.position, Quaternion.identity);
-            //Destroy(gameObject);
+            playerDeath();
+            Instantiate(destroyAnimation, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 
@@ -155,11 +158,10 @@ public class PlayerController : MonoBehaviour
         switch (other.tag)
         {
             case "Enemy":
-                //Añadir animacion muerte
-                //playerDeath();
+                playerDeath();
                 Instantiate(destroyAnimation, transform.position, Quaternion.identity);
                 sounds.audio_playerExlosion.Play();
-                //Destroy(gameObject);
+                Destroy(gameObject);
                 Destroy(other.gameObject);
                 break;
             case "PU1":
@@ -192,8 +194,10 @@ public class PlayerController : MonoBehaviour
     //Intercambia los srites
     void PlayerAnimation(float dirx)
     {
+        
         if (dirx > 0.5f)
         {
+            
             GetComponent<SpriteRenderer>().sprite = animSprites[1];
 
         }

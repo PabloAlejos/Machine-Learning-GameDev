@@ -6,7 +6,10 @@ from sklearn.ensemble import RandomForestClassifier
 
 class ServerSocket:
 
+
     def __init__ (self,host,port):
+    	df = dataframe()
+    	df.columns = ['timeStamp', 'Px', 'Py', 'heat', 'Exp1','Eyp1','Exp2','Eyp2', 'Ex1', 'Ey1', 'Eh2', 'Ex2', 'Ey2', 'Eh2', 'Ex3', 'Ey3', 'E3h', 'Ex4', 'Ey4','Eh4','Ex5', 'Ey5','Eh5','Ex6', 'Ey6','Eh6',"VKey","HKey","Shooting"]
     	self._HOST = 'localhost'
     	self._PORT = 8888              # Arbitrary non-privileged port
     	self._p = Predictor("randomForest.sav")
@@ -26,17 +29,23 @@ class ServerSocket:
 	        		data = conn.recv(1024)
 	        		#Llamar a getResult
 	        		text = data.decode("utf-8")
-	        		retorno = self.getResult(text.split(','))
+	        		retorno = self.histo2DRow(text.split(','))
 	        		
 	        		retorno = str(( int(retorno[0][0]),int(retorno[0][1]),int(retorno[0][2])))
 	        		conn.send(retorno.encode("utf-8"))
-	        		#print(str(self.getResult(text.split(','))))
-	        		#print(data.decode("utf-8")) #Importante el Decode 
-
 
     def getResult(self,data):
     	return self._p.predict([data])
         #print(data)
+
+    def histo2DRow(self, row):
+    	x = row.filter(regex=('Ex'))
+        y = row.filter(regex=('Ey'))
+        xedges = [-2,  -1, 0,   1,  2]
+        yedges = [ 0, 2.5, 5, 7.5, 10]
+        H, xedges, yedges = np.histogram2d(x, y, bins=(xedges, yedges))
+        H = H.T  # Let each row list bins with common y range.
+        return pd.Series(H.reshape(-1))
 
 class Predictor:
 

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114000010532568068}
   - component: {fileID: 65000011428122932}
   - component: {fileID: 54000012277423746}
+  - component: {fileID: 65617880341040816}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -90,7 +91,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011054245928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.2253361, y: 1.441545, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224467214729694646}
@@ -122,8 +123,20 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5632218, y: 0.47586572, z: 1.920178}
-  m_Center: {x: -0.0122298, y: -0.017471075, z: 0.8561651}
+  m_Size: {x: 0.31537548, y: 0.30742657, z: 1.920178}
+  m_Center: {x: 0.0010044575, y: -0.029502392, z: 0.8561651}
+--- !u!65 &65617880341040816
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011054245928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18705739, y: 0.11246307, z: 0.2}
+  m_Center: {x: 0.00000023841858, y: -0.23701823, z: 0}
 --- !u!114 &114000010532568068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   maxHealth: 3
-  destroyAnimation: {fileID: 1000011229681388, guid: aed1c5dc7fcc93242a2b7a524fa25952,
+  destroyAnimation: {fileID: 1844036726354142, guid: e9cbf1425f3aeba4ab7557d1c2807654,
     type: 2}
   scorePoints: 1
 --- !u!114 &114075015713951244

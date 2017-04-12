@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 7
   maxHealth: 5
-  destroyAnimation: {fileID: 1000011229681388, guid: aed1c5dc7fcc93242a2b7a524fa25952,
+  destroyAnimation: {fileID: 1844036726354142, guid: e9cbf1425f3aeba4ab7557d1c2807654,
     type: 2}
   scorePoints: 2
 --- !u!114 &114152839064536766
