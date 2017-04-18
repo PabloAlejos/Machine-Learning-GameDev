@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     //propiedades del jugador
     public GameObject destroyAnimation;
     public float speed = 5;
+    public int lives = 3;
     [HideInInspector]
     public GameObject[] guns;
     public GameObject gunsOP;
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-       
+
         lasHitKey = KeyCode.None;
         FindObjectOfType<EnemySpawner>().spawnEvent += OnEnemySpawn;
         FindGuns();
@@ -69,12 +70,16 @@ public class PlayerController : MonoBehaviour
         Vector2 movement = new Vector2(0, 0);
         if (botActive && sc.online)
         {
-            movement = new Vector2(Int32.Parse(sc.sPrueba[1]), Int32.Parse(sc.sPrueba[3]));
-            Debug.Log(movement);
-            if (Int32.Parse(sc.sPrueba[5]) == 1)
+            if (sc.sPrueba.Length > 0)
             {
-                shoot();
+                movement = new Vector2(Int32.Parse(sc.sPrueba[1]), Int32.Parse(sc.sPrueba[3]));
+                Debug.Log(movement);
+                if (Int32.Parse(sc.sPrueba[5]) == 1)
+                {
+                    shoot();
+                }
             }
+
         }
         else
         {
@@ -125,7 +130,7 @@ public class PlayerController : MonoBehaviour
             g.GetComponent<Gun>().Shoot();
             heatValue = g.GetComponent<Gun>().heatValue;
             playerShoot(KeyCode.Space);
-            sounds.gun.Play();
+
         }
     }
 
@@ -194,10 +199,10 @@ public class PlayerController : MonoBehaviour
     //Intercambia los srites
     void PlayerAnimation(float dirx)
     {
-        
+
         if (dirx > 0.5f)
         {
-            
+
             GetComponent<SpriteRenderer>().sprite = animSprites[1];
 
         }

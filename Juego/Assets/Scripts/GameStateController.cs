@@ -62,7 +62,6 @@ public class GameStateController : MonoBehaviour
     //Método que es llamado al final de cada fotograma, es decir, cuando todas las fisicas han sido calculadas.
     void FixedUpdate()
     {
-        StringBuilder sb = new StringBuilder();
         GameState gs;
         Enemy[] enemies;
         PowerUp[] powerUps;
@@ -90,6 +89,9 @@ public class GameStateController : MonoBehaviour
             nextStateRead = stateReadRate + Time.time;
         }
     }
+
+
+
 
     private Enemy[] MakeEnemyList()
     {

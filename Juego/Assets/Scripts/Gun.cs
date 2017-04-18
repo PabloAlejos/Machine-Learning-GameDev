@@ -23,6 +23,7 @@ public class Gun : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        sounds = FindObjectOfType<SoundController>();
         nextShotTime = Time.time + fireRate / 10;
         MaxHeatValue = maxHeatValue;
         HeatValue = heatValue;
@@ -37,6 +38,7 @@ public class Gun : MonoBehaviour
             Instantiate(bulletType, transform.position, Quaternion.identity);
             nextShotTime = Time.time + fireRate / 10;
             startCoolingTime = Time.time + coolingTime;
+            sounds.gun.Play();
         }
 
         if (HeatValue >= maxHeatValue)

@@ -4,8 +4,6 @@ using System.Collections;
 public class ScoreController : MonoBehaviour
 {
 
-   
-
     public double score;
     public int highScore;
     string highScoreKey = "HighScore";

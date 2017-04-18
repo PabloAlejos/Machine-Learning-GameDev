@@ -185,8 +185,6 @@ public class SocketController : MonoBehaviour
         sb.Append(s[3]);
         sb.Append(s[1]);
         sb.Append(s[5]);
-
-        UnityEngine.Debug.Log(s.Length) ;
         return sb.ToString();
     }
 

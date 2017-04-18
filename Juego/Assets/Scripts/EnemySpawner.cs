@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (Time.time > nextSpawnTime && CountenemiesOnScreen() <= maxEnemiesOnScreen)
         {
-            Debug.Log(Time.time);
+
             if (!bossSpawn)
             {
                 GameObject enemy = (GameObject)Instantiate(randomEnemy(), spawnPosition, Quaternion.identity);
@@ -53,9 +53,9 @@ public class EnemySpawner : MonoBehaviour
             {
                 GameObject myBoss = (GameObject)Instantiate(boss, spawnPosition, Quaternion.identity);
                 spawnEvent(myBoss.GetComponent<Enemy>());
-                myBoss.GetComponent<Enemy>().maxHealth = Mathf.RoundToInt(Time.time);
+                myBoss.GetComponent<Enemy>().maxHealth = Mathf.RoundToInt(Time.timeSinceLevelLoad/4);
                 myBoss.GetComponent<Enemy>().health = myBoss.GetComponent<Enemy>().maxHealth;
-                myBoss.GetComponent<Enemy>().scorePoints = Mathf.RoundToInt(Time.time * 2);
+                myBoss.GetComponent<Enemy>().scorePoints = Mathf.RoundToInt(Time.timeSinceLevelLoad * 2);
                 nextBossSpawnTime = Time.time + BossSpawnRateiInSecs;
                 bossSpawn = false;
             }

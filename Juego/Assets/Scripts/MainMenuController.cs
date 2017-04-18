@@ -22,4 +22,9 @@ public class MainMenuController : MonoBehaviour {
         SceneManager.LoadScene(1);
     }
 
+    public void OptionsButton()
+    {
+        SceneManager.LoadScene(2);
+    }
+
 }
