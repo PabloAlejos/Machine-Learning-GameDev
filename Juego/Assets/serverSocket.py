@@ -31,8 +31,8 @@ class ServerSocket:
 	        			retorno = self.getResult(text.split(','))
 	        			retorno = str(( int(retorno[0][0]),int(retorno[0][1]),int(retorno[0][2])))
 	        			conn.send(retorno.encode("utf-8"))
-	        		except Exception:
-	        			print("Desconexión")
+	        		except Exception as e:
+	        			print("Desconexión: ",str(e))
 	        			break
 
 
@@ -40,17 +40,19 @@ class ServerSocket:
     	return self._p.predict(self.preprocesar(data))
 
     def preprocesar(self,estado):
+    	print(estado)
     	estado = list(map(float,estado))
     	retorno = estado[1:8]
-    	[retorno.append(i) for i in estado[10:26:3]]
     	x = [estado[8],estado[11],estado[14],estado[17],estado[20],estado[23]]
     	y = [estado[9],estado[12],estado[15],estado[18],estado[21],estado[24]]
-    	xedges = [-2,  -1, 0,   1,  2]
-    	yedges = [ 0, 2.5, 5, 7.5, 10]
-    	H, xedges, yedges = np.histogram2d(x, y, bins=(xedges, yedges))
+    	w = [estado[10],estado[13],estado[16],estado[19],estado[22],estado[25]]
+    	xedges = np.linspace(-2,2,5)
+    	yedges = np.linspace(0,10,5)
+    	H, xedges, yedges = np.histogram2d(x, y, bins=(xedges, yedges), weights=w)
     	H = H.T  # Let each row list bins with common y range
     	histogramaPlano = (H.reshape(-1)).tolist()
     	[retorno.append(i) for i in histogramaPlano]
+    	print(retorno)
     	return retorno
 
 class Predictor:

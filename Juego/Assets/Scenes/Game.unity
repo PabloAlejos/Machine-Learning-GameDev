@@ -3712,7 +3712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateReadRate: 0.25
-  recordStates: 1
+  recordStates: 0
 --- !u!114 &1321802239
 MonoBehaviour:
   m_ObjectHideFlags: 0
