@@ -5,6 +5,7 @@ using System;
 using System.Text;
 
 [RequireComponent(typeof(StatesFileManager))]
+
 public class GameStateController : MonoBehaviour
 {
 
@@ -83,7 +84,7 @@ public class GameStateController : MonoBehaviour
 
             if (sc.online)
             {
-                sc.SetMsg(gs.State2Bot());
+                sc.SetMsg(gs.State2csv());
                 sc.SendMessage();
             }
             nextStateRead = stateReadRate + Time.time;

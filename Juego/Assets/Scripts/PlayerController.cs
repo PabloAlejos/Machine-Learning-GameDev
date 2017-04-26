@@ -73,7 +73,6 @@ public class PlayerController : MonoBehaviour
             if (sc.sPrueba.Length > 0)
             {
                 movement = new Vector2(Int32.Parse(sc.sPrueba[1]), Int32.Parse(sc.sPrueba[3]));
-                Debug.Log(movement);
                 if (Int32.Parse(sc.sPrueba[5]) == 1)
                 {
                     shoot();
@@ -152,9 +151,9 @@ public class PlayerController : MonoBehaviour
         if (playerDeath != null)
         {
             Debug.Log("Muerte");
-            playerDeath();
-            Instantiate(destroyAnimation, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            //playerDeath();
+            //Instantiate(destroyAnimation, transform.position, Quaternion.identity);
+            //Destroy(gameObject);
         }
     }
 

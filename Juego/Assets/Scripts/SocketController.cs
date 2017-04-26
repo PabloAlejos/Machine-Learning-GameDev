@@ -27,7 +27,7 @@ public class SocketController : MonoBehaviour
     char[] delimiterChars = {',', '[', ']', '(',')', ' '};
     [HideInInspector]
     
-    public string[] sPrueba =  new string[10] { "0", " 0", "0", " 0", "0", " 0", "0", " 0", "0", " 0" };
+    public string[] sPrueba =  new string[8] {" 0", "0", " 0", "0", " 0", "0", " 0", "0"};
 
 
     private void Start()
@@ -104,6 +104,7 @@ public class SocketController : MonoBehaviour
             sender.Send(msg);
             sPrueba = receiveMessage().Split(delimiterChars);
             returnText.text = retorno2string(sPrueba) ;
+            UnityEngine.Debug.Log(returnText.text);
 
         }
         catch (SocketException se)
@@ -116,7 +117,6 @@ public class SocketController : MonoBehaviour
     string receiveMessage()
     {
         // Receive the response from the remote device.
-
         int bytesRec = sender.Receive(bytes);
         return (Encoding.ASCII.GetString(bytes, 0, bytesRec));
 
@@ -139,6 +139,7 @@ public class SocketController : MonoBehaviour
     public void RunSocketServer()
     {
         p = new Process();
+        ///Buscar id proseso para matarlo
         p.StartInfo.FileName = "python";
         p.StartInfo.Arguments = "serverSocket.py";
         p.StartInfo.CreateNoWindow = true;
