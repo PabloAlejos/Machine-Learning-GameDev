@@ -37,6 +37,15 @@ public class PlayerController : MonoBehaviour
 
     SoundController sounds;
 
+    //Direcciones en las que se van a lanzar los "rayos"
+    Vector3[] directions = new Vector3[] {
+            new Vector3(0, 1, 0), new Vector3(1, 1, 0),
+            new Vector3(1, 0, 0),new Vector3(1, -1, 0),
+            new Vector3(0, -1, 0),new Vector3(-1, -1, 0),
+            new Vector3(-1, 0, 0),new Vector3(-1, 1, 0)};
+
+
+
     //Se ejecuta antes de todo
     void Awake()
     {
@@ -50,7 +59,6 @@ public class PlayerController : MonoBehaviour
     {
 
         lasHitKey = KeyCode.None;
-        FindObjectOfType<EnemySpawner>().spawnEvent += OnEnemySpawn;
         FindGuns();
     }
 
@@ -119,8 +127,51 @@ public class PlayerController : MonoBehaviour
         {
             shoot();
         }
+
     }
 
+
+    //Busca enemigos en las cercanías
+    public int[] GetPlayerAttacked()
+    {
+
+        //Variables para los "hits" y el vector de enemigos
+        RaycastHit[] castArray = new RaycastHit[8];
+        int[] enemiesProcedence = new int[8];
+
+        //Lanzamiento de los rayos para ver si hay enemigos
+        for (int i = 0; i < 8; i++)
+        {
+            Debug.DrawLine(transform.position, transform.position + transform.TransformDirection(directions[i]), Color.red);
+            enemiesProcedence[i] = shootRayCast(transform.position + transform.TransformDirection(directions[i]), castArray[i]);
+        }
+
+        //Debug.Log("[" + enemiesProcedence[0] + "," + enemiesProcedence[1] + "," + enemiesProcedence[2] + "," + enemiesProcedence[3] + "," + enemiesProcedence[4] + "," + enemiesProcedence[5] + "," + enemiesProcedence[6] + "," + enemiesProcedence[7] + "]");
+        return enemiesProcedence;
+    }
+
+
+    private int shootRayCast(Vector3 dir, RaycastHit hit)
+    {
+        int retorno = 0;
+        if (Physics.Raycast(transform.position, dir, out hit))
+        {
+            if (hit.distance < 2 && hit.transform.tag == "Enemy")
+            {
+                retorno = 1;
+            }
+            else if (hit.distance < 2 && hit.transform.tag == "PU1")
+            {
+                retorno = 2;
+            }
+            else if (hit.distance < 2 && hit.transform.tag == "PU2")
+            {
+                retorno = 3;
+            }
+
+        }
+        return retorno;
+    }
 
     private void shoot()
     {
@@ -145,17 +196,6 @@ public class PlayerController : MonoBehaviour
             PlayerVertical(KeyCode.DownArrow);
     }
 
-    void onPassTrough()
-    {
-
-        if (playerDeath != null)
-        {
-            Debug.Log("Muerte");
-            //playerDeath();
-            //Instantiate(destroyAnimation, transform.position, Quaternion.identity);
-            //Destroy(gameObject);
-        }
-    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -188,12 +228,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    //Evento que es llamado cuando aparece un enemigo
-    //Es se suscribe a la lista de enventos para ver cuando es destruido
-    void OnEnemySpawn(Enemy e)
-    {
-        e.passTroughEvent += onPassTrough;
-    }
 
     //Intercambia los srites
     void PlayerAnimation(float dirx)

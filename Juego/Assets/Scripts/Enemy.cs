@@ -15,14 +15,15 @@ public class Enemy : MonoBehaviour
     private Image HealthBar;
 
 
-
     public GameObject destroyAnimation;
     public float scorePoints = 1;
+    ScoreController sc;
 
     SoundController sounds;
 
     void Start()
     {
+        sc = FindObjectOfType<ScoreController>();
         sounds = FindObjectOfType<SoundController>();
         HealthBar = transform.FindChild("EnemyHealth").FindChild("HealthBG").FindChild("Health").GetComponent<Image>();
         health = maxHealth;
@@ -45,6 +46,7 @@ public class Enemy : MonoBehaviour
         {
             if (transform.position.y < -1)
             {
+                sc.score -= scorePoints;
                 if (passTroughEvent != null)
                 {
                     passTroughEvent();

@@ -66,6 +66,7 @@ public class GameStateController : MonoBehaviour
         GameState gs;
         Enemy[] enemies;
         PowerUp[] powerUps;
+        int[] enemiesProcedence = player.GetComponent<PlayerController>().GetPlayerAttacked();
 
         heatValue = player.GetComponent<PlayerController>().heatValue;
 
@@ -75,7 +76,7 @@ public class GameStateController : MonoBehaviour
             powerUps = FindObjectsOfType<PowerUp>();
 
             Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-            gs = new GameState(GenerateTimeStamp(), playerPos, heatValue, powerUps, enemies, VerticalInput, HorizontalInput, isShooting);
+            gs = new GameState(GenerateTimeStamp(), playerPos, heatValue, powerUps, enemies,enemiesProcedence, VerticalInput, HorizontalInput, isShooting);
 
             ResetKeys();
 

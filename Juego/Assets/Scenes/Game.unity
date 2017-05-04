@@ -3711,7 +3711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8debfa456aab6c44790aed87504f0f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateReadRate: 0.35
+  stateReadRate: 0.25
   recordStates: 0
 --- !u!114 &1321802239
 MonoBehaviour:

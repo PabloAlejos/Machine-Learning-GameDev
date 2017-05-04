@@ -15,10 +15,12 @@ public class GameState
     private int maxEnemies = 6;
     private float HeatGunValue;
     private PowerUp[] powerUps;
+    private int[] surroundingEnemies;
 
 
-    public GameState(string timeStamp, Vector2 playerPosition, float HeatGunValue, PowerUp[] powerUps, Enemy[] enemies, KeyCode VKey, KeyCode HKey, bool isShooting)
+    public GameState(string timeStamp, Vector2 playerPosition, float HeatGunValue, PowerUp[] powerUps, Enemy[] enemies,int[] sorroundingEnemies, KeyCode VKey, KeyCode HKey, bool isShooting)
     {
+
         this.timeStamp = timeStamp;
         this.playerPosition = playerPosition;
         this.HeatGunValue = HeatGunValue;
@@ -27,11 +29,14 @@ public class GameState
         this.VKey = VKey;
         this.HKey = HKey;
         this.isShooting = isShooting;
+        this.surroundingEnemies = sorroundingEnemies;
+
     }
 
     //Método que traduce el estado a una cadena de texto csv
     public String State2csv()
     {
+
         StringBuilder sb = new StringBuilder();
 
         sb.Append(timeStamp).Append(",");
@@ -39,26 +44,14 @@ public class GameState
         sb.Append(HeatGunValue).Append(",");
         sb.Append(MakeValueCsvFriendly(powerUps));
         sb.Append(MakeValueCsvFriendly(enemies));
+        sb.Append(MakeValueCsvFriendly(surroundingEnemies));
 
         sb.Append(MakeValueCsvFriendly(VKey)).Append(",");
         sb.Append(MakeValueCsvFriendly(HKey)).Append(",");
         sb.Append(isShooting);
 
         return sb.ToString();
-    }
 
-    //Para el bot
-    public String State2Bot()
-    {
-        StringBuilder sb = new StringBuilder();
-
-        sb.Append(timeStamp).Append(",");
-        sb.Append(MakeValueCsvFriendly(playerPosition)).Append(",");
-        sb.Append(HeatGunValue).Append(",");
-        sb.Append(MakeValueCsvFriendly(powerUps));
-        sb.Append(MakeValueCsvFriendly(enemies));
-
-        return sb.ToString().TrimEnd(',');
     }
 
 
@@ -94,6 +87,8 @@ public class GameState
             return sb.ToString();
         }
 
+        
+
         if (value is Enemy[])
         {
             for (int i = 0; i < maxEnemies; i++)
@@ -119,7 +114,18 @@ public class GameState
             return sb.ToString();
         }
 
-        if (value is KeyCode)
+        if (value is int[])
+        {
+            foreach(int i in surroundingEnemies)
+            {
+                sb.Append(i);
+                sb.Append(",");
+            }
+            return sb.ToString();
+        }
+
+
+            if (value is KeyCode)
         {
             return value.ToString();
         }
