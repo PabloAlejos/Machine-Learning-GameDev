@@ -53,7 +53,7 @@ public class GameState
         sb.Append(MakeValueCsvFriendly(HKey)).Append(",");
         sb.Append(isShooting);
 
-        UnityEngine.Debug.Log(sb.ToString());
+
         return sb.ToString();
 
     }

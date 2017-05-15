@@ -9,20 +9,23 @@ class instancia:
         #values           
         self.columns = columns       
 
-        self.df0 = pd.Series([111]*69)
-        self.df1 = pd.Series([222]*69)
-        self.df2 = pd.Series([333]*69)
+        self.df0 = pd.Series([000]*33)
+        self.df1 = pd.Series([000]*33)
+        self.df2 = pd.Series([000]*33)
+        self.df3 = pd.Series([000]*33)
+
 
     def encolar(self, estado):
         self.desencolar()
-        self.df2 = self.preprocesar(estado)
+        self.df3 = self.preprocesar(estado)
         
     def desencolar(self):
         self.df0 = self.df1.copy()
         self.df1 = self.df2.copy()
+        self.df2 = self.df3.copy()
 
     def get(self):
-        df = pd.concat([self.df0, self.df1, self.df2.drop(["VKey","HKey","Shooting"])], axis=0)
+        df = pd.concat([self.df0, self.df1, self.df2, self.df3.drop(["VKey","HKey","Shooting"])], axis=0)
         return(df)
 
     def preprocesar(self,estado):
@@ -32,15 +35,15 @@ class instancia:
         retorno = df[['Px', 'Py', 'heat']].copy()
         rays = df[['ray1','ray2','ray3','ray4','ray5','ray6','ray7','ray8','ray9','ray10','ray11','ray12','ray13','ray14','ray15','ray16','ray17','ray18','ray19','ray20','ray21','ray22','ray23','ray24','ray25','ray26','ray27']]
         
-        powerUpInfo = df[['Exp1','Eyp1','Exp2','Eyp2']].copy().astype(float)
-        powerUpInfo = pd.Series(self.histo2DRow(powerUpInfo))
+        #powerUpInfo = df[['Exp1','Eyp1','Exp2','Eyp2']].copy().astype(float)
+        #powerUpInfo = pd.Series(self.histo2DRow(powerUpInfo))
         
         targetData = df[["VKey","HKey","Shooting"]].copy()
         targetData["VKey"] = self.transformaEje(targetData["VKey"])
         targetData["HKey"] = self.transformaEje(targetData["HKey"])
         targetData["Shooting"] = self.transformaDisparo(targetData["Shooting"])
 
-        retorno = pd.concat([retorno,rays,powerUpInfo,targetData])
+        retorno = pd.concat([retorno,rays,targetData])
         print(retorno.shape)
        
         return retorno
@@ -55,7 +58,7 @@ class instancia:
         H, xedges, yedges = np.histogram2d(x, y, bins=(xedges, yedges))
         H = H.T  # Let each row list bins with common y range.
         #print(H.reshape(-1))
-        return H.reshape(-1).T.astype(float)
+        return H.reshape(1,-1).T.astype(float)
 
     def transformaEje(self,value):
         if value == "UpArrow" or value == "RightArrow":

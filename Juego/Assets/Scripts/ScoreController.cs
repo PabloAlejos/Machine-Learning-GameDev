@@ -30,7 +30,7 @@ public class ScoreController : MonoBehaviour
     //Suma la puntuación multiplicada por la distancia a la que es destruido
     void OnEnemyDie(float points, Enemy e)
     {
-        score += points * System.Math.Floor(e.transform.position.y+6);
+        score += points * System.Math.Floor(e.transform.position.y);
         e.deathEvent -= OnEnemyDie;
     }
 

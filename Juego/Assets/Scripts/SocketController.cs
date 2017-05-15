@@ -174,7 +174,7 @@ public class SocketController : MonoBehaviour
     void OnApplicationQuit()
     {
         UnityEngine.Debug.Log("process-Kill on Quit");
-        //KillProcess();
+        KillProcess();
     }
 
     //

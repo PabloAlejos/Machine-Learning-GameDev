@@ -33,9 +33,6 @@ public class PlayerVision : MonoBehaviour
 
     public float[] getSuroundingEnemies()
     {
-        //IEnumerator e = ScanForEnemies();
-        //StartCoroutine(e);
-        //return enemiesInfo.getEnemiesProcedence();
         return ScanForEnemies();
     }
 

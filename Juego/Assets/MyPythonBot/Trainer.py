@@ -42,14 +42,14 @@ class trainer:
     def set_train_data(self,train_columns,target_columns):
         self._set_target_data(target_columns)
         print("setting train_data")
-        t = self.df[train_columns].copy()
-        print("\t power up info" )
-        powerUpInfo = t[['Exp1','Eyp1','Exp2','Eyp2']].copy()
-        powerUpInfo = powerUpInfo.apply(self._histo2DRow,axis = 1)
-        print("\t other info" )
-        otherInfo = t.drop(['Exp1','Eyp1','Exp2','Eyp2'], axis=1)
-        powerUpInfo = self._rename_trainData(powerUpInfo)
-        self.train_data = pd.concat([otherInfo,powerUpInfo],axis = 1)
+        self.train_data = self.df[train_columns].copy()
+        #print("\t power up info" )
+        #powerUpInfo = t[['Exp1','Eyp1','Exp2','Eyp2']].copy()
+        #powerUpInfo = powerUpInfo.apply(self._histo2DRow,axis = 1)
+        #print("\t other info" )
+        #otherInfo = t.drop(['Exp1','Eyp1','Exp2','Eyp2'], axis=1)
+        #powerUpInfo = self._rename_trainData(powerUpInfo)
+        #self.train_data = pd.concat([otherInfo,powerUpInfo],axis = 1)
 
         #Concatenar instancias
         print("concatenar instancias")
@@ -95,7 +95,9 @@ class trainer:
         dfAnterior.rename(columns=lambda x: str(x)+"-1", inplace=True)
         dfAnterior2 = dataframe.shift(2)
         dfAnterior2.rename(columns=lambda x: str(x)+"-2", inplace=True)
-        df = pd.concat([dfAnterior2,dfAnterior,dataframe],axis=1)
+        dfAnterior3 = dataframe.shift(3)
+        dfAnterior3.rename(columns=lambda x: str(x)+"-3", inplace=True)
+        df = pd.concat([dfAnterior3,dfAnterior2,dfAnterior,dataframe],axis=1)
         df = df.fillna(999)
         return df
         
@@ -136,7 +138,7 @@ class trainer:
 t = trainer()
 try:
 	t.load_file('gameStates.csv')
-	t.set_train_data(['Px', 'Py', 'heat', 'Exp1', 'Eyp1', 'Exp2', 'Eyp2', 'ray1','ray2','ray3','ray4','ray5','ray6','ray7','ray8','ray9','ray10','ray11','ray12','ray13','ray14','ray15','ray16','ray17','ray18','ray19','ray20','ray21','ray22','ray23','ray24','ray25','ray26','ray27'],["VKey","HKey","Shooting"])
+	t.set_train_data(['Px', 'Py', 'heat', 'ray1','ray2','ray3','ray4','ray5','ray6','ray7','ray8','ray9','ray10','ray11','ray12','ray13','ray14','ray15','ray16','ray17','ray18','ray19','ray20','ray21','ray22','ray23','ray24','ray25','ray26','ray27'],["VKey","HKey","Shooting"])
 	t.train()
 	print(len(t.train_data.ix[10]))
 	t.save_forest("randomForest.sav")
