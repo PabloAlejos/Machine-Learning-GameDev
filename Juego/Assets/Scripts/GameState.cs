@@ -53,6 +53,7 @@ public class GameState
         sb.Append(MakeValueCsvFriendly(HKey)).Append(",");
         sb.Append(isShooting);
 
+        UnityEngine.Debug.Log(sb.ToString());
         return sb.ToString();
 
     }
@@ -120,20 +121,10 @@ public class GameState
 
         if (value is float[])
         {
-            for (int i = 0; i < 36; i++)
+            for (int i = 0; i < surroundingEnemies.Length; i++)
             {
-                if (i >= surroundingEnemies.Length)
-                {
-                    sb.Append("999.00");
-                    sb.Append(",");
-                }
-                else
-                {
                     sb.Append(surroundingEnemies[i].ToString("0.00"));
                     sb.Append(",");
-                }
-
-
             }
             return sb.ToString();
         }

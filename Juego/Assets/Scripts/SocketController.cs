@@ -13,6 +13,8 @@ public class SocketController : MonoBehaviour
 {
     public delegate void keyDelegate(Vector3 values);
     public event keyDelegate keyEvent;
+    public delegate void OnlineEvent();
+    public event OnlineEvent ToggleOnline;
 
     Process p;
     public bool online = false;
@@ -68,6 +70,7 @@ public class SocketController : MonoBehaviour
                     ConnectionText.text = ("Socket connected to  " +
                     sender.RemoteEndPoint.ToString());
                     //UnityEngine.Debug.Log(receiveMessage());
+                    ToggleOnline();
                     online = true;
 
                 }
@@ -134,6 +137,7 @@ public class SocketController : MonoBehaviour
             sender.Close();
             connectedButton.image.color = Color.red;
             SocketButton.image.color = Color.red;
+            ToggleOnline();
             online = false;
         }
 

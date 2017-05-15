@@ -24,9 +24,10 @@ public class EnemySpawner : MonoBehaviour
     private float nextBossSpawnTime;
     private bool bossSpawn = false;
 
-    // Use this for initialization
+
     void Start()
     {
+        Random.InitState(2400);
         nextBossSpawnTime = Time.time + BossSpawnRateiInSecs;
         nextSpawnTime = Time.time + SpwanRate / 10;
         nextWave = 5;
@@ -53,9 +54,9 @@ public class EnemySpawner : MonoBehaviour
             {
                 GameObject myBoss = (GameObject)Instantiate(boss, spawnPosition, Quaternion.identity);
                 spawnEvent(myBoss.GetComponent<Enemy>());
-                myBoss.GetComponent<Enemy>().maxHealth = Mathf.RoundToInt(Time.timeSinceLevelLoad/4);
+                myBoss.GetComponent<Enemy>().maxHealth = Mathf.RoundToInt(Time.timeSinceLevelLoad / 4);
                 myBoss.GetComponent<Enemy>().health = myBoss.GetComponent<Enemy>().maxHealth;
-                myBoss.GetComponent<Enemy>().scorePoints = Mathf.RoundToInt(Time.timeSinceLevelLoad * 2);
+                myBoss.GetComponent<Enemy>().scorePoints = Mathf.RoundToInt(10);
                 nextBossSpawnTime = Time.time + BossSpawnRateiInSecs;
                 bossSpawn = false;
             }

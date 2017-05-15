@@ -18,7 +18,7 @@ public class GameStateController : MonoBehaviour
 
     private float nextStateRead;
     public float stateReadRate;
-    public bool recordStates;
+    public bool recordStates = false;
 
     //Variables de ReadKey()
     bool isShooting;
@@ -120,4 +120,8 @@ public class GameStateController : MonoBehaviour
         return sb.ToString();
     }
 
+    public void toggleRecordStates()
+    {
+        recordStates = !recordStates;
+    }
 }

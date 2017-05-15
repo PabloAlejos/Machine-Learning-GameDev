@@ -8,13 +8,13 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public KeyCode lasHitKey;
 
-    public bool botActive;
-    SocketController sc;
+    private bool botActive;
+
     // Animator;
     public Sprite[] animSprites;
-    
+
     //propiedades del jugador
-   
+
     public float speed = 5;
 
     [HideInInspector]
@@ -32,14 +32,17 @@ public class PlayerController : MonoBehaviour
     public event PlayerInputDelegate playerShoot;
     public event PlayerInputDelegate playerHorizontal;
     public event PlayerInputDelegate PlayerVertical;
-    
-    
+
+
+
 
     SoundController sounds;
 
     //Se ejecuta antes de todo
     void Awake()
     {
+        FindObjectOfType<SocketController>().keyEvent += keypress;
+        FindObjectOfType<SocketController>().ToggleOnline += toogleOnlineSocket;
         sounds = FindObjectOfType<SoundController>();
         opTime = 0;
         Time.timeScale = 1;
@@ -48,7 +51,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         movement = new Vector2(0, 0);
-        FindObjectOfType<SocketController>().keyEvent += keypress;
+
         lasHitKey = KeyCode.None;
         FindGuns();
     }
@@ -57,7 +60,7 @@ public class PlayerController : MonoBehaviour
     {
         firing = values.z;
         movement = new Vector2(values.x, values.y);
-        
+
     }
 
     void Update()
@@ -72,9 +75,9 @@ public class PlayerController : MonoBehaviour
 
     public void InputRead()
     {
-        
-        
-        //movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        if (!botActive)
+            movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         transform.Translate(movement.normalized * speed * Time.deltaTime);
         if (firing == 1)
@@ -83,7 +86,7 @@ public class PlayerController : MonoBehaviour
         }
         eventInput(movement);
         PlayerAnimation(movement.x); //Indicamos al aniador la direccion en la que vamos
-        
+
 
 
         //Evita que el jugadore se salga de la pantalla
@@ -112,12 +115,12 @@ public class PlayerController : MonoBehaviour
         {
             shoot();
         }
-       
+
 
     }
 
 
-   
+
 
     private void shoot()
     {
@@ -140,7 +143,7 @@ public class PlayerController : MonoBehaviour
         if (movement.y < -0.5)
             PlayerVertical(KeyCode.DownArrow);
     }
-    
+
 
 
 
@@ -170,4 +173,9 @@ public class PlayerController : MonoBehaviour
         guns = GameObject.FindGameObjectsWithTag("gun");
     }
 
+
+    void toogleOnlineSocket()
+    {
+        botActive = !botActive;
+    }
 }

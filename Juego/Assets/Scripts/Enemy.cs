@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
         {
             if (transform.position.y < -1)
             {
-                sc.SetScore(sc.GetScore() - scorePoints);
+                sc.SetScore(sc.GetScore() - scorePoints*10);
                 if (passTroughEvent != null)
                 {
                     passTroughEvent();
