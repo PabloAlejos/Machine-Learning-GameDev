@@ -100,6 +100,7 @@ public class EnemySpawner : MonoBehaviour
             Vector3 spawnPosition = new Vector3(xPos, transform.position.y, transform.position.z);
             GameObject powerUp = (GameObject)Instantiate(PowerUps[Random.Range(0, PowerUps.Length)], spawnPosition, Quaternion.identity);
             PowerUpChance = 0.1f;
+
         }
         else
         {

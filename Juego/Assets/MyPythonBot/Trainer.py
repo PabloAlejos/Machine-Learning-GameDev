@@ -24,7 +24,7 @@ class trainer:
         self.df = pd.DataFrame()
         self.train_data = pd.DataFrame()
         self.target_data = pd.DataFrame()
-        self.randomforest = RandomForestClassifier(n_estimators=100, random_state = 1, max_depth = 200)
+        self.randomforest = RandomForestClassifier(n_estimators=100, random_state = 1, max_depth = 100)
         self.forest = DecisionTreeClassifier()
     
     #Carga el fichero con el nombre indicado y nombra las columnas
@@ -114,7 +114,7 @@ class trainer:
         
         
     def save_forest(self,fileName):
-        pickle.dump(self.forest, open(fileName, 'wb'))
+        pickle.dump(self.forest, open("..\\"+fileName, 'wb'))
     
 
     def _transformaEje(self,value):
@@ -141,7 +141,7 @@ try:
 	t.set_train_data(['Px', 'Py', 'heat', 'ray1','ray2','ray3','ray4','ray5','ray6','ray7','ray8','ray9','ray10','ray11','ray12','ray13','ray14','ray15','ray16','ray17','ray18','ray19','ray20','ray21','ray22','ray23','ray24','ray25','ray26','ray27'],["VKey","HKey","Shooting"])
 	t.train()
 	print(len(t.train_data.ix[10]))
-	t.save_forest("randomForest.sav")
+	t.save_forest("Forest.sav")
 	print("ok")
 except:
 	print("Fail")

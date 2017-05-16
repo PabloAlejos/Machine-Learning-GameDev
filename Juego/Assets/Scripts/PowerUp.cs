@@ -7,6 +7,10 @@ public class PowerUp : MonoBehaviour
 
     public int type;
     SoundController sounds;
+    public delegate void PowerUpEvent();
+    public event PowerUpEvent cool;
+    public event PowerUpEvent overPower;
+    
 
     void Start()
     {
@@ -27,11 +31,7 @@ public class PowerUp : MonoBehaviour
                 break;
             case 2:
                 PlayerController p = FindObjectOfType<PlayerController>();
-                /*
-                p.gunsOP.SetActive(true);
-                p.gunsOP.GetComponent<Gun>().HeatValue = p.heatValue;
-                sounds.itemPickUp.Play();
-                */
+                overPower();
                 Destroy(gameObject);
                 break;
 

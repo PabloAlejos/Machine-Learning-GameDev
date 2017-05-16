@@ -10,7 +10,7 @@ class ServerSocket:
     	self._HOST = 'localhost'
     	self._PORT = 8888              # Arbitrary non-privileged port
     	#self._p = p.Predictor("randomForest.sav")
-    	self._p = p.Predictor("randomForest.sav")
+    	self._p = p.Predictor("Forest.sav")
     	self._instancia = inst.instancia()
     	with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 	        

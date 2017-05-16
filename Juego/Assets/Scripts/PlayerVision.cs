@@ -82,6 +82,10 @@ public class PlayerVision : MonoBehaviour
                 Debug.DrawLine(transform.position, dir, Color.blue);
                 retorno = hit.distance;
             }
+            else if (hit.transform.tag == "PU1")
+            {
+                Debug.Log("PU1");
+            }
         }
 
         return retorno;

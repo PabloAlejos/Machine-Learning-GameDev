@@ -40,8 +40,18 @@ public class SocketController : MonoBehaviour
     {
         connectedButton.image.color = Color.red;
         RunSocketServer();
+        StartCoroutine(con());
     }
 
+    IEnumerator con()
+    {
+        while (!online)
+        {
+            StartClient();
+            yield return null;
+        }
+        yield return null;
+    }
 
     public void StartClient()
     {
@@ -149,7 +159,7 @@ public class SocketController : MonoBehaviour
         //Buscar id proseso para matarlo
         p.StartInfo.FileName = "python";
         p.StartInfo.Arguments = ".\\MyPythonBot\\serverSocket.py";
-        p.StartInfo.CreateNoWindow = false;
+        p.StartInfo.CreateNoWindow = true;
         // Where the script lives
         p.StartInfo.WorkingDirectory = Application.dataPath;
         p.StartInfo.UseShellExecute = false;

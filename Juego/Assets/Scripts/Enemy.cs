@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
     private Image HealthBar;
 
-
     public GameObject destroyAnimation;
     public float scorePoints = 1;
     ScoreController sc;

@@ -39,6 +39,7 @@ public class GameOver : MonoBehaviour {
         gsc.gameObject.SetActive(false);
         
         gameOver = true;
+        SceneManager.LoadScene(1);
     }
 
 }

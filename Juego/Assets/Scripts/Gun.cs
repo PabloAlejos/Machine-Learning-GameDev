@@ -34,7 +34,7 @@ public class Gun : MonoBehaviour
     {
         if (Time.time > nextShotTime && HeatValue < maxHeatValue && !overHeat)
         {
-            HeatValue += 1;
+            HeatValue += 0.5f;
             Instantiate(bulletType,new Vector3(transform.position.x,transform.position.y,transform.position.z - 1) , Quaternion.identity);
             nextShotTime = Time.time + fireRate / 10;
             startCoolingTime = Time.time + coolingTime;
