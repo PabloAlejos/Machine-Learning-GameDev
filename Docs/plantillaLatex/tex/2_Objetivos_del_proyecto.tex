@@ -1,5 +1,13 @@
 \capitulo{2}{Objetivos del proyecto}
 
-Este apartado explica de forma precisa y concisa cuales son los objetivos que se persiguen con la realización del proyecto. Se puede distinguir entre los objetivos marcados por los requisitos del software a construir y los objetivos de carácter técnico que plantea a la hora de llevar a la práctica el proyecto.
-
-
+ 
+\begin{itemize}
+    \item Diseñar y desarrollar un videojuego de tipo arcade. Para la implementación del juego que sirve como base para este proyecto es necesario realizar una labor de diseño de mecánicas de juego, así como diseñar los modelos del jugador y los enemigos. Esta tarea también incluye el diseño de la interfaz, banda sonora y efectos de sonido. 
+    
+    \item Diseñar un conjunto de scripts que permitan a la máquina entrenar una red neuronal y posteriormente ser utilizada para interactuar con el videojuego creado. Este proceso de divide en:
+    \begin{itemize}
+        \item Establecer una comunicación entre el juego y la red neuronal. Dado que el juego y el script que hace uso de la red neuronal serán implementados en diferente lenguaje de programación, se debe establecer un mecanismo de intercambio de datos para la comunicación.
+        \item Diseñar el modelo de datos que posteriormente servirá para el entremaniento de la red neuronal. Al ser el punto de partida el aprendizaje por imitación, necesitaremos un gran volumen de datos de los cuales seleccionaremos todos o solo los mas representativos para el entrenamiento de la red neuronal.
+        \item Implementar, haciendo uso de las librerias de scikit-learn en entrenador de la red neuronal de la que porteriormente hará uso el bot.
+    \end{itemize}
+\end{itemize}

@@ -111,6 +111,8 @@ class trainer:
     def train(self):
         #self.forest = self.randomforest.fit(self.train_data, self.target_data.astype(str))
         self.forest = self.forest.fit(self.train_data, self.target_data.astype(str))
+        print(self.forest.get_params())
+        #print(self.forest)
         
         
     def save_forest(self,fileName):

@@ -18,7 +18,8 @@ public class MainSript : MonoBehaviour
     {
         if (n < 10)
         {
-            WriteFile.AddRow(arguments[1]);
+            int v = UnityEngine.Random.Range(0, 500);
+            WriteFile.AddRow(v.ToString());
             n++;
         }else
         {
