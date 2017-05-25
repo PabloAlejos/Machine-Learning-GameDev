@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,19 +7,29 @@ using UnityEngine.SceneManagement;
 public class GameConfig : MonoBehaviour
 {
 
-
+    String[] arguments; //donde se van a almacenar los parámetros
     public int iterations = 5; //Numero de partidas que juega un individuo
+    int maxTime = 60;
     public static int n;
     ScoreController sc;
 
     private void Awake()
     {
+        Application.runInBackground = true;
         DontDestroyOnLoad(this.gameObject);
+        arguments = Environment.GetCommandLineArgs();
+       
+       
     }
 
     void Start()
     {
-        n = 0;
+        if (arguments.Length > 2)
+        {
+            n = Int32.Parse(arguments[1]);
+            maxTime = Int32.Parse(arguments[2]);
+        }
+        
 
     }
 

@@ -10,7 +10,7 @@ class ServerSocket:
     	self._HOST = 'localhost'
     	self._PORT = 8888              # Arbitrary non-privileged port
     	#self._p = p.Predictor("randomForest.sav")
-    	self._p = p.classifier("model.sav")
+    	self._p = p.classifier("pipe.sav")
     	self._instancia = inst.instancia()
     	with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 	        
@@ -28,8 +28,9 @@ class ServerSocket:
 	        		try:
 	        			data = conn.recv(1024)
 	        			#Llamar a getResult
-	        			text = data.decode("utf-8")
-	        			retorno = self.getResult(text.split(','))
+	        			arrayAtributos = data.decode("utf-8").split(',')
+	        			
+	        			retorno = self.getResult(arrayAtributos)
 	        			retorno = str(retorno)
 	        			conn.send(retorno.encode("utf-8"))
 	        		except Exception as e:

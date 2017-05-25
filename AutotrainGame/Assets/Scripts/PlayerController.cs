@@ -51,7 +51,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         movement = new Vector2(0, 0);
-
         lasHitKey = KeyCode.None;
         FindGuns();
     }

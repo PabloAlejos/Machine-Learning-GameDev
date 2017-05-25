@@ -28,8 +28,9 @@ class ServerSocket:
 	        		try:
 	        			data = conn.recv(1024)
 	        			#Llamar a getResult
-	        			text = data.decode("utf-8")
-	        			retorno = self.getResult(text.split(','))
+	        			arrayAtributos = data.decode("utf-8").split(',')
+	        			
+	        			retorno = self.getResult(arrayAtributos)
 	        			retorno = str(retorno)
 	        			conn.send(retorno.encode("utf-8"))
 	        		except Exception as e:

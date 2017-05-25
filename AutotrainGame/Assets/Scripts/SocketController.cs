@@ -169,7 +169,7 @@ public class SocketController : MonoBehaviour
         try
         {
             p.Start();
-            processID = Process.GetProcessesByName("python")[0].Id;
+            processID = p.Id;
             UnityEngine.Debug.Log(processID);
         }
         catch (SocketException e)

@@ -1,4 +1,3 @@
-import pickle
 import pandas as pd
 import numpy as np
 from itertools import product
@@ -25,9 +24,8 @@ class instancia:
         self.df2 = self.df3.copy()
 
     def get(self):
-        #df = pd.concat([self.df0, self.df1, self.df2, self.df3.drop(["VKey","HKey","Shooting"])], axis=0)
-        
-        return self.df3.drop(["VKey","HKey","Shooting"])
+        df = pd.concat([self.df0, self.df1, self.df2, self.df3.drop(["VKey","HKey","Shooting"])], axis=0)
+        return df
 
     def preprocesar(self,estado):
         retorno = pd.DataFrame()
@@ -74,3 +72,8 @@ class instancia:
             return 1
         else:
             return 0
+
+
+i = instancia()
+i.encolar("130165221,0.51,1.91,4,999,999,999,999,-2.46,8.66,2,0.38,5.68,2,0.98,6.02,2,999.00,999.00,0,999.00,999.00,0,999.00,999.00,0,999.00,999.00,999.00,999.00,999.00,7.17,999.00,999.00,999.00,999.00,999.00,999.00,999.00,999.00,999.00,999.00,999.00,999.00,999.00,999.00,999.00,999.00,999.00,999.00,999.00,999.00,999.00,24,None,RightArrow,False".split(','))
+print(len(i.get()))

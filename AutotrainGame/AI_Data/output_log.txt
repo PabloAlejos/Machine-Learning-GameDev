@@ -17,26 +17,24 @@ Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameD
 Loading C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.064 seconds
+- Completed reload, in  0.057 seconds
 Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
 XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
-desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+desktop: 1366x768 60Hz; virtual: 3286x1297 at 0,-529
 <RI> Initialized touch support.
-UnloadTime: 2.103465 ms
+UnloadTime: 2.140119 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 7.405137 ms
+UnloadTime: 8.705630 ms
 
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 790.
-Total: 0.618235 ms (FindLiveObjects: 0.070376 ms CreateObjectMapping: 0.043496 ms MarkObjects: 0.493121 ms  DeleteObjects: 0.007330 ms)
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 793.
+Total: 0.912446 ms (FindLiveObjects: 0.079661 ms CreateObjectMapping: 0.059135 ms MarkObjects: 0.755566 ms  DeleteObjects: 0.013195 ms)
 
-IndexOutOfRangeException: Array index is out of range.
-  at SocketController.RunSocketServer () [0x00000] in <filename unknown>:0 
-  at SocketController.Start () [0x00000] in <filename unknown>:0 
+8244
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 127.0.0.1
  
@@ -63,32 +61,30 @@ IndexOutOfRangeException: Array index is out of range.
  
 (Filename:  Line: -1)
 
-SocketException :System.Net.Sockets.SocketException: Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder.
-
-  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
-  at SocketController.receiveMessage () [0x00000] in <filename unknown>:0 
-  at SocketController.SendMessage () [0x00000] in <filename unknown>:0 
+1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-ArgumentException: Can't find process with ID 0
-  at System.Diagnostics.Process.GetProcessById (Int32 processId) [0x00000] in <filename unknown>:0 
+InvalidOperationException: Process has exited, so the requested information is not available.
+  at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
   at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
   at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
-UnloadTime: 5.944831 ms
+UnloadTime: 11.679025 ms
 
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 825.
-Total: 1.388463 ms (FindLiveObjects: 0.090902 ms CreateObjectMapping: 0.064022 ms MarkObjects: 1.214477 ms  DeleteObjects: 0.018082 ms)
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 828.
+Total: 1.150943 ms (FindLiveObjects: 0.068910 ms CreateObjectMapping: 0.041541 ms MarkObjects: 1.020943 ms  DeleteObjects: 0.018082 ms)
 
-IndexOutOfRangeException: Array index is out of range.
-  at SocketController.RunSocketServer () [0x00000] in <filename unknown>:0 
-  at SocketController.Start () [0x00000] in <filename unknown>:0 
+14276
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 127.0.0.1
  
@@ -121,28 +117,26 @@ SocketException :System.Net.Sockets.SocketException: Se produjo un error durante
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-2
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-ArgumentException: Can't find process with ID 0
-  at System.Diagnostics.Process.GetProcessById (Int32 processId) [0x00000] in <filename unknown>:0 
+InvalidOperationException: Process has exited, so the requested information is not available.
+  at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
   at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
   at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
-UnloadTime: 6.996564 ms
+UnloadTime: 10.485072 ms
 
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 825.
-Total: 1.541922 ms (FindLiveObjects: 0.095301 ms CreateObjectMapping: 0.064022 ms MarkObjects: 1.362560 ms  DeleteObjects: 0.018082 ms)
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 828.
+Total: 1.477410 ms (FindLiveObjects: 0.110451 ms CreateObjectMapping: 0.074774 ms MarkObjects: 1.265793 ms  DeleteObjects: 0.023947 ms)
 
-IndexOutOfRangeException: Array index is out of range.
-  at SocketController.RunSocketServer () [0x00000] in <filename unknown>:0 
-  at SocketController.Start () [0x00000] in <filename unknown>:0 
+9376
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 127.0.0.1
  
@@ -180,23 +174,25 @@ SocketException :System.Net.Sockets.SocketException: Se produjo un error durante
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-ArgumentException: Can't find process with ID 0
-  at System.Diagnostics.Process.GetProcessById (Int32 processId) [0x00000] in <filename unknown>:0 
+InvalidOperationException: Process has exited, so the requested information is not available.
+  at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
   at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
   at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
-UnloadTime: 6.637353 ms
+UnloadTime: 8.142133 ms
 
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 825.
-Total: 1.557561 ms (FindLiveObjects: 0.097255 ms CreateObjectMapping: 0.066955 ms MarkObjects: 1.371846 ms  DeleteObjects: 0.020526 ms)
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 828.
+Total: 1.540456 ms (FindLiveObjects: 0.097744 ms CreateObjectMapping: 0.062067 ms MarkObjects: 1.359139 ms  DeleteObjects: 0.019060 ms)
 
-IndexOutOfRangeException: Array index is out of range.
-  at SocketController.RunSocketServer () [0x00000] in <filename unknown>:0 
-  at SocketController.Start () [0x00000] in <filename unknown>:0 
+2360
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 127.0.0.1
  
@@ -234,23 +230,25 @@ SocketException :System.Net.Sockets.SocketException: Se produjo un error durante
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-ArgumentException: Can't find process with ID 0
-  at System.Diagnostics.Process.GetProcessById (Int32 processId) [0x00000] in <filename unknown>:0 
+InvalidOperationException: Process has exited, so the requested information is not available.
+  at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
   at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
   at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
-UnloadTime: 4.722534 ms
+UnloadTime: 8.073222 ms
 
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 825.
-Total: 1.543388 ms (FindLiveObjects: 0.096767 ms CreateObjectMapping: 0.065000 ms MarkObjects: 1.361094 ms  DeleteObjects: 0.019548 ms)
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 828.
+Total: 1.265793 ms (FindLiveObjects: 0.069887 ms CreateObjectMapping: 0.041052 ms MarkObjects: 1.135304 ms  DeleteObjects: 0.018571 ms)
 
-IndexOutOfRangeException: Array index is out of range.
-  at SocketController.RunSocketServer () [0x00000] in <filename unknown>:0 
-  at SocketController.Start () [0x00000] in <filename unknown>:0 
+12704
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 127.0.0.1
  
@@ -287,227 +285,40 @@ SocketException :System.Net.Sockets.SocketException: Se produjo un error durante
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-ArgumentException: Can't find process with ID 0
-  at System.Diagnostics.Process.GetProcessById (Int32 processId) [0x00000] in <filename unknown>:0 
-  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
-  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-UnloadTime: 7.188633 ms
-
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 825.
-Total: 1.626471 ms (FindLiveObjects: 0.092368 ms CreateObjectMapping: 0.065977 ms MarkObjects: 1.446621 ms  DeleteObjects: 0.020526 ms)
-
-IndexOutOfRangeException: Array index is out of range.
-  at SocketController.RunSocketServer () [0x00000] in <filename unknown>:0 
-  at SocketController.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-127.0.0.1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-SocketException : {0}System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
-
-  at System.Net.Sockets.Socket.Connect (System.Net.IPAddress[] addresses, Int32 port) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket.Connect (System.String host, Int32 port) [0x00000] in <filename unknown>:0 
-  at SocketController.StartClient () [0x00000] in <filename unknown>:0 
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-127.0.0.1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-IndexOutOfRangeException: Array index is out of range.
-  at SocketController.retorno2string (System.String[] s) [0x00000] in <filename unknown>:0 
-  at SocketController.SendMessage () [0x00000] in <filename unknown>:0 
-  at GameStateController.FixedUpdate () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-SocketException :System.Net.Sockets.SocketException: Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder.
-
-  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
-  at SocketController.receiveMessage () [0x00000] in <filename unknown>:0 
-  at SocketController.SendMessage () [0x00000] in <filename unknown>:0 
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-6
+Quit!
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-ArgumentException: Can't find process with ID 0
-  at System.Diagnostics.Process.GetProcessById (Int32 processId) [0x00000] in <filename unknown>:0 
-  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
-  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-UnloadTime: 5.491296 ms
-
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 825.
-Total: 1.671434 ms (FindLiveObjects: 0.095301 ms CreateObjectMapping: 0.062067 ms MarkObjects: 1.493538 ms  DeleteObjects: 0.019548 ms)
-
-IndexOutOfRangeException: Array index is out of range.
-  at SocketController.RunSocketServer () [0x00000] in <filename unknown>:0 
-  at SocketController.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-127.0.0.1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-SocketException : {0}System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
-
-  at System.Net.Sockets.Socket.Connect (System.Net.IPAddress[] addresses, Int32 port) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket.Connect (System.String host, Int32 port) [0x00000] in <filename unknown>:0 
-  at SocketController.StartClient () [0x00000] in <filename unknown>:0 
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-127.0.0.1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-IndexOutOfRangeException: Array index is out of range.
-  at SocketController.retorno2string (System.String[] s) [0x00000] in <filename unknown>:0 
-  at SocketController.SendMessage () [0x00000] in <filename unknown>:0 
-  at GameStateController.FixedUpdate () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-SocketException :System.Net.Sockets.SocketException: Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder.
-
-  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
-  at SocketController.receiveMessage () [0x00000] in <filename unknown>:0 
-  at SocketController.SendMessage () [0x00000] in <filename unknown>:0 
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-7
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-ArgumentException: Can't find process with ID 0
-  at System.Diagnostics.Process.GetProcessById (Int32 processId) [0x00000] in <filename unknown>:0 
-  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
-  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-UnloadTime: 4.290503 ms
-
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 825.
-Total: 1.687073 ms (FindLiveObjects: 0.107030 ms CreateObjectMapping: 0.065488 ms MarkObjects: 1.496959 ms  DeleteObjects: 0.016127 ms)
-
-IndexOutOfRangeException: Array index is out of range.
-  at SocketController.RunSocketServer () [0x00000] in <filename unknown>:0 
-  at SocketController.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-127.0.0.1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-SocketException : {0}System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
-
-  at System.Net.Sockets.Socket.Connect (System.Net.IPAddress[] addresses, Int32 port) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket.Connect (System.String host, Int32 port) [0x00000] in <filename unknown>:0 
-  at SocketController.StartClient () [0x00000] in <filename unknown>:0 
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-127.0.0.1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-IndexOutOfRangeException: Array index is out of range.
-  at SocketController.retorno2string (System.String[] s) [0x00000] in <filename unknown>:0 
-  at SocketController.SendMessage () [0x00000] in <filename unknown>:0 
-  at GameStateController.FixedUpdate () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-SocketException :System.Net.Sockets.SocketException: Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder.
-
-  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
-  at SocketController.receiveMessage () [0x00000] in <filename unknown>:0 
-  at SocketController.SendMessage () [0x00000] in <filename unknown>:0 
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-8
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-ArgumentException: Can't find process with ID 0
-  at System.Diagnostics.Process.GetProcessById (Int32 processId) [0x00000] in <filename unknown>:0 
-  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
-  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-UnloadTime: 5.313889 ms
-
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 825.
-Total: 1.290229 ms (FindLiveObjects: 0.094323 ms CreateObjectMapping: 0.040564 ms MarkObjects: 1.136770 ms  DeleteObjects: 0.017594 ms)
-
-IndexOutOfRangeException: Array index is out of range.
-  at SocketController.RunSocketServer () [0x00000] in <filename unknown>:0 
-  at SocketController.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-127.0.0.1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-SocketException : {0}System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
-
-  at System.Net.Sockets.Socket.Connect (System.Net.IPAddress[] addresses, Int32 port) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket.Connect (System.String host, Int32 port) [0x00000] in <filename unknown>:0 
-  at SocketController.StartClient () [0x00000] in <filename unknown>:0 
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-127.0.0.1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-IndexOutOfRangeException: Array index is out of range.
-  at SocketController.retorno2string (System.String[] s) [0x00000] in <filename unknown>:0 
-  at SocketController.SendMessage () [0x00000] in <filename unknown>:0 
-  at GameStateController.FixedUpdate () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-SocketException :System.Net.Sockets.SocketException: Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder.
-
-  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
-  at SocketController.receiveMessage () [0x00000] in <filename unknown>:0 
-  at SocketController.SendMessage () [0x00000] in <filename unknown>:0 
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-ArgumentException: Can't find process with ID 0
-  at System.Diagnostics.Process.GetProcessById (Int32 processId) [0x00000] in <filename unknown>:0 
+InvalidOperationException: Process has exited, so the requested information is not available.
+  at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
   at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
   at SocketController.OnApplicationQuit () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
+InvalidOperationException: Process has exited, so the requested information is not available.
+  at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
+  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
+  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+UnloadTime: 7.406603 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 828.
+Total: 1.401658 ms (FindLiveObjects: 0.101654 ms CreateObjectMapping: 0.042030 ms MarkObjects: 1.236470 ms  DeleteObjects: 0.019548 ms)
+
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 36dc -> priority: 1 
+  Thread -> id: 2f7c -> priority: 1 
 ArgumentException: Can't find process with ID 0
   at System.Diagnostics.Process.GetProcessById (Int32 processId) [0x00000] in <filename unknown>:0 
   at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
