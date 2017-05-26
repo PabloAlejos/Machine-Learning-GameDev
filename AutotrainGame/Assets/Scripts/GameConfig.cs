@@ -9,7 +9,7 @@ public class GameConfig : MonoBehaviour
 
     String[] arguments; //donde se van a almacenar los parámetros
     public int iterations = 5; //Numero de partidas que juega un individuo
-    int maxTime = 60;
+    public int maxTime = 60;
     public static int n;
     ScoreController sc;
 

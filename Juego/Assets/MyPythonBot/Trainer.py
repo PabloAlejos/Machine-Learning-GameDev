@@ -21,7 +21,7 @@ from collections import Counter
 
 class trainer:
     def __init__ (self):
-        self.df = pd.DataFrame()
+        self._df = pd.DataFrame()
         self.train_data = pd.DataFrame()
         self.target_data = pd.DataFrame()
         self.randomforest = RandomForestClassifier(n_estimators=100, random_state = 1, max_depth = 100)
@@ -29,20 +29,19 @@ class trainer:
     
     #Carga el fichero con el nombre indicado y nombra las columnas
     def load_file(self,fileName):
-    	try:
-        	self.df = pd.read_csv(fileName, sep=',', header=None)
-        	self.df = self.df
-        	self.df.columns = ['timeStamp','Px', 'Py', 'heat', 'Exp1','Eyp1','Exp2','Eyp2', 'Ex1', 'Ey1', 'Eh1', 'Ex2', 'Ey2', 'Eh2', 'Ex3', 'Ey3', 'Eh3', 'Ex4', 'Ey4','Eh4','Ex5', 'Ey5','Eh5','Ex6', 'Ey6','Eh6','ray1','ray2','ray3','ray4','ray5','ray6','ray7','ray8','ray9','ray10','ray11','ray12','ray13','ray14','ray15','ray16','ray17','ray18','ray19','ray20','ray21','ray22','ray23','ray24','ray25','ray26','ray27','score',"VKey","HKey","Shooting"]
-        	self.df[['Eh1','Eh2','Eh3','Eh4','Eh5','Eh6']] = self.df[['Eh1','Eh2','Eh3','Eh4','Eh5','Eh6']].astype(float) 
-    	except Exception as e:
-    		print(e)
-    		raise
+        try:
+            self._df = pd.read_csv(fileName, sep=',', header=None)
+            self._df.columns = ['timeStamp','Px', 'Py', 'heat', 'Exp1','Eyp1','Exp2','Eyp2', 'Ex1', 'Ey1', 'Eh1', 'Ex2', 'Ey2', 'Eh2', 'Ex3', 'Ey3', 'Eh3', 'Ex4', 'Ey4','Eh4','Ex5', 'Ey5','Eh5','Ex6', 'Ey6','Eh6','ray1','ray2','ray3','ray4','ray5','ray6','ray7','ray8','ray9','ray10','ray11','ray12','ray13','ray14','ray15','ray16','ray17','ray18','ray19','ray20','ray21','ray22','ray23','ray24','ray25','ray26','ray27','score',"VKey","HKey","Shooting"]
+            self._df[['Eh1','Eh2','Eh3','Eh4','Eh5','Eh6']] = self._df[['Eh1','Eh2','Eh3','Eh4','Eh5','Eh6']].astype(float)
+        except Exception as e:
+            print(e)
+            raise
 
     #procesa las columnas correspondientes al trainda
     def set_train_data(self,train_columns,target_columns):
         self._set_target_data(target_columns)
         print("setting train_data")
-        self.train_data = self.df[train_columns].copy()
+        self.train_data = self._df[train_columns].copy()
         #print("\t power up info" )
         #powerUpInfo = t[['Exp1','Eyp1','Exp2','Eyp2']].copy()
         #powerUpInfo = powerUpInfo.apply(self._histo2DRow,axis = 1)
@@ -71,7 +70,7 @@ class trainer:
     
     def _set_target_data(self,columns):
         print("Setting target_data")
-        self.target_data = self.df[columns].copy()
+        self.target_data = self._df[columns].copy()
         self.target_data["VKey"] = self.target_data["VKey"].map(self._transformaEje)
         self.target_data["HKey"] = self.target_data["HKey"].map(self._transformaEje)
         self.target_data["Shooting"] = self.target_data["Shooting"].map(self._transformaDisparo)
@@ -134,16 +133,16 @@ class trainer:
             return 0
         
     def __str__(self):
-        return str(self.df)
+        return str(self._df)
 
 
 t = trainer()
 try:
-	t.load_file('gameStates.csv')
-	t.set_train_data(['Px', 'Py', 'heat', 'ray1','ray2','ray3','ray4','ray5','ray6','ray7','ray8','ray9','ray10','ray11','ray12','ray13','ray14','ray15','ray16','ray17','ray18','ray19','ray20','ray21','ray22','ray23','ray24','ray25','ray26','ray27'],["VKey","HKey","Shooting"])
-	t.train()
-	print(len(t.train_data.ix[10]))
-	t.save_forest("Forest.sav")
-	print("ok")
+    t.load_file('gameStates.csv')
+    t.set_train_data(['Px', 'Py', 'heat', 'ray1','ray2','ray3','ray4','ray5','ray6','ray7','ray8','ray9','ray10','ray11','ray12','ray13','ray14','ray15','ray16','ray17','ray18','ray19','ray20','ray21','ray22','ray23','ray24','ray25','ray26','ray27'],["VKey","HKey","Shooting"])
+    t.train()
+    print(len(t.train_data.ix[10]))
+    t.save_forest("Forest.sav")
+    print("ok")
 except:
-	print("Fail")
+    print("Fail")

@@ -37,6 +37,7 @@ public class GameOver : MonoBehaviour {
 
     void OnGameOver()
     {
+        sc.SetScore(sc.GetScore() - 1000);
         gameOverScreen.SetActive(true);
         gsc.gameObject.SetActive(false);
         gconfig.GameOver();

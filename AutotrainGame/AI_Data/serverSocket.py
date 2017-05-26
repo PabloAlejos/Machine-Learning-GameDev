@@ -6,11 +6,11 @@ from sklearn.ensemble import RandomForestClassifier
 
 class ServerSocket:
 
-    def __init__ (self,host,port):
+    def __init__ (self,host,port,clf="best1.sav"):
     	self._HOST = 'localhost'
-    	self._PORT = 8888              # Arbitrary non-privileged port
+    	self._PORT = 8888         # Arbitrary non-privileged port
     	#self._p = p.Predictor("randomForest.sav")
-    	self._p = p.classifier("pipe.sav")
+    	self._p = p.classifier(clf)
     	self._instancia = inst.instancia()
     	with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 	        
@@ -29,7 +29,6 @@ class ServerSocket:
 	        			data = conn.recv(1024)
 	        			#Llamar a getResult
 	        			arrayAtributos = data.decode("utf-8").split(',')
-	        			
 	        			retorno = self.getResult(arrayAtributos)
 	        			retorno = str(retorno)
 	        			conn.send(retorno.encode("utf-8"))
