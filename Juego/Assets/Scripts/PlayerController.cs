@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public GameObject[] guns;
     public GameObject gunsOP;
-    private float opTime = 0;
+    public float opTime = 0;
     [HideInInspector]
     public float heatValue = 0;
     float firing = 0;
@@ -32,9 +32,6 @@ public class PlayerController : MonoBehaviour
     public event PlayerInputDelegate playerShoot;
     public event PlayerInputDelegate playerHorizontal;
     public event PlayerInputDelegate PlayerVertical;
-
-
-
 
     SoundController sounds;
 
@@ -51,7 +48,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         movement = new Vector2(0, 0);
-
         lasHitKey = KeyCode.None;
         FindGuns();
     }
@@ -60,7 +56,6 @@ public class PlayerController : MonoBehaviour
     {
         firing = values.z;
         movement = new Vector2(values.x, values.y);
-
     }
 
     void Update()

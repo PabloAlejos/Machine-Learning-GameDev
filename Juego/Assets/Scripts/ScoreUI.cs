@@ -6,6 +6,7 @@ public class ScoreUI : MonoBehaviour {
 
     public Text scoreValue;
     public Text higScoreValue;
+    public Text iteration;
     private ScoreController sc;
 
 	// Use this for initialization

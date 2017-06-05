@@ -32,9 +32,7 @@ public class GameStateController : MonoBehaviour
         player.playerHorizontal += playerHorizontal; //Eventos para los controles Horizontales
         player.PlayerVertical += playerVertical; //Eventos para los controles verticales
         player.playerShoot += playerShooting;
-
         sfm = FindObjectOfType<StatesFileManager>(); //Encargado de escribir el estado en el csv
-
         nextStateRead = stateReadRate + Time.time;
         sc = FindObjectOfType<SocketController>();
 
@@ -64,20 +62,15 @@ public class GameStateController : MonoBehaviour
     void FixedUpdate()
     {
         GameState gs;
-        Enemy[] enemies;
-        PowerUp[] powerUps;
 
         if (Time.time > nextStateRead)
         {
             float[] enemiesProcedence = player.GetComponent<PlayerVision>().getSuroundingEnemies();
             int score = FindObjectOfType<ScoreController>().GetScore();
             heatValue = player.GetComponent<PlayerController>().heatValue;
-            enemies = MakeEnemyList();
-            powerUps = FindObjectsOfType<PowerUp>();
-
 
             Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-            gs = new GameState(GenerateTimeStamp(), playerPos, heatValue, powerUps, enemies,enemiesProcedence,score, VerticalInput, HorizontalInput, isShooting);
+            gs = new GameState(GenerateTimeStamp(), playerPos, heatValue, enemiesProcedence,score, VerticalInput, HorizontalInput, isShooting);
 
             ResetKeys();
 
@@ -91,14 +84,6 @@ public class GameStateController : MonoBehaviour
             }
             nextStateRead = stateReadRate + Time.time;
         }
-    }
-
-
-
-
-    private Enemy[] MakeEnemyList()
-    {
-        return FindObjectsOfType<Enemy>();
     }
 
 

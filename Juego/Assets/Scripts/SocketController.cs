@@ -30,32 +30,33 @@ public class SocketController : MonoBehaviour
     int processID;
     // Data buffer para el incoming data.
     byte[] bytes = new byte[1024];
-    char[] delimiterChars = { ',', '[', ']', '(', ')', ' ' };
+    char[] delimiterChars = { ',', '[', ']', '(', ')', ' ', '.' };
     [HideInInspector]
+    public string sPrueba;
 
-    public string[] sPrueba = new string[8] { " 0", "0", " 0", "0", " 0", "0", " 0", "0" };
 
+    float nextConnTry = 0;
 
     private void Start()
     {
+        nextConnTry = Time.time + 0.5f;
         connectedButton.image.color = Color.red;
-        RunSocketServer();
-        StartCoroutine(con());
+        //RunSocketServer();
     }
 
-    IEnumerator con()
+    void Update()
     {
-        while (!online)
+
+        if (online == false && Time.time > nextConnTry)
         {
             StartClient();
-            yield return null;
+            nextConnTry = Time.time + 0.3f;
         }
-        yield return null;
     }
 
     public void StartClient()
     {
-        if (!online)
+        if (online == false)
         {
             // Connect to a remote device.
             try
@@ -69,12 +70,10 @@ public class SocketController : MonoBehaviour
                 sender = new Socket(AddressFamily.InterNetwork,
                     SocketType.Stream, ProtocolType.Tcp);
 
-
-
                 // Connect the socket to the remote endpoint. Catch any errors.
                 try
                 {
-                    sender.Connect(ipAddress, 8888);
+                    sender.Connect("localhost", 8888);
                     sender.ReceiveTimeout = 1;
                     connectedButton.image.color = Color.green;
                     ConnectionText.text = ("Socket connected to  " +
@@ -118,9 +117,10 @@ public class SocketController : MonoBehaviour
         {
             // Send the data through the socket.
             sender.Send(msg);
-            sPrueba = receiveMessage().Split(delimiterChars);
+            sPrueba = receiveMessage();
+            UnityEngine.Debug.Log(sPrueba);
             returnText.text = retorno2string(sPrueba);
-            UnityEngine.Debug.Log(returnText.text);
+            //UnityEngine.Debug.Log(returnText.text);
 
         }
         catch (SocketException se)
@@ -158,7 +158,7 @@ public class SocketController : MonoBehaviour
         p = new Process();
         //Buscar id proseso para matarlo
         p.StartInfo.FileName = "python";
-        p.StartInfo.Arguments = ".\\MyPythonBot\\serverSocket.py";
+        p.StartInfo.Arguments = "serverSocket.py";
         p.StartInfo.CreateNoWindow = true;
         // Where the script lives
         p.StartInfo.WorkingDirectory = Application.dataPath;
@@ -167,7 +167,7 @@ public class SocketController : MonoBehaviour
         try
         {
             p.Start();
-            processID = Process.GetProcessesByName("python")[0].Id;
+            processID = p.Id;
             UnityEngine.Debug.Log(processID);
         }
         catch (SocketException e)
@@ -183,14 +183,14 @@ public class SocketController : MonoBehaviour
     //Mato el proceso de pythom
     void OnApplicationQuit()
     {
-        UnityEngine.Debug.Log("process-Kill on Quit");
+        //UnityEngine.Debug.Log("process-Kill on Quit");
         KillProcess();
     }
 
     //
     void OnDestroy()
     {
-        UnityEngine.Debug.Log("process-Kill on Destroy");
+        //UnityEngine.Debug.Log("process-Kill on Destroy");
         KillProcess();
     }
 
@@ -205,15 +205,17 @@ public class SocketController : MonoBehaviour
         }
     }
 
-    string retorno2string(string[] s)
+    string retorno2string(string s)
     {
+
+        String[] mi_string = s.Split(delimiterChars);
         StringBuilder sb = new StringBuilder();
+        sb.Append(mi_string[0]);
+        sb.Append(mi_string[1]);
+        sb.Append(mi_string[2]);
 
-        sb.Append(s[3]);
-        sb.Append(s[1]);
-        sb.Append(s[5]);
-
-        keyEvent(new Vector3(int.Parse(s[3]), int.Parse(s[1]), int.Parse(s[5])));
+        UnityEngine.Debug.Log(sb.ToString());
+        //keyEvent(new Vector3(Int32.Parse(mi_string[0]), Int32.Parse(mi_string[1]), Int32.Parse(mi_string[2])));
         return sb.ToString();
     }
 

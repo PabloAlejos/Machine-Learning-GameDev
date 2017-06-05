@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        FindObjectOfType<SoundController>();
+
+        sounds = FindObjectOfType<SoundController>();
     }
 
     void OnTriggerEnter(Collider other)

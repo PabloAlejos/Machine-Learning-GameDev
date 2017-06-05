@@ -7,7 +7,13 @@ public class ScoreController : MonoBehaviour
     private double score;
     public int highScore;
     string highScoreKey = "HighScore";
-    // Use this for initialization
+
+
+    void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     void Start()
     {
         FindObjectOfType<Player>().playerDeath += OnGameOver;
@@ -55,6 +61,8 @@ public class ScoreController : MonoBehaviour
     {
         score = value;
     }
+
+
 
 
 }

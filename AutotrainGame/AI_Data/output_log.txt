@@ -17,7 +17,7 @@ Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameD
 Loading C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.054 seconds
+- Completed reload, in  0.049 seconds
 Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
@@ -25,14 +25,14 @@ XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initialized touch support.
-UnloadTime: 1.810231 ms
+UnloadTime: 1.802903 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 8.718337 ms
+UnloadTime: 7.967181 ms
 
 Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 793.
-Total: 0.670528 ms (FindLiveObjects: 0.074774 ms CreateObjectMapping: 0.040075 ms MarkObjects: 0.529287 ms  DeleteObjects: 0.006842 ms)
+Total: 0.638273 ms (FindLiveObjects: 0.085038 ms CreateObjectMapping: 0.039586 ms MarkObjects: 0.500453 ms  DeleteObjects: 0.006842 ms)
 
-12020
+5612
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -61,14 +61,6 @@ IndexOutOfRangeException: Array index is out of range.
  
 (Filename:  Line: -1)
 
-SocketException :System.Net.Sockets.SocketException: Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder.
-
-  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
-  at SocketController.receiveMessage () [0x00000] in <filename unknown>:0 
-  at SocketController.SendMessage () [0x00000] in <filename unknown>:0 
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
 InvalidOperationException: Process has exited, so the requested information is not available.
   at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
   at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
@@ -81,7 +73,7 @@ InvalidOperationException: Process has exited, so the requested information is n
 (Filename:  Line: -1)
 
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 15c0 -> priority: 1 
+  Thread -> id: dc0 -> priority: 1 
 InvalidOperationException: Process has exited, so the requested information is not available.
   at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
   at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 

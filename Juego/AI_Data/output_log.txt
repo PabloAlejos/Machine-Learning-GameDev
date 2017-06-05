@@ -1,0 +1,63 @@
+Initialize engine version: 5.5.1f1 (88d00a7498cd)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 10.1]
+    Renderer: Intel(R) HD Graphics 3000 (ID=0x116)
+    Vendor:   Intel
+    VRAM:     848 MB
+    Driver:   9.17.10.4459
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\Juego\AI_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\Juego\AI_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\Juego\AI_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\Juego\AI_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\Juego\AI_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\Juego\AI_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\Juego\AI_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\Juego\AI_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\Juego\AI_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\Juego\AI_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+- Completed reload, in  0.195 seconds
+Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\Juego\AI_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\Juego\AI_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+desktop: 1366x768 60Hz; virtual: 3286x1297 at 0,-529
+<RI> Initialized touch support.
+UnloadTime: 2.087354 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 6.245934 ms
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 831.
+Total: 0.737000 ms (FindLiveObjects: 0.084549 ms CreateObjectMapping: 0.042519 ms MarkObjects: 0.588916 ms  DeleteObjects: 0.020526 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+ArgumentException: Can't find process with ID 0
+  at System.Diagnostics.Process.GetProcessById (Int32 processId) [0x00000] in <filename unknown>:0 
+  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
+  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+UnloadTime: 23.120220 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 834.
+Total: 1.319563 ms (FindLiveObjects: 0.108497 ms CreateObjectMapping: 0.041541 ms MarkObjects: 1.153396 ms  DeleteObjects: 0.014173 ms)
+
+ArgumentException: Can't find process with ID 0
+  at System.Diagnostics.Process.GetProcessById (Int32 processId) [0x00000] in <filename unknown>:0 
+  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
+  at SocketController.OnApplicationQuit () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 1c34 -> priority: 1 
+ArgumentException: Can't find process with ID 0
+  at System.Diagnostics.Process.GetProcessById (Int32 processId) [0x00000] in <filename unknown>:0 
+  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
+  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
