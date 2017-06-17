@@ -1,3 +1,4 @@
+import sys
 import socket
 import predictorMLP as p
 import instanciaMLP as inst
@@ -6,7 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 class ServerSocket:
 
-    def __init__ (self,host,port,clf="..\\pipe.sav"):
+    def __init__ (self,host,port,clf="pipe.sav"):
     	self._HOST = 'localhost'
     	self._PORT = 8888         # Arbitrary non-privileged port
     	#self._p = p.Predictor("randomForest.sav")
@@ -41,4 +42,8 @@ class ServerSocket:
     	return self._p.predict(self._instancia.get())
 
 if __name__ == "__main__":
-	s = ServerSocket('localhost',8888)
+	if (len(sys.argv) > 1 ):
+		s = ServerSocket('localhost',8888, sys.argv[1])
+	else:
+		s = ServerSocket('localhost',8888)
+	

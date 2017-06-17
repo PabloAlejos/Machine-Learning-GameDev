@@ -1,3 +1,4 @@
+import sys
 import socket
 import predictorMLP as p
 import instanciaMLP as inst
@@ -41,4 +42,4 @@ class ServerSocket:
     	return self._p.predict(self._instancia.get())
 
 if __name__ == "__main__":
-	s = ServerSocket('localhost',8888)
+	s = ServerSocket('localhost',8888,sys.argv[1])

@@ -10,6 +10,7 @@ public class GameConfig : MonoBehaviour
     public int nIterations = 5; // Numero de partidas que juega un individuo
     public int maxTime = 60; // Tiempo máximo de juego
     private int iteration = 0; // Iteración por la que se llega
+    private string clasiffier = ""; //clasificador
 
     private void Awake()
     {
@@ -20,46 +21,68 @@ public class GameConfig : MonoBehaviour
 
     void Start()
     {
-        if (arguments.Length != 0)
+        switch (arguments.Length)
         {
-            nIterations = Int32.Parse(arguments[1]);
-            maxTime = Int32.Parse(arguments[2]);
+            case 2:
+                nIterations = Int32.Parse(arguments[1]);
+                break;
+            case 3:
+                nIterations = Int32.Parse(arguments[1]);
+                maxTime = Int32.Parse(arguments[2]);
+                break;
+            case 4:
+                nIterations = Int32.Parse(arguments[1]);
+                maxTime = Int32.Parse(arguments[2]);
+                clasiffier = arguments[3];
+                break;
         }
-    }
-
-    public void Update()
-    {
-        if (Time.timeSinceLevelLoad > maxTime)
-        {
-            iteration++;
-            SceneManager.LoadScene(1);
-            checkEndGame();
-        }
-    }
+        
 
 
-    public void OnGameOver()
+
+           
+    
+
+}
+
+public void Update()
+{
+    if (Time.timeSinceLevelLoad > maxTime)
     {
         iteration++;
-        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"myData.csv", true))
-        {
-            file.WriteLine((FindObjectOfType<ScoreController>().GetScore() + 5 * Time.timeSinceLevelLoad).ToString());
-        }
+        SceneManager.LoadScene(1);
         checkEndGame();
     }
+}
 
-    public int getIteration()
+
+public void OnGameOver()
+{
+    iteration++;
+    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"myData.csv", true))
     {
-        return iteration;
+        file.WriteLine((FindObjectOfType<ScoreController>().GetScore() + 5 * Time.timeSinceLevelLoad).ToString());
     }
+    checkEndGame();
+}
 
-    public void checkEndGame()
+public int getIteration()
+{
+    return iteration;
+}
+
+public void checkEndGame()
+{
+    if (iteration >= nIterations)
     {
-        if (iteration >= nIterations)
-        {
-            Debug.Log("Quit!");
-            Application.Quit();
-        }
+        Debug.Log("Quit!");
+        Application.Quit();
+    }
+}
+
+    public String getClasiffier()
+    {
+        return clasiffier;
     }
 
 }

@@ -157,10 +157,11 @@ public class SocketController : MonoBehaviour
 
     public void RunSocketServer()
     {
+        String myArguments = "serverSocket.py" + " " + FindObjectOfType<GameConfig>().getClasiffier(); 
         p = new Process();
         //Buscar id proseso para matarlo
         p.StartInfo.FileName = "python";
-        p.StartInfo.Arguments = "serverSocket.py";
+        p.StartInfo.Arguments = myArguments;
         p.StartInfo.CreateNoWindow = true;
         // Where the script lives
         p.StartInfo.WorkingDirectory = Application.dataPath;
