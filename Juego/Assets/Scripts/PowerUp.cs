@@ -7,10 +7,15 @@ public class PowerUp : MonoBehaviour
 
     public int type;
     SoundController sounds;
+    public delegate void PowerUpEvent();
+    public event PowerUpEvent cool;
+    public event PowerUpEvent overPower;
+    
 
     void Start()
     {
         sounds = FindObjectOfType<SoundController>();
+        Player player = FindObjectOfType<Player>();
     }
 
     void Activate(int type)
@@ -25,11 +30,10 @@ public class PowerUp : MonoBehaviour
                 Destroy(gameObject);
                 break;
             case 2:
-                PlayerController p = FindObjectOfType<PlayerController>();
-                p.gunsOP.SetActive(true);
-                p.opTime = Time.time + 5;
+                //PlayerController p = FindObjectOfType<PlayerController>();
                 Destroy(gameObject);
                 break;
+
         }
 
     }

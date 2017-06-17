@@ -51,6 +51,7 @@ public class SoundController : MonoBehaviour
     void Start()
     {
         music = FindObjectOfType<Camera>().GetComponent<AudioSource>();
+        AudioListener.volume = 0;
     }
 
     // Update is called once per frame

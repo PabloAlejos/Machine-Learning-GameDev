@@ -213,7 +213,7 @@ MonoBehaviour:
   maxHealth: 2
   destroyAnimation: {fileID: 1844036726354142, guid: e9cbf1425f3aeba4ab7557d1c2807654,
     type: 2}
-  scorePoints: 1
+  scorePoints: 5
 --- !u!114 &114075015713951244
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 using System;
 
 public class GameOver : MonoBehaviour {
-    
+
+    public delegate void GameOverEvent();
+    public event GameOverEvent gameOverTrigger;
+
     public GameObject gameOverScreen;
     public Text score;
     bool gameOver;
@@ -15,11 +18,12 @@ public class GameOver : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        
         FindObjectOfType<ScoreController>().enabled = true;
         sc = FindObjectOfType<ScoreController>();
         gsc = FindObjectOfType<GameStateController>();
         FindObjectOfType<Player>().playerDeath += OnGameOver;
-        gconfig = FindObjectOfType<GameConfig>();
 	}
 	
     void Update()
@@ -40,8 +44,10 @@ public class GameOver : MonoBehaviour {
         sc.SetScore(sc.GetScore()-100);
         gameOverScreen.SetActive(true);
         gsc.gameObject.SetActive(false);
-        gconfig.GameOver();
         gameOver = true;
+        if (gameOverTrigger != null)
+            gameOverTrigger();
+        FindObjectOfType<GameConfig>().OnGameOver();
         SceneManager.LoadScene(1);
     }
 

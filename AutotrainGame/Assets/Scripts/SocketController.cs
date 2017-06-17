@@ -210,12 +210,16 @@ public class SocketController : MonoBehaviour
     string retorno2string(string[] s)
     {
         StringBuilder sb = new StringBuilder();
+        if (s.Length >= 5 )
+        {
+            sb.Append(s[3]);
+            sb.Append(s[1]);
+            sb.Append(s[5]);
+            keyEvent(new Vector3(int.Parse(s[3]), int.Parse(s[1]), int.Parse(s[5])));
+        }
 
-        sb.Append(s[3]);
-        sb.Append(s[1]);
-        sb.Append(s[5]);
 
-        keyEvent(new Vector3(int.Parse(s[3]), int.Parse(s[1]), int.Parse(s[5])));
+        
         return sb.ToString();
     }
 

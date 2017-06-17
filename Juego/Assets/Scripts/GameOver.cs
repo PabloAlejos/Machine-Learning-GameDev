@@ -19,7 +19,6 @@ public class GameOver : MonoBehaviour {
         sc = FindObjectOfType<ScoreController>();
         gsc = FindObjectOfType<GameStateController>();
         FindObjectOfType<Player>().playerDeath += OnGameOver;
-        gconfig = FindObjectOfType<GameConfig>();
 	}
 	
     void Update()
@@ -37,12 +36,11 @@ public class GameOver : MonoBehaviour {
 
     void OnGameOver()
     {
-        sc.SetScore(sc.GetScore() - 1000);
+        sc.SetScore(sc.GetScore()-100);
         gameOverScreen.SetActive(true);
         gsc.gameObject.SetActive(false);
-        gconfig.GameOver();
         gameOver = true;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
 }

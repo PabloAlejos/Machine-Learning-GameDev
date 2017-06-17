@@ -2,7 +2,7 @@ import pickle
 
 
 class classifier():
-    def __init__(self,pipeline="model.sav"):
+    def __init__(self,pipeline="pipe.sav"):
         self.pipe = pickle.load(open(pipeline, 'rb'))
     
     def predict(self,instancia):

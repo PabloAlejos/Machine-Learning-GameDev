@@ -10,7 +10,7 @@ class ServerSocket:
     	self._HOST = 'localhost'
     	self._PORT = 8888              # Arbitrary non-privileged port
     	#self._p = p.Predictor("randomForest.sav")
-    	self._p = p.classifier("Forest.sav")
+    	self._p = p.classifier("pipe.sav")
     	self._instancia = inst.instancia()
     	with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 	        
@@ -22,7 +22,7 @@ class ServerSocket:
 	        #Establece la conexión
 	        conn, addr = s.accept()
 	        with conn:
-	        	#conn.send(b"Conetado con exito")
+	        	conn.send(b"Conetado con exito")
 	        	print('Connected by', addr)
 	        	while True:
 	        		try:

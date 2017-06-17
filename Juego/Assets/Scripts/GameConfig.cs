@@ -49,7 +49,7 @@ public class GameConfig : MonoBehaviour
         Debug.Log(n);
         using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"myData.csv", true))
         {
-            file.WriteLine(FindObjectOfType<ScoreController>().GetScore().ToString());
+            file.WriteLine((FindObjectOfType<ScoreController>().GetScore() + 5 * Time.timeSinceLevelLoad).ToString());
         }
 
        

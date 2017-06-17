@@ -30,9 +30,10 @@ public class SocketController : MonoBehaviour
     int processID;
     // Data buffer para el incoming data.
     byte[] bytes = new byte[1024];
-    char[] delimiterChars = { ',', '[', ']', '(', ')', ' ', '.' };
+    char[] delimiterChars = { ',', '[', ']', '(', ')', ' ' };
     [HideInInspector]
-    public string sPrueba;
+
+    public string[] sPrueba = new string[8] { " 0", "0", " 0", "0", " 0", "0", " 0", "0" };
 
 
     float nextConnTry = 0;
@@ -41,7 +42,7 @@ public class SocketController : MonoBehaviour
     {
         nextConnTry = Time.time + 0.5f;
         connectedButton.image.color = Color.red;
-        //RunSocketServer();
+        RunSocketServer();
     }
 
     void Update()
@@ -52,6 +53,8 @@ public class SocketController : MonoBehaviour
             StartClient();
             nextConnTry = Time.time + 0.3f;
         }
+
+
     }
 
     public void StartClient()
@@ -117,8 +120,7 @@ public class SocketController : MonoBehaviour
         {
             // Send the data through the socket.
             sender.Send(msg);
-            sPrueba = receiveMessage();
-            UnityEngine.Debug.Log(sPrueba);
+            sPrueba = receiveMessage().Split(delimiterChars);
             returnText.text = retorno2string(sPrueba);
             //UnityEngine.Debug.Log(returnText.text);
 
@@ -205,17 +207,15 @@ public class SocketController : MonoBehaviour
         }
     }
 
-    string retorno2string(string s)
+    string retorno2string(string[] s)
     {
-
-        String[] mi_string = s.Split(delimiterChars);
         StringBuilder sb = new StringBuilder();
-        sb.Append(mi_string[0]);
-        sb.Append(mi_string[1]);
-        sb.Append(mi_string[2]);
 
-        UnityEngine.Debug.Log(sb.ToString());
-        //keyEvent(new Vector3(Int32.Parse(mi_string[0]), Int32.Parse(mi_string[1]), Int32.Parse(mi_string[2])));
+        sb.Append(s[3]);
+        sb.Append(s[1]);
+        sb.Append(s[5]);
+
+        keyEvent(new Vector3(int.Parse(s[3]), int.Parse(s[1]), int.Parse(s[5])));
         return sb.ToString();
     }
 

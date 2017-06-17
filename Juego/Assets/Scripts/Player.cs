@@ -17,8 +17,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-
-        sounds = FindObjectOfType<SoundController>();
+        FindObjectOfType<SoundController>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -28,7 +27,7 @@ public class Player : MonoBehaviour
         {
             playerDeath();
             Instantiate(destroyAnimation, transform.position, Quaternion.identity);
-            sounds.audio_playerExlosion.Play();
+            //sounds.audio_playerExlosion.Play();
             Destroy(gameObject);
             Destroy(other.gameObject);
         }

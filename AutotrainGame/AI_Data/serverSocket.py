@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 class ServerSocket:
 
-    def __init__ (self,host,port,clf="model.sav"):
+    def __init__ (self,host,port,clf="..\\pipe.sav"):
     	self._HOST = 'localhost'
     	self._PORT = 8888         # Arbitrary non-privileged port
     	#self._p = p.Predictor("randomForest.sav")

@@ -7,26 +7,30 @@ using System;
 public class GameState
 {
     private Vector2 playerPosition;
+    private Enemy[] enemies;
     private KeyCode VKey = KeyCode.None;
     private KeyCode HKey = KeyCode.None;
     string timeStamp = "";
     bool isShooting = false;
     private int maxEnemies = 6;
     private float HeatGunValue;
-    private float[] surroundingInfo;
+    private PowerUp[] powerUps;
+    private float[] surroundingEnemies;
     private int score;
 
 
-    public GameState(string timeStamp, Vector2 playerPosition, float HeatGunValue, float[] surroundingInfo, int score, KeyCode VKey, KeyCode HKey, bool isShooting)
+    public GameState(string timeStamp, Vector2 playerPosition, float HeatGunValue, PowerUp[] powerUps, Enemy[] enemies, float[] surroundingEnemies, int score, KeyCode VKey, KeyCode HKey, bool isShooting)
     {
 
         this.timeStamp = timeStamp;
         this.playerPosition = playerPosition;
         this.HeatGunValue = HeatGunValue;
+        this.powerUps = powerUps;
+        this.enemies = enemies;
         this.VKey = VKey;
         this.HKey = HKey;
         this.isShooting = isShooting;
-        this.surroundingInfo = surroundingInfo;
+        this.surroundingEnemies = surroundingEnemies;
         this.score = score;
 
     }
@@ -40,7 +44,9 @@ public class GameState
         sb.Append(timeStamp).Append(",");
         sb.Append(MakeValueCsvFriendly(playerPosition)).Append(",");
         sb.Append(HeatGunValue).Append(",");
-        sb.Append(MakeValueCsvFriendly(surroundingInfo));
+        sb.Append(MakeValueCsvFriendly(powerUps));
+        sb.Append(MakeValueCsvFriendly(enemies));
+        sb.Append(MakeValueCsvFriendly(surroundingEnemies));
         sb.Append(score).Append(",");
 
         sb.Append(MakeValueCsvFriendly(VKey)).Append(",");
@@ -64,12 +70,58 @@ public class GameState
             return ((Vector2)value).x.ToString("0.00") + "," + (((Vector2)value).y).ToString("0.00");
         }
 
+        if (value is PowerUp[])
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                if (i >= powerUps.Length)
+                {
+                    sb.Append(("999,999,"));
+                }
+                else
+                {
+                    if (powerUps[i] != null)
+                    {
+                        sb.Append(powerUps[0].transform.position.x).Append(",").Append(powerUps[0].transform.position.y).Append(",");
+                    }
+                }
+            }
+            return sb.ToString();
+        }
+
+
+
+        if (value is Enemy[])
+        {
+            for (int i = 0; i < maxEnemies; i++)
+            {
+                if (i >= enemies.Length)
+                {
+                    sb.Append(("999.00")).Append(',');
+                    sb.Append(("999.00")).Append(',');
+                    sb.Append("0").Append(",");
+                }
+                else
+                {
+                    if (enemies[i] != null)
+                    {
+                        sb.Append(MakeValueCsvFriendly((Vector2)enemies[i].transform.position)).Append(",");
+                        sb.Append(MakeValueCsvFriendly(enemies[i].health)).Append(",");
+                    }
+
+                    else
+                        sb.Append(MakeValueCsvFriendly(enemies[i])).Append(",");
+                }
+
+            }
+            return sb.ToString();
+        }
 
         if (value is float[])
         {
-            for (int i = 0; i < surroundingInfo.Length; i++)
+            for (int i = 0; i < surroundingEnemies.Length; i++)
             {
-                    sb.Append(surroundingInfo[i].ToString("0.00"));
+                    sb.Append(surroundingEnemies[i].ToString("0.00"));
                     sb.Append(",");
             }
             return sb.ToString();
