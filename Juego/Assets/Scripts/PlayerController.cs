@@ -41,8 +41,6 @@ public class PlayerController : MonoBehaviour
     //Se ejecuta antes de todo
     void Awake()
     {
-        FindObjectOfType<SocketController>().keyEvent += keypress;
-        FindObjectOfType<SocketController>().ToggleOnline += toogleOnlineSocket;
         sounds = FindObjectOfType<SoundController>();
         opTime = 0;
         Time.timeScale = 1;

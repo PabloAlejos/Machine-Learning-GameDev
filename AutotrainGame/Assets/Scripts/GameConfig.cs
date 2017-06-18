@@ -49,9 +49,9 @@ public void Update()
 {
     if (Time.timeSinceLevelLoad > maxTime)
     {
-        iteration++;
+        OnGameOver();
         SceneManager.LoadScene(1);
-        checkEndGame();
+        
     }
 }
 

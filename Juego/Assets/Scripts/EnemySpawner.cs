@@ -27,23 +27,23 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        Random.InitState(2400);
+        Random.InitState(1600);
         nextBossSpawnTime = Time.time + BossSpawnRateiInSecs;
         nextSpawnTime = Time.time + SpwanRate / 10;
         nextWave = 5;
+        maxEnemiesOnScreen = Mathf.FloorToInt((Random.value * MAX_ENEMIES) + 2);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-
-        float xPos = Random.Range(transform.position.x - 2.5f, transform.position.x + 2.5f);
+        float xPos = (Random.value * 2.5f) - 2.5f;
+        //float xPos = Random.Range(transform.position.x - 2.5f, transform.position.x + 2.5f);
         Vector3 spawnPosition = new Vector3(xPos, transform.position.y, transform.position.z);
 
         if (Time.time > nextSpawnTime && CountenemiesOnScreen() <= maxEnemiesOnScreen)
         {
-
             if (!bossSpawn)
             {
                 GameObject enemy = (GameObject)Instantiate(randomEnemy(), spawnPosition, Quaternion.identity);
@@ -61,13 +61,16 @@ public class EnemySpawner : MonoBehaviour
                 bossSpawn = false;
             }
             //Hay cierta probabilidad de que aparezca un power up a la vez que un enemigo
-            SpawnPowerUp();
+            //Queda pendiente la implementación de powerUps
+            //SpawnPowerUp();
         }
 
         //Voy cambiando el máximo de enemigos en patalla para dar un respiro al jugador
         if (Time.time > nextWave)
         {
-            maxEnemiesOnScreen = Random.Range(2, MAX_ENEMIES);
+
+            maxEnemiesOnScreen = Mathf.FloorToInt((Random.value * MAX_ENEMIES) + 2);
+            //maxEnemiesOnScreen = Random.Range(2, MAX_ENEMIES);
             nextWave = Time.time + 2;
         }
 
@@ -82,7 +85,14 @@ public class EnemySpawner : MonoBehaviour
     //Elige un enemigo al azar de la lista
     private GameObject randomEnemy()
     {
-        return enemies[Random.Range(0, enemies.Length)];
+        if (Random.value < 0.1f)
+        {
+            return enemies[1];
+        }
+        else
+        {
+            return enemies[0];
+        }
     }
 
     private int CountenemiesOnScreen()
@@ -90,7 +100,7 @@ public class EnemySpawner : MonoBehaviour
         return FindObjectsOfType<Enemy>().Length;
     }
 
-
+    /*
     //Probabilidad dinámica de aparición de power ups ( A mas tiempo mas facil es que salga)
     void SpawnPowerUp()
     {
@@ -107,5 +117,5 @@ public class EnemySpawner : MonoBehaviour
             PowerUpChance += 0.5f;
         }
 
-    }
+    }*/
 }

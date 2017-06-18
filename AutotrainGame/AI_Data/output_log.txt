@@ -17,7 +17,7 @@ Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameD
 Loading C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.048 seconds
+- Completed reload, in  0.049 seconds
 Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\AutotrainGame\AI_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
@@ -25,14 +25,14 @@ XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initialized touch support.
-UnloadTime: 1.911406 ms
+UnloadTime: 2.274530 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 8.793155 ms
+UnloadTime: 7.025433 ms
 
 Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 746.
-Total: 0.611884 ms (FindLiveObjects: 0.058647 ms CreateObjectMapping: 0.041541 ms MarkObjects: 0.498500 ms  DeleteObjects: 0.009285 ms)
+Total: 0.538575 ms (FindLiveObjects: 0.070865 ms CreateObjectMapping: 0.039098 ms MarkObjects: 0.416394 ms  DeleteObjects: 0.006842 ms)
 
-1104
+9960
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -54,142 +54,6 @@ SocketException : {0}System.Net.Sockets.SocketException: No se puede establecer 
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-NullReferenceException: Object reference not set to an instance of an object
-  at TextUI.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-InvalidOperationException: Process has exited, so the requested information is not available.
-  at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
-  at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
-  at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
-  at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
-  at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
-  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
-  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-UnloadTime: 11.527086 ms
-
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 781.
-Total: 1.330800 ms (FindLiveObjects: 0.087970 ms CreateObjectMapping: 0.065000 ms MarkObjects: 1.157302 ms  DeleteObjects: 0.018571 ms)
-
-5932
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-127.0.0.1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-SocketException : {0}System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
-
-  at System.Net.Sockets.Socket.Connect (System.Net.IPAddress[] addresses, Int32 port) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket.Connect (System.String host, Int32 port) [0x00000] in <filename unknown>:0 
-  at SocketController.StartClient () [0x00000] in <filename unknown>:0 
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-127.0.0.1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at TextUI.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-InvalidOperationException: Process has exited, so the requested information is not available.
-  at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
-  at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
-  at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
-  at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
-  at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
-  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
-  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-UnloadTime: 9.919667 ms
-
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 781.
-Total: 1.965166 ms (FindLiveObjects: 0.171542 ms CreateObjectMapping: 0.092369 ms MarkObjects: 1.672908 ms  DeleteObjects: 0.026391 ms)
-
-3368
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-127.0.0.1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-SocketException : {0}System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
-
-  at System.Net.Sockets.Socket.Connect (System.Net.IPAddress[] addresses, Int32 port) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket.Connect (System.String host, Int32 port) [0x00000] in <filename unknown>:0 
-  at SocketController.StartClient () [0x00000] in <filename unknown>:0 
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-127.0.0.1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at TextUI.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-InvalidOperationException: Process has exited, so the requested information is not available.
-  at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
-  at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
-  at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
-  at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
-  at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
-  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
-  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-UnloadTime: 13.004016 ms
-
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 781.
-Total: 1.715427 ms (FindLiveObjects: 0.160790 ms CreateObjectMapping: 0.095301 ms MarkObjects: 1.435876 ms  DeleteObjects: 0.021503 ms)
-
-5396
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-127.0.0.1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-SocketException : {0}System.Net.Sockets.SocketException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
-
-  at System.Net.Sockets.Socket.Connect (System.Net.IPAddress[] addresses, Int32 port) [0x00000] in <filename unknown>:0 
-  at System.Net.Sockets.Socket.Connect (System.String host, Int32 port) [0x00000] in <filename unknown>:0 
-  at SocketController.StartClient () [0x00000] in <filename unknown>:0 
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-127.0.0.1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Quit!
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at TextUI.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
 InvalidOperationException: Process has exited, so the requested information is not available.
   at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
   at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
@@ -201,26 +65,14 @@ InvalidOperationException: Process has exited, so the requested information is n
  
 (Filename:  Line: -1)
 
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 2670 -> priority: 1 
 InvalidOperationException: Process has exited, so the requested information is not available.
   at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
   at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
   at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
   at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
   at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
-  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
-  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-UnloadTime: 9.300451 ms
-
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 781.
-Total: 1.099633 ms (FindLiveObjects: 0.092369 ms CreateObjectMapping: 0.039586 ms MarkObjects: 0.949105 ms  DeleteObjects: 0.016616 ms)
-
-Setting up 1 worker threads for Enlighten.
-  Thread -> id: 141c -> priority: 1 
-ArgumentException: Can't find process with ID 0
-  at System.Diagnostics.Process.GetProcessById (Int32 processId) [0x00000] in <filename unknown>:0 
   at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
   at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
  

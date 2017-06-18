@@ -12,7 +12,6 @@ public class GameStateController : MonoBehaviour
     //Controladores
     private StatesFileManager sfm;
     private PlayerController player;
-    private SocketController sc;
 
     private float heatValue;
 
@@ -36,8 +35,6 @@ public class GameStateController : MonoBehaviour
         sfm = FindObjectOfType<StatesFileManager>(); //Encargado de escribir el estado en el csv
 
         nextStateRead = stateReadRate + Time.time;
-        sc = FindObjectOfType<SocketController>();
-
         //Inicialización del input
         ResetKeys();
 
@@ -77,18 +74,12 @@ public class GameStateController : MonoBehaviour
 
 
             Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-            gs = new GameState(GenerateTimeStamp(), playerPos, heatValue, powerUps, enemies,enemiesProcedence,score, VerticalInput, HorizontalInput, isShooting);
+            gs = new GameState(GenerateTimeStamp(), playerPos, heatValue, powerUps, enemies, enemiesProcedence, score, VerticalInput, HorizontalInput, isShooting);
 
             ResetKeys();
 
             if (recordStates)
                 sfm.AddState(gs.State2csv());
-
-            if (sc.online)
-            {
-                sc.SetMsg(gs.State2csv());
-                sc.SendMessage();
-            }
             nextStateRead = stateReadRate + Time.time;
         }
     }

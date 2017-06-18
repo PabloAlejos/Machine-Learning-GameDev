@@ -12,10 +12,9 @@ public class DropItems : MonoBehaviour
     void OnDestroy()
     {
 
-        for (int i = 0; i < 3; i++)
-        {
-            Instantiate(drop, transform.position, Quaternion.identity);
-        }
+
+        Instantiate(drop, transform.position, Quaternion.identity);
+
     }
 
 }

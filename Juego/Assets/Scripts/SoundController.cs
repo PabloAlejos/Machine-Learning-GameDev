@@ -50,8 +50,24 @@ public class SoundController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if (!PlayerPrefs.HasKey("musicVol"))
+        {
+            PlayerPrefs.SetInt("musicVol", 1);
+        }
+        else
+        {
+            AudioListener.volume = PlayerPrefs.GetInt("musicVol");
+        }
         music = FindObjectOfType<Camera>().GetComponent<AudioSource>();
-        AudioListener.volume = 0;
+
+        if (AudioListener.volume != 0)
+        {
+            muteText.text = "On";
+        }
+        else
+        {
+            muteText.text = "Off";
+        }
     }
 
     // Update is called once per frame
@@ -63,17 +79,21 @@ public class SoundController : MonoBehaviour
         }
     }
 
+
+
     public void MuteMusic()
     {
-        if (music.mute)
+        if (AudioListener.volume == 0)
         {
-            music.mute = false;
+            PlayerPrefs.SetInt("musicVol",1);
+            AudioListener.volume = 1;
             muteText.text = "On";
 
         }
         else
         {
-            music.mute = true;
+            PlayerPrefs.SetInt("musicVol", 0);
+            AudioListener.volume = 0;
             muteText.text = "Off";
         }
 
