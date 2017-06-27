@@ -1,0 +1,212 @@
+\capitulo{5}{Aspectos relevantes del desarrollo del proyecto}
+
+
+\section{Descripción del juego}
+
+\subsection{Introducción}
+Para entender todo el proceso de entrenamiento del bot inteligente que voy a implementar considero necesario entender el funcionamiento y reglas del juego así como ciertas particularidades relacionadas con la captura y uso de datos.
+\subsection{Diseño de reglas y desarrollo del juego}
+
+El juego va a ser un ``mata-marcianos" de tipo arcade, un juego infinito en el que el jugador aspira a alcanzar la máxima puntuación de forma individual. Este tipo de juegos era típico de los salones recreativos y centros comerciales. En este caso nos ponemos a los mandos de una nave espacial que ha de evitar que los enemigos invasores traspasen la zona inferior de la pantalla (nuestro territorio). Los enemigos aparecen en oleadas y se limitan a avanzar oscilando hacia su objetivo. El jugador ha de eliminar el máximo numero de enemigos posibles sin impactar contra ellos\footnote{Está era una limitación inicial ya que en futuras iteraciones se implementa un método que hace irrelevante el número de enemigos. }. Cuanto menos se acerquen a la zona inferior de la pantalla mayor será la puntuación que otorgue su eliminación. Si los enemigos llegan a nuestro territorio restarán una cantidad fija de puntos, por lo que nuestra puntuación final se verá notablemente mermada.
+
+
+
+En el apartado gráfico se optó por un aire retro, algo que recordase a las primeras máquinas arcade o consolas de videojuegos. En primer lugar me decanté por imitar el estilo de la Game Boy, consola que triunfó en los 90. Para ello se seleccionó una paleta de colores que recordase a los gráficos de la época. Para el jugador y los enemigos se utilizó un pack de Sprites gratuito de la tienda de Unity3D.\footnote{Estos Sprites solo se utilizaron en la versión inicial, mas adelante son sustituidos por unos nuevos hechos por mí.}
+
+\begin{figure}[]
+\centering
+\includegraphics[width=0.1\textwidth]{./img/paleta_de_colores}
+\caption{Paleta de colores}
+\end{figure}
+
+\begin{figure}[]
+\centering
+\includegraphics[width=0.5\textwidth]{./img/ifaz_v1}
+\caption{Interfaz. Versión 1}
+\end{figure}
+
+\subsection{Evolución de las reglas del juego}
+
+Ya tenía la primera versión lista para jugar. En este punto se decidió establecer unas reglas un poco mas ``especiales'' para simplificar el proceso. En primer lugar, los enemigos no atacan al jugador con ningún tipo de proyectil, se limitan a avanzar oscilando a una velocidad constante. Por otro lado, se limitará el número\ de enemigos visibles simultáneamente en la pantalla con el fin de poder hacen una instancia de tamaño constante y no perder enemigos en la captura de datos. Para darle un podo de dinamismo y evitar que el jugador deje pulsada la tecla de disparo infinitamente, se ha implementado un sistema de calentamiento del arma. Este sistema hace que los disparos consecutivos calienten el arma y si no se dispara, se enfríe lentamente. Si el arma llega al máximo de temperatura dejará de disparar. El sistema de calentamiento del arma dio lugar a la idea de implementar unos ``power-up'' o potenciadores. Estos serán de dos tipos, uno enfría de golpe el arma una determinada cantidad y otro duplica en numero de balas disparadas simultáneamente. Esto, como se describirá mas adelante, condicionará la estructura de las instancias.
+
+Como última aclaración los ``sujetos de prueba", a los que el agente inteligente deberá imitar, se aburrían jugándolo, por lo que se introdujo un Jefe que tendría una enorme cantidad de vida. Este Jefe aparecerá una vez por minuto jugado y restará muchos más puntos que los enemigos estándar. La eliminación de este tipo de enemigo conlleva un gran calentamiento del arma y, por tanto, un estrés añadido al jugador, que tendrá estar listo en todo momento para este tipo de combate.
+
+\subsection{Evolución del interfaz gráfica}
+La primera versión de la interfaz del juego tenía una aspect ratio  de 5:3, lo que no le hacía agradable a la vista ni dejaba espacio para otros elementos elementos de la interfaz. Por este motivo se decidió revisar el diseño inicial.
+
+Se diseñó un menú principal que dejaba elegir entre empezar a jugar o salir del juego. Ésta pantalla fue diseñada por el ilustrador Luis G. Contreras. Para la interfaz del juego se amplió la paleta de colores, dejando de lado el aspecto Game Boy pero manteniendo un aire retro.
+
+
+\begin{figure}[]
+\centering
+\includegraphics[width=0.8\textwidth]{./img/UnityIfaz}
+\caption{Interfaz de desarrollo Unity3D}
+\end{figure}
+
+
+\begin{figure}[]
+\centering
+\includegraphics[width=0.8\textwidth]{./img/ifaz_v2}
+\caption{Evolución de diseño de la interfaz}
+\end{figure}
+
+\section{Comunicación entre Scripts}
+
+\subsection{introducción}
+Para el desarrollo del proyecto se han utilizado dos lenguajes de programación. Por un lado c\#, que ha sido el lenguaje más utilizado durante años para el desarrollo de videojuegos, por otro, python, que es el lenguaje en el que están las librerías utilizadas para el entrenamiento de nuestro sistema inteligente. Por este motivo, era necesario encontrar la forma de que el juego pudiera ejecutar los scripts de python, además de pasarle la correspondiente información. El proceso de comunicación ha sido uno de los puntos que mas problemas me ha dado a lo largo del desarrollo del proyecto, ya que hubo que probar varias alternativas hasta dar con la correcta.
+
+\subsection{Pythonet}
+En primer lugar estudié la posibilidad de integrar python en c\#, de tal forma que pudiese ejecutar pequeños scripts de python dentro de mi código en c\#. Para esta integración se probé a utilizar pythonet. Pythonet, como pone en su pagina web\footnote{https://github.com/pythonnet/pythonnet}, permitiría a python interactuar con el CLR\footnote{CLR: ( Common Language Runtime) Máquina virtual de .net que controla la ejecución del le srcipts .net} de .net e incrustar código python en .net. Tras numerosas pruebas no hubo forma de ejecutar una sola línea de python desde un script monobehaviour. MonoBehaviour es la clase maestra de la que heredan todos los scripts de unity. Esta clase proporciona las fuciones necesarias para la ejecución del juego. Las funciones elementales son Start() y Update(), pero disponemos de muchas más. 
+
+
+\subsection{IronPython}
+La siguiente herramienta con la que se estuvo trabajando fue IronPython. IronPython prometía unas utilidades muy similares a Pythonet, o incluso mejores, pero tras varias horas de lectura de la documentación encuentro algo que tira por tierra mis expectativas, Ironpython aun no es compatible al cien por cien con Scikit-learn.
+
+\subsection{Pipes o tuberías}
+Comienza una nuevas vía de investigación, era el turno de los pipes (o tuberías) de python. En internet no había demasiada información y la poca que había no era muy clara, pero aún así me puse manos a la obra y a las pocas horas ya tenía dos scripts de python comunicándose entre ellos. Bien, ahora solo quedaba que se comunicase con mi aplicación en .net. Este ultimo paso no hubo forma de llevarlo a cabo, no conseguí que ambas aplicaciones intercambiasen mensajes de forma correcta.
+
+\subsection{Sockets}
+Finalmente me decanté por utilizar, o bien WebServices, o bien sockets. Como la opción de los sockets me parecía en principio mas sencilla me puse manos a la obra. Primero hice un servidor de sockets y un cliente en python, y funcionó. El script era sencillo, un simple eco, cuando alguien se conectaba enviaba de vuelta toda la información que recibiese. El siguiente pasó lógico era hacer lo propio en .net, y funcionó, ya tenía las aplicaciones intercambiando mensajes.
+
+El funcionamiento final consiste en un script de python que al ejecutarse abre un socket anónimo que se queda a la espera de una conexión, cuando alguien se conecta empieza a escuchar y procesar todos los mensajes que le llegan pasándoselos al modelo del sistema inteligente, una vez procesados, por la misma vía responde con el resultado calculado.
+
+
+\section{Definiendo las instancias}
+
+Para dotar a la máquina de la capacidad de aprender es necesario, como en el aprendizaje de los seres humanos, una serie de estímulos. Estos estímulos, en mi caso, se traducen en una serie de estados o instancias. Para todas la pruebas iniciales se empezó utilizando un clasificador Random forest\footnote{Al poco tiempo se descartó la validación cruzada ya que en la teoría rozaba el 97\% de acierto y en la práctica se alejaba mucho de la realidad y , por lo tanto, no nos sirve para validar con qué eficacia imita al humano}.
+
+Para empezar se comenzó seleccionando los que parecían mas relevantes, como la posición absoluta del jugador y la posición absoluta de los enemigos  en el campo de batalla. Solo formaba parte de la clase la última tecla pulsada por el usuario, que podía ser Arriba, Abajo, Izquierda, Derecha, Disparo o No disparo. Para entrenar un agente en número de atributos de entrada debe ser inmutable, por lo que se estableció un máximo de cuatro enemigos en pantalla de forma simultánea. Dado que yo estaba programando el videojuego yo tenía el control absoluto de todas las variables.
+
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{c}
+\includegraphics[width=\textwidth]{../img/tabla1-estados1}
+    \end{tabular}
+    \caption{Tercera versión Instancia}
+    \label{tab:my_label}
+\end{table}
+
+Tras un primer entrenamiento, con un numero no muy alto de instancias (~4000) los resultados no eran muy satisfactorios. En siguiente iteración se observó que había otro parámetro más que nos podría ayudar a tomar decisiones, la vida del enemigo.
+
+
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{c}
+\includegraphics[width=\textwidth]{../img/tabla2-estados2}
+    \end{tabular}
+    \caption{Tercera versión Instancia}
+    \label{tab:my_label}
+\end{table}
+
+
+De forma paralela se iban realizado tests de jugabilidad con diferentes usuarios, dado que el arma se calentaba rápidamente, se optó por introducir en el juego los powerups. Llegados a este punto se decidió seguir aumentando el número de atributos con el fin de extraer toda la información que podría tener un humano de la partida. Así que ahora la instancia tendrá también la posición absoluta de los powerup. 
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{c}
+\includegraphics[width=\textwidth]{../img/tabla3-estados3}
+    \end{tabular}
+    \caption{Tercera versión Instancia}
+    \label{tab:my_label}
+\end{table}
+    
+
+
+La posición de los enemigos, como se puede ver en las ilustraciones adjuntas, venían dados por posiciónX, posicionY y vida restante. Para facilitar al modelo la clasificación lo que hago el crear un ``heat-map'' con las posiciones de los enemigos en una matriz. Este heat-map o mapa de densidad proporciona la información de la cantidad de enemigos que hay en un un sector concreto. Pudiendo establecer el tamaño... 
+
+\begin{figure}[!tbp]
+  \centering
+  \includegraphics[width=0.35\textwidth]{../img/enemies_heat_map}\label{fig:f1}
+  \hfill
+\includegraphics[width=0.43\textwidth]{../img/enemies_heat_map_1}\label{fig:f2}
+  \caption{Heat-maps con diferentes garnularidades}
+\end{figure}
+
+
+
+Ya tenía definidas las instancias con las que empezarían mis primeros entrenamientos. Esta vez comencé con un dataset con menos de 1000 entradas y los resultados seguía siendo muy mejorables, la aletoreidad de los movimientos era evidente. ¿Qué parámetros estaba teniendo yo en cuenta que no le estaba transmitiendo la instancia? La respuesta es ``el tiempo". Yo, cuando jugaba, era consciente de varios atributos que no eran plasmables en una ``Fotografía", que es lo que venía siendo la instancia hasta ahora. Así que para esto se seleccionaron grupos de n instancias consecutivas y se concatenaron para formar una nueva instancia n veces la inicial. Los atributos de mi nueva instancia serían ahora:
+
+[instanciaT-n...instanciaT-2 instanciaT-1 instanciaActual][clases actuales]
+
+En esta primera concatenación los resultados mejoraron notablemente. El juego se movía por fin de una forma aceptable. Aún así se decidió incluir en la instancia los movimientos realizados en las acciones anteriores, ya que se pensó que puede que también fuese relevante.
+
+Se realizaron entrenamientos de prueba con varios dataSet y se observó un problema común en todas la iteraciones. Cuando se acercaba a los bordes del terreno de juego dejaba de responder correctamente, realizando movimientos aleatorios llegando incluso a dejar de actuar totalmente. El problema residía en la forma de jugar del los usuarios.
+
+
+\imagen{posJugA}{Posiciones del jugador}
+
+Los jugadores humanos tienden, como es lógico, a jugar en el centro de la pantalla, por lo que en el centro de la pantalla se tienen muchas referencias, pero en los bordes eran casi nulas.
+
+En este punto hay un cambio radical en la estructura de las instancias. Ya que una posicion absoluta del jugador y los enemigos da lugar a esados únicos muy amplios. Decidí que una buena forma de reducir esta gran cantidad de estados únicos es trabajar con la distancia relativa del jugador a los diferentes enemigos. 
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{c|c|c|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{C0C0C0}Tipo}                                           & Atributos                                                                                             & Total \\ \hline
+\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Información \\     del jugador\end{tabular}} & \begin{tabular}[c]{@{}c@{}}PosisiónX,\\      PosiciónY,\\      Temperatura del arma\end{tabular}      & 3     \\ \hline
+\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Información \\     del enemigo\end{tabular}} & \begin{tabular}[c]{@{}c@{}}PosX 1-6\\     PosY 1-6\\     Vida restante 1-6\end{tabular}               & 18    \\ \hline
+\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Información\\ Power-Up\end{tabular}}         & \begin{tabular}[c]{@{}c@{}}PowerUp1 PosX\\ PowerUp1 PosY\\ PowerUp2 PosX\\ PowerUp2 PosY\end{tabular} & 4     \\ \hline
+\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Otra\\   información\end{tabular}}           & \begin{tabular}[c]{@{}c@{}}TimeStamp\\     Score\end{tabular}                                         & 2     \\ \hline
+\multicolumn{1}{|c|}{Clases}                                                                 & \begin{tabular}[c]{@{}c@{}}Arriba-Abajo\\     Izquierda-Derecha\\     Dispara-NoDispara\end{tabular}  & 3     \\ \hline
+                                                                                             & Total                                                                                                 & 30    \\ \cline{2-3} 
+\end{tabular}
+\caption{Cuarta versión Instancia}
+\label{my-label}
+\end{table}
+
+
+\section{``visión" del bot}
+
+La representación por la que me decanté finalmente fue la que almacenaba la distancia relativa a los diferentes enemigos. Para obtener una cantidad de atributos constante lo que se hizo fue definir una serie de rayos procedentes del jugador como se ve en la ilustración.
+
+
+\imagen{playerView}{Visión del Bot}
+
+Para obtener la información se irán haciendo barridos cada 0.25 segundos. Si el rayo impacta contra un enemigo se almacenará la distancia en línea recta al mismo. si el rayo no impacta contra nada, se insertará un valor numérico especial para indicar la ausencia de información. Ésta última aproximación tiene la ventaja de que nos va a ser indiferente la cantidad de enemigos en pantalla, ya que lo que almaceno el la presencia o no de los mismos en mi campo visual. Por otro lado tiene el inconveniente de que un enemigo me puede ocultar la presencia de otro que se encuentre detrás y que, hasta que este primero no sea destruido, no nos va a ser posible conocer más información.
+
+Finalmente tenemos una instancia con mucha información, de la cual podemos seleccionar qué atributos vamos a utilizar y cuales no.
+
+\begin{table}[]
+\centering
+\begin{tabular}{c|c|c|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{C0C0C0}Tipo}                                           & Atributos                                                                                                      & Total                   \\ \hline
+\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Información \\     del jugador\end{tabular}} & \begin{tabular}[c]{@{}c@{}}PosisiónX,\\      PosiciónY,\\      Temperatura del arma\end{tabular}               & 3                       \\ \hline
+\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Información \\     del enemigo\end{tabular}} & \begin{tabular}[c]{@{}c@{}}PosX\\   1-6\\     PosY 1-6\\     Vida restante 1-6\\     Raycast 1-27\end{tabular} & 45                      \\ \hline
+\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Otra\\   información\end{tabular}}           & \begin{tabular}[c]{@{}c@{}}TimeStamp\\     Score\end{tabular}                                                  & 2                       \\ \hline
+\multicolumn{1}{|c|}{Clases}                                                                 & \begin{tabular}[c]{@{}c@{}}Arriba-Abajo\\     Izquierda-Derecha\\     Dispara-NoDispara\end{tabular}           & 3                       \\ \hline
+\multicolumn{1}{l|}{}                                                                        & \multicolumn{1}{l|}{Total}                                                                                     & \multicolumn{1}{l|}{53} \\ \cline{2-3} 
+\end{tabular}
+\caption{Quinta versión Instancia (Final)}
+\label{my-label}
+\end{table}
+
+
+\section{Entrenamiento}
+Una vez tenemos definido el tipo de instancia y el conjunto de datos con los que vamos a trabajar procedemos a entrenar el modelo del agente inteligente. Se optó por empezar entrenando un clasificador sencillo, un clasificador que nos permitiese saber hasta dónde podría llegar, ya que en un primcipio desconocía por completo las herramientas de aprendizaje máquina.
+
+\subsection{Entrenamiento con árboles de decisión}
+
+La primera opción barajada fueron los árboles de decisión. Este es uno de los muchos clasificadores que nos proporciona la librería sicikit-learn. Se utilizaron dos tipos de clasificador, un de árbol de decisión (Decission Tree) y un Random-forest. 
+
+ La implementación de este modelo consta de varios scripts de python que realizarán las tareas de entrenamiento, procesado de instancias y predicción. En el apartado de entrenamiento ambos tienen una implementación idéntica, sólo vamos a cambiar la invocación al un método u otro a la hora de generar el modelo.
+ 
+ 
+
+\subsection{Entrenamiento con algoritmo evolutivo}
+
+En primer lugar, nuestra idea era evolucionar un modelo entrenado para que funcionase por imitación, por este motivo se comenzó utilizando conjunto de datos utilizado en los casos anteriores para entrenar un perceptrón multicapa (MLP).
+
+Los primeros entrenamientos se realizaron con los parámetros por defecto del MLP que nos proporciona la librería sckit-learn. Los resultados de estos entrenamientos eran desastrosos por lo que se procedió a realizar un calibrado de parámetros del MLP. 
+
+Para el calibrado de parámetros se utilizó una de las herramientas que nos ofrece scikit-learn. De las dos fórmulas que nos ofrece me decanté por el Randomized Parameter Optimization. Ésta herramienta lo que hace es que, dados unas posibilidade de determinados parámetros, él los va combinado y probando aleatoriamente, de manera que finalmente te indique cuál ha dado mejores resultados. No podemos tener la certeza de que esa combinación de parámetros vaya a ser la mejor, pero ahorra tiempo.
+
+Una vez calibrados los parámetros del MLP se procede a la neuroevolución de la red. 
+
+\subsection{Bot de Telegram}
