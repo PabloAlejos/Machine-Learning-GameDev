@@ -2,26 +2,27 @@
 
 Para la realización de este proyecto se han empleado las siguientes herramientas:
 
-\Section{Photoshop}
+\section{Photoshop}
 Photoshop es un software profesional de edición fotográfica. El mi proyecto ha sido utilizado para dibujar toda la interfaz gráfica de juego.
 
-\Section{Visual Studio}
+\section{Visual Studio}
 Visual Studio  es un IDE de Microsoft que sirve para desarrollar aplicaciones para múltiples plataformas. Este IDE ha sido utilizado para escribir el código en c# correspondiente a la funcionalodad del videojuego.
 
-\Section{Scikit-Learn}
-\cite{scikit} Scikit-learn es una libraría de herramientas de Machine Learning. Esta librería nos facilita el entrenamiento de redes neuronales.
+\section{Scikit-Learn}
+ Scikit-learn es una biblioteca de herramientas de Machine Learning \cite{scikit}. Esta biblioteca nos proporciona una serie de algoritmos de aprendizaje supervisado y aprendizaje no supervisado, todo esto implementado en python. Esta biblioteca se desarrolló a partir, o haciendo uso de \enph{SciPy}, por lo que también debe ser instalada. Algunos enlaces de interés son un tutorial para crear un modelo sencillo rápidamente: \url{http://scikit-learn.org/stable/tutorial/basic/tutorial.html} y, por otro lado, la guía de usuario en la que se detallan todas la posibilidades de sikit-learn \url{http://scikit-learn.org/stable/user_guide.html}.
 
-\Section{Pandas}
-\cite{mckinney-proc-scipy-2010} \cite{mckinney-proc-scipy-2011}Para el manejo de la enorme cantidad de datos obtenidos se ha utilizado Pandas. Esta herramienta nos permite organizar y clasificar grandes cantidades de datos 
+Como herramienta para crear modelos de regresión, clasificación, clustering... etc. es maravillosa, pero necesitamos también otra herramienta que nos permita hacer un pre-procesado de los datos de los que disponemos. Para ello necesitaremos \enph{Pandas}.
 
-\Section{DEAP}
-\cite{fortin2012deap} Cosas de DEAP
+\section{Pandas}
+Para el manejo de la enorme cantidad de datos obtenidos se ha utilizado Pandas. Esta herramienta nos permite organizar y clasificar grandes cantidades de datos\cite{mckinney-proc-scipy-2010, mckinney-proc-scipy-2011}. Mediante el uso de \enph{dataframes} podemos separar, unir, reorganizar, en fin, realizar casi cualquier tipo de operación sobre grandes bloques de datos. De esta manera, con poco esfuerzo podía elegir qué datos quería emplear para el entrenamiento, concatenar instancias... etc.
 
-\Section{Unity}
+\section{DEAP}
+DEAP ha sido otra de las bibliotecas utilizadas a lo largo de este proyecto. Llegados a cierto punto se requería que las predicciones fueran mas precisas, requqrían un nivel mas profundo de entendimiento \cite{fortin2012deap} por este motivo, se introdujo el uso de DEAP. DEAP es una biblioteca de computación neuronal que te permite implementar de una formas rápida y relativamente sencilla modelos evolutivos.
+
+\section{Unity}
 Como base para el grueso de proyecto se ha utilizado el motor de desarrollo de videojuegos Unity.
-Hablar de monobehaiviour.
 
-\Section{GitHub}
+\section{GitHub}
 GitHub es un herramienta que nos permite llevar un control de versiones de nuestro código fuente, además de permitir el trabajo colaborativo.
 
 

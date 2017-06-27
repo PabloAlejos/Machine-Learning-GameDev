@@ -1,9 +1,10 @@
-\documentclass[a4paper,11pt,oneside]{memoir}
+\documentclass[a4paper,11pt,twoside]{memoir}
 
 % Castellano
 \usepackage[spanish,es-tabla]{babel}
 \selectlanguage{spanish}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{placeins}
 
 
@@ -270,22 +271,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \graphicspath{ {./img/} }
 
 % Capítulos
@@ -343,7 +328,8 @@
     \noindent\LARGE
     Presentado por \@author{}\\ 
     en Universidad de Burgos --- \@date{}\\
-    Tutor: \@tutor{}\\
+    \begin{tabbing}
+    Tutores: \= Dr. José Francisco Díez Pastor \kill    Tutores: \= Dr. José Francisco Díez Pastor \\    \> Dr. César Ignacio García Osorio    \end{tabbing}
   }%
   \end{center}%
   \null
@@ -364,7 +350,7 @@
 \maketitle
 
 
-\newpage\null\thispagestyle{empty}\newpage
+%\newpage\null\thispagestyle{empty}\newpage
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -377,9 +363,9 @@
 
 \noindent Exponen:
 
-\noindent Que el alumno D. \nombre, con DNI 71302468, ha realizado el Trabajo final de Grado en Ingeniería Informática titulado ``Creación de un videojuego y un bot inteligente para el mismo''. 
+\noindent Que el alumno D. \nombre, con DNI 71302468, ha realizado el Trabajo final de Grado en Ingeniería Informática titulado «Creación de un videojuego y un bot inteligente para el mismo». 
 
-\noindent Y que dicho trabajo ha sido realizado por el alumno bajo la dirección del que suscribe, en virtud de lo cual se autoriza su presentación y defensa.
+\noindent Y que dicho trabajo ha sido realizado por el alumno bajo la dirección de los que suscriben, en virtud de lo cual se autoriza su presentación y defensa.
 
 \begin{center} %\large
 En Burgos, {\large \today}
@@ -417,12 +403,13 @@ D. César Ignacio García Osorio
 % Abstract en castellano
 \renewcommand*\abstractname{Resumen}
 \begin{abstract}
-El proyecto tiene como propósito la creación de un videojuego y, posteriormente, el desarrollo de una serie de agentes inteligentes que sean capaces de jugar al mismo. Mediante el análisis y explotación de técnicas de aprendizaje máquina y la utilización de la minería de datos, seremos capaces de dotar al agente de la capacidad de descubrir las reglas del juego a partir de una conjunto de datos y deberá ser capaz de jugar por imitación a partir de lo aprendido. Para el desarrollo del videojuego se utiliza Unity3D, un entorno de desarrollo de Videojuegos. Los agentes inteligentes se implementan en python, un lenguaje de programación que, a día de hoy, está entre los tres más usados mundialmente.
+El proyecto tiene como propósito la creación de un videojuego y, posteriormente, el desarrollo de una serie de agentes inteligentes que sean capaces de jugar al mismo. Mediante el análisis y explotación de técnicas de aprendizaje máquina y la utilización de la minería de datos, seremos capaces de dotar al agente de la capacidad de descubrir las reglas del juego a partir de un conjunto de datos y deberá ser capaz de jugar por imitación a partir de lo aprendido. Para el desarrollo del videojuego se utiliza Unity3D, un entorno de desarrollo de Videojuegos. Los agentes inteligentes se implementan en 
+Python, un lenguaje de programación que, a día de hoy, está entre los tres más usados mundialmente.
 \end{abstract}
 
 \renewcommand*\abstractname{Descriptores}
 \begin{abstract}
-Minería de datos, Videojuego, Aprendizaje máquina, Unity3D, Imitación, Python, Agente inteligente, Imitación
+Minería de datos, Videojuego, Aprendizaje máquina, Unity3D, Imitación, Python, Agente inteligente
 \end{abstract}
 
 \clearpage
@@ -430,12 +417,13 @@ Minería de datos, Videojuego, Aprendizaje máquina, Unity3D, Imitación, Python
 % Abstract en inglés
 \renewcommand*\abstractname{Abstract}
 \begin{abstract}
-The purponse of this project is the developement of a videogame and then, using machine learning techniques, implement a few inteligent agents allow the computer play the game by itslelf.
+The purpose of this project is the creation of a video game, and then follows the development of a series of intelligent agents that are able to interact  with the same. The agents will be able to discover the rules of the games by using Machine Learning and Data Mining techniques on a dataset obtained from a human player, and hence it will be able to learn by imitation.
+The development of the game is done with  Unity3D, a video game framework. The intelligent agents are implemented in Python, a programming language that, to date, is among the three most used worldwide.
 \end{abstract}
 
 \renewcommand*\abstractname{Keywords}
 \begin{abstract}
-Data mining, Videogame, Machine Learning
+Data Mining, VideoGame, Machine Learning, Unity3D, Imitation, Python, Intelligent Agent
 \end{abstract} 
 
 \clearpage
