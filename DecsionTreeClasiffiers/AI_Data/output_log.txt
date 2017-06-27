@@ -1,0 +1,166 @@
+Initialize engine version: 5.5.1f1 (88d00a7498cd)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 10.1]
+    Renderer: Intel(R) HD Graphics 3000 (ID=0x116)
+    Vendor:   Intel
+    VRAM:     848 MB
+    Driver:   9.17.10.4459
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Pablo Alejos\Desktop\DecsionTreeClasiffiers\AI_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Pablo Alejos\Desktop\DecsionTreeClasiffiers\AI_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Pablo Alejos\Desktop\DecsionTreeClasiffiers\AI_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Pablo Alejos\Desktop\DecsionTreeClasiffiers\AI_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Pablo Alejos\Desktop\DecsionTreeClasiffiers\AI_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Pablo Alejos\Desktop\DecsionTreeClasiffiers\AI_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Pablo Alejos\Desktop\DecsionTreeClasiffiers\AI_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Pablo Alejos\Desktop\DecsionTreeClasiffiers\AI_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Pablo Alejos\Desktop\DecsionTreeClasiffiers\AI_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Pablo Alejos\Desktop\DecsionTreeClasiffiers\AI_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+- Completed reload, in  2.230 seconds
+Platform assembly: C:\Users\Pablo Alejos\Desktop\DecsionTreeClasiffiers\AI_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Pablo Alejos\Desktop\DecsionTreeClasiffiers\AI_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+<RI> Initialized touch support.
+UnloadTime: 2.015009 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 7.363606 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 746.
+Total: 0.574739 ms (FindLiveObjects: 0.066955 ms CreateObjectMapping: 0.046428 ms MarkObjects: 0.453047 ms  DeleteObjects: 0.007330 ms)
+
+5564
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+127.0.0.1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Platform assembly: C:\Users\Pablo Alejos\Desktop\DecsionTreeClasiffiers\AI_Data\Managed\System.Configuration.dll (this message is harmless)
+Platform assembly: C:\Users\Pablo Alejos\Desktop\DecsionTreeClasiffiers\AI_Data\Managed\System.Xml.dll (this message is harmless)
+SocketException :System.Net.Sockets.SocketException: Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder.
+
+  at System.Net.Sockets.Socket.Receive (System.Byte[] buffer) [0x00000] in <filename unknown>:0 
+  at SocketController.receiveMessage () [0x00000] in <filename unknown>:0 
+  at SocketController.SendMessage () [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+NullReferenceException: Object reference not set to an instance of an object
+  at TextUI.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+InvalidOperationException: Process has exited, so the requested information is not available.
+  at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
+  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
+  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+UnloadTime: 16.873201 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 781.
+Total: 0.929553 ms (FindLiveObjects: 0.088459 ms CreateObjectMapping: 0.040564 ms MarkObjects: 0.783913 ms  DeleteObjects: 0.015150 ms)
+
+8408
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+127.0.0.1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at TextUI.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+InvalidOperationException: Process has exited, so the requested information is not available.
+  at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
+  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
+  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+UnloadTime: 9.524256 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 781.
+Total: 1.312713 ms (FindLiveObjects: 0.089925 ms CreateObjectMapping: 0.063045 ms MarkObjects: 1.139216 ms  DeleteObjects: 0.019060 ms)
+
+3648
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+127.0.0.1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at TextUI.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+InvalidOperationException: Process has exited, so the requested information is not available.
+  at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
+  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
+  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+UnloadTime: 11.234790 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 781.
+Total: 1.453954 ms (FindLiveObjects: 0.092368 ms CreateObjectMapping: 0.061090 ms MarkObjects: 1.279479 ms  DeleteObjects: 0.019548 ms)
+
+5332
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+127.0.0.1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+InvalidOperationException: Process has exited, so the requested information is not available.
+  at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
+  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
+  at SocketController.OnApplicationQuit () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 26c0 -> priority: 1 
+InvalidOperationException: Process has exited, so the requested information is not available.
+  at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.GetString (System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Logger.Log (LogType logType, System.Object message) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Debug.Log (System.Object message) [0x00000] in <filename unknown>:0 
+  at SocketController.KillProcess () [0x00000] in <filename unknown>:0 
+  at SocketController.OnDestroy () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
