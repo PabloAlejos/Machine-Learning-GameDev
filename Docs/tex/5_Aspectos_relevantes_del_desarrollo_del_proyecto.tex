@@ -225,7 +225,7 @@ De todos los entrenamientos realizados creo que es interesante analizar los resu
 
 
 
-Para la primera fase del entrenamiento se generó un clasificador MLP con seis neuronas\footnote{La seis neuronas no son un número arbitrario, surgen de la evaluación mediante validación cruzada de varios modelos generados con diferentes número de neuronas}. Las poblaciones se generaron con un tamaño de diez individuos de los cuales, cuatro serían idénticos al MLP generado a partir de los datos tomados. El hecho de introducir individuos no generados aleatoriamente, nos permite «forzar» a nuestros individuos a evolucionar en una  dirección, concretamente, hacia los resultado obtenidos de los jugadores humanos. Además, introducir estos individuos agiliza notablemente el aprendizaje, ya que partimos de un modelo parcialmente entrenado, lo que nos evita todo el proceso de ensayo error del principio.
+Para la primera fase del entrenamiento se generó un clasificador MLP con seis neuronas\footnote{Este número no es un número arbitrario, surge de la evaluación mediante validación cruzada de varios modelos generados con diferentes número de neuronas}. Las poblaciones se generaron con un tamaño de diez individuos de los cuales, cuatro serían idénticos al MLP generado a partir de los datos tomados. El hecho de introducir individuos no generados aleatoriamente, nos permite «forzar» a nuestros individuos a evolucionar en una  dirección, concretamente, hacia los resultado obtenidos de los jugadores humanos. Además, introducir estos individuos agiliza notablemente el aprendizaje, ya que partimos de un modelo parcialmente entrenado, lo que nos evita todo el proceso de ensayo error del principio.
 
 Como se puede observar en la tabla \ref{result_primer_entr}, la función converge bastante rápido, esto es observable en la cuarta generación, pues a partir de esta no cambian los resultados. Los resultados, llegados a este punto eran bastante satisfactorios, la puntuación era alta, pero estaba seguro de que eso se podía mejorar.
 
@@ -254,7 +254,7 @@ gen & nevals & avg     & std         & min      & max     \\ \hline
 
 
 
-Realicé un segundo entrenamiento, esta vez, el modelo inicial sería el mejor modelo procedente del primer entrenamiento. Del mismo modo que se procedió la primera vez, diez generaciones, poblaciones de diez individuos, ect. En la tabla \ref{result_segundo_entr} vemo que ahora converge más rapido incluso que antes y, además, incrementa la puntuación media hasta casi cuatro veces la mejor obtenida en el anterior entrenamiento.
+Realicé un segundo entrenamiento, esta vez, el modelo inicial sería el mejor modelo procedente del primer entrenamiento. Del mismo modo que se procedió la primera vez, diez generaciones, poblaciones de diez individuos, ect. En la tabla \ref{result_segundo_entr} vemos que ahora converge más rapido incluso que antes y, además, incrementa la puntuación media hasta casi cuatro veces la mejor obtenida en el anterior entrenamiento.
 
 \begin{table}[]
 \centering
@@ -286,4 +286,4 @@ En teoría un bot de \enph{Telegram} debería estar sempre activo e ir almacenan
 
 \section{Mini-proyectos Unity3D}
 
-A lo lago de la tarea de investigación, hubo que realizar pequeños proyectos en Unity con una funcionalidad muy concreta. Los proyectos tenían como finalidad probar si se podían realizar determinadas tareas en el entorno de desarrollo de Unity. El primero que se creó fue el que sirvió como campo de pruebas para testear la conexiones entre los scripts de Unity y los scripts de \enph{Python}. Por otro lado, tuve que hacer otro mini-proyecto para probar cómo podía lanzar mi juego desde la terminal y qué capacidad tenía para pasarle parámetros al juego. Este último surgió a raíz de la necesidad de lanzar el juego desde \enph{Python}, ya que el algoritmo evolutivo tenía que tener la capacidad de lanzar el juego.
+A lo largo de la tarea de investigación, hubo que realizar pequeños proyectos en Unity con una funcionalidad muy concreta. Los proyectos tenían como finalidad probar si se podían realizar determinadas tareas en el entorno de desarrollo de Unity. El primero que se creó, fue el que sirvió como campo de pruebas para testear la conexiones entre los scripts de Unity y los scripts de \enph{Python}. Por otro lado, tuve que hacer otro mini-proyecto para probar cómo podía lanzar mi juego desde la terminal y qué capacidad tenía para pasarle parámetros al mismo. Este último surgió a raíz de la necesidad de lanzar el juego desde \enph{Python}, ya que el algoritmo evolutivo tenía que tener la capacidad de lanzar el juego para calcular el \enpg{fitness} del individuo.
