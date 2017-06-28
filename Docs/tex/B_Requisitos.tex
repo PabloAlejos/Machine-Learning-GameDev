@@ -18,32 +18,57 @@ En este apartado se especificarán las necesidades funcionales que se pretende a
 \section{Catalogo de requisitos}
 
 \subsection{Especificación de requisitos}
-A continuación se procede a describir los requisitos \emph{iniciales} del proyecto. Hay que recalcar que a lo largo del desarrollo se fueron descubriendo carencias que tenían que cubrir nuevas nececidades. Estos nuevos requisitos funcionales no se describen en este apartado, pero pueden ser consultados el la memoria, en el apartado de «Aspectos relevantes».
+
 
 \subsection{Requisitos funcionales}
+Los requisitos funcionales que detallaré a continuación son so requisitos iniciales, ya que a lo largo del desarrollo, alguno de ellos se ve afectado por nuevas necesidades.
 
 \begin{itemize}
-    \item RF-1: El juego debe ser de tipo arcade en 2D. Un juego infinito en el que el jugador aspira a alcanzar la máxima puntuación de forma individual. 
-    \item RF-2: Controlamos una nave espacial.
+    \item RF-1: Permitir que el jugador interactúe con la nave espacial, haciendo que se traslade lateralmente \ref{RF1}.
+    \item RF-2: Permitir que el jugador pueda disparar \ref{RF2}.
+    \item RF-3: Permitir que el jugador interactúe con el menú principal. El menú principal tiene dos botones.
         \begin{itemize}
-            \item RF-2.1: El jugador tiene una única vida.
-            \item RF-2.2: El movimiento del jugador es horizontal.
-            \item RF-2.3: El jugador se mueve a velocidad constante.
-            \item RF-2.4: El jugador siempre dispara hacia delante en línea recta.
+            \item RF-3.1: El botón jugar lleva directamente a una nueva partida.
+            \item RF-3.2: El botón salir permite salir del juego.
         \end{itemize}
-    \item RF-3: El jugador ha de eliminar el máximo número de enemigos posibles sin impactar contra ellos
-    \item RF-4: Dos tipos de enemigos
-        \begin{itemize}
-            \item Tipo básico: 2 vidas
-            \item Tipo jefe: 4 vidas
-        \end{itemize}
-    \item RF-5: Los enemigos aparecen en oleadas y se limitan a avanzar oscilando hacia su objetivo.
-    \item RF-6: Cuanto menos se acerquen a la zona inferior de la pantalla mayor será la puntuación que otorgue su eliminación.
-    \item RF-7: Si los enemigos llegan a nuestro territorio restarán una cantidad fija de puntos, por lo que nuestra puntuación final se verá notablemente mermada.
-    \item RF-8: El juego comienza con la pantalla vacía y el jugador en la parte inferior.
-    \item RF-9: Se suma puntos al eliminar enemigos.
-    \item RF-10: Cada $0,25$ segundos se debe guardar el estado en forma de instancia en un fichero.
-        \begin{itemize}
-            \item RF-10.1: La instancia debe tener como mínimo la información de la posicióbn del jugador y la posición de cuatro enemigos. 
-        \end{itemize}
+    \item RF-4: El juego debe tener la capacidad de esccribir los estados en un fichero
+    \item RF-5: El agente inteligente debe interactuar con el juego
+    \item RF-6: El agente inteligente debe ser capaz de cargar un modelo y utilizarlo para jugar.
 \end{itemize}
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|l|}{\cellcolor[HTML]{C0C0C0}R1: Permitir que el jugador interactúe con la nave espacial}                                                           \\ \hline
+Versión         & 1.0                                                                                                                                               \\ \hline
+Autor           & Pablo Alejos                                                                                                                           \\ \hline
+Descripción     & \begin{tabular}[c]{@{}l@{}}El jugador debe ser capaz de controlar la nave espacial haciendo\\ uso de las teclas izquierda y derecha.\end{tabular} \\ \hline
+Precondiciones  & El jugador debe estar vivo, y la partida activa                                                                                                   \\ \hline
+Acciones        & El usuario pulsa las teclas izquierda y derecha para controlar la nave.                                                                           \\ \hline
+Postcondiciones & \begin{tabular}[c]{@{}l@{}}La nueva posición del jugador no podrá ser la misma que antes de pulsar\\ los controles.\end{tabular}                  \\ \hline
+Excepciones     & \begin{tabular}[c]{@{}l@{}}Una pared puede bloquear el movimiento, por lo que la posición seguirá\\ siendo la misma\end{tabular}                  \\ \hline
+Importancia     & Muy alta                                                                                                                                          \\ \hline
+\end{tabular}
+\caption{RF-1: Permitir que el jugador interactúe con la nave espacial}
+\label{RF1}
+\end{table}
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{2}{|l|}{\cellcolor[HTML]{C0C0C0}R2 Permitir que el jugador pueda disparar.}                                                                    \\ \hline
+Versión         & 1.0                                                                                                                                       \\ \hline
+Autor           & Pablo Alejos                                                                                                                    \\ \hline
+Descripción     & El jugador debe ser capaz de disparar pulsando la tecla espaciadora.                                                                      \\ \hline
+Precondiciones  & \begin{tabular}[c]{@{}l@{}}El arma tiene una cadencia, tiene que pasar un tiempo determinado para\\ poder volver a disparar.\end{tabular} \\ \hline
+Acciones        & El usuario pulsa la tecla de disparo (Barra espaciadora).                                                                                 \\ \hline
+Postcondiciones & Se debe producir un único dispatro.                                                                                                       \\ \hline
+Excepciones     & \begin{tabular}[c]{@{}l@{}}Si no ha pasado el tiempo necesario desde el ultimo disparo no debe\\ disparar\end{tabular}                    \\ \hline
+Importancia     & Alta                                                                                                                                      \\ \hline
+\end{tabular}
+\caption{RF-2: Permitir que el jugador pueda disparar.}
+\label{RF2}
+\end{table}
