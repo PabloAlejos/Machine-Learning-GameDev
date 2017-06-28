@@ -22,14 +22,14 @@ En esta iteración se establece como objetivo tener ya un juego funcionando. Só
 
 \begin{itemize}
      \item Estudiar la posibilidad de poner el juego en una web. 
-     \item Barajar diferentes formas de capturar los estados del juego. \item Valorar \item formas de comunicar el juego con las bibliotecas de \enoh{Python}.
+     \item Barajar diferentes formas de capturar los estados del juego. \item Valorar formas de comunicar el juego con las bibliotecas de \enoh{Python}.
 \end{itemize}
 
-En primer lugar, se han estado analizando qué posibilidades habría de alojar el juego en una web, ya que vamos a necesitar que muchos usuarios jueguen. \enph{Unity} te permite compilar directamente en \enph{WebGL} lo que me facilita mucho la tarea. Los problemas llegan cuando intento salvar datos del lado del servidor, no hubo manera de conseguir que el jugo guardase un solo archivo. Por este motivo se descartó la posibilidad de \enph{hostearlo} en un servidor web.
+En primer lugar, se han estado analizando qué posibilidades habría de alojar el juego en una web, ya que vamos a necesitar que muchos usuarios jueguen. \emph{Unity} te permite compilar directamente en \emph{WebGL} lo que me facilita mucho la tarea. Los problemas llegan cuando intento salvar datos del lado del servidor, no hubo manera de conseguir que el jugo guardase un solo archivo. Por este motivo se descartó la posibilidad de \emph{hostearlo} en un servidor web.
 
 En este sprint también comienzo el proceso de definición de lo que conformarán las instancias. En las primeras pruebas tuve problemas al capturar las instancias, pues no había contemplado que el tamaño de estas fuese constante, requisito indispensable para el tipo de algoritmos de aprendizaje que estaba utilizando.
 
-Para este sprint era interesante ir teniendo un primer contacto con las bibliotecas de \enph{sckit-learn}.
+Para este sprint era interesante ir teniendo un primer contacto con las bibliotecas de \emph{sckit-learn}.
 
 Como el juego ya estabe en funcionamiento comienzo a desarrollar is propios sprites para el juego.
 
@@ -42,9 +42,9 @@ Como el juego ya estabe en funcionamiento comienzo a desarrollar is propios spri
     Se han comentado los siguientes temas: Para este proyecto va a ser necesario comunicar python y C\# por lo que se deberá investigar la forma de hacerlo.
 \end{itemize}
 
-En este punto es cuando realmente empiezo una dinámica similar a \enph{Scrumm}, en la que se harán reuniones, a ser posible, semanales, ya que antes estaba trabajando sin tener un objetivo semanal concreto.
+En este punto es cuando realmente empiezo una dinámica similar a \emph{Scrumm}, en la que se harán reuniones, a ser posible, semanales, ya que antes estaba trabajando sin tener un objetivo semanal concreto.
 
-El grueso del trabajo y el tiempo de este sprint lo absorbe la «odisea» que fue, para mi, el proceso de comunicar los scripts de \enph{Python} y Unity. Todo este proceso viene descrito en la memoria.
+El grueso del trabajo y el tiempo de este sprint lo absorbe la «odisea» que fue, para mi, el proceso de comunicar los scripts de \emph{Python} y Unity. Todo este proceso viene descrito en la memoria.
 
 En el anterior sprint se observa que el jugador puede quedarse disparando continuamente, lo que quitaría emoción al juego. Por este motivo se propone que se implemente un sistema de «calentamiento» del arma, de este modo, el jugador se verá forzado a dejar de disparar. Junto con el calentamiento del arma viene, forzosamente, diseñar algún elemento gráfico que indique al jugador el estado del arma.
 
@@ -62,11 +62,11 @@ La opción mas viable hasta la fecha para la comunicación entre aplicaciones es
 
 \subsection{Sprint 4:  14/03, 19/03}
 
-Se ha conseguido hacer funcionar sockets en \enph{Python}. Ahora hay que establecer la comunicación entre python y .net. Una vez conseguido esto se harán las primeras pruebas con el bot.
+Se ha conseguido hacer funcionar sockets en \emph{Python}. Ahora hay que establecer la comunicación entre python y .net. Una vez conseguido esto se harán las primeras pruebas con el bot.
 
 Para este sprint se pretende:
 \begin{itemize}
-    \item Una vez se ha hecho funcionar los sockets entre dos scripts de \enph{Python} se tiene que hacer entre una Unity y \enph{Python}.
+    \item Una vez se ha hecho funcionar los sockets entre dos scripts de \emph{Python} se tiene que hacer entre una Unity y \emph{Python}.
     \item Si se consigue establecer la comunicación empezar a procesar estados.
     \item Entrenar un agente inteligente sencillo y probar si funciona la comunicación.
 \end{itemize}
@@ -75,7 +75,7 @@ Para este sprint se pretende:
 
 \subsection{Sprint 5:  21/03, 28/03}
 
-Durante el sprint 4 encontré algunas dificultades. Había un error, de procedencia desconocida, que hacía que el juego parase la ejecución al pulsar la barra espaciadora. Este problema se solucionó refactorizando el código de controlador del jugador. Se consiguió comunicar Unity con \enph{Python} y ya tenía funcionando un bot simple.
+Durante el sprint 4 encontré algunas dificultades. Había un error, de procedencia desconocida, que hacía que el juego parase la ejecución al pulsar la barra espaciadora. Este problema se solucionó refactorizando el código de controlador del jugador. Se consiguió comunicar Unity con \emph{Python} y ya tenía funcionando un bot simple.
 
 Tarea para este Sprint: 
 \begin{itemize}
@@ -158,21 +158,50 @@ Propuestas:
 
 \subsection{Sprint 12:  23/05, 30/05}
 
-Se ha logrado utilizar un preceptrón multicapa para jugar al juego. Queda concatenar estado ya que juega bastante mal Jugar con los parametros del percetrón para ver si mejora
+Se ha logrado utilizar un preceptrón multicapa para jugar al juego. Queda concatenar estado ya que juega bastante mal.
+
+En este sprint se debe:
+\begin{itemize}
+    \item Jugar con los parametros del percetrón para ver si mejora.
+    \item Añadir información a las instancias: Actualmente solo ve a lo enemigos y su distancia relativa, hay que añadir la distancia relativa a paredes y power ups en la instancia. 
+\end{itemize}
+
 
 
 \subsection{Sprint 13:  30/05, 10/06}
 
+En este srpint se trabajará principalmente en la documentación. Hacer la explicación completa de los conceptos teóricos.
+
+
 \subsection{Sprint 14:  10/06, 13/06}
+
+Como en el sprint anterior no se pudo hacer el apartado Conceptos teóricos, queda pendiente para este. Si es posible se acabará el apartado Aspectos relevantes y se comenzará a trabajar con los anexos. Se han seguido haciendo pruebas con los algoritmos evolutivos.
 
 \subsection{Sprint 15:  13/06, 19/06}
 
+En este sprint se han realizado las siguientes tareas: 
+\begin{itemize}
+    \item Se ha corregido una series de errores que calificaría como graves, ya que impedían por completo la evolución de la red neuronal.
+    \item Se han corregido errores tipográficos y conceptuales en la documentación. Había algunos aspectos que se entendieron mal inicialmente, se ha procedido a redactarlos de nuevo.
+    \item Se ha seguido avanzando el los aspectos relevantes y los conceptos teóricos.
+    \item Se ha generado una versión del juego para capturar los datos de los usuarios.
+\end{itemize}
+
 \subsection{Sprint 16:  19/06, 28/06}
+
+Se pretende completar la documentación y corregir ciertos aspectos de los scripts.
 
 \section{Estudio de viabilidad}
 
 \subsection{Viabilidad económica}
+Este proyecto nunca estuvo pensado para obtener un beneficio económico. Este proyecto tenía un objetivo claro, ampliar mis conocimientos en el campo de la inteligencia artificial y, de algún modo, dotar a futuros estudiantes de un entorno de trabajo mas vistoso sobre el que probar sus agentes inteligentes, y así, animar a los estudiante a descubrir el maravilloso mundo de la inteligencia artificial.
+
+Analizando los costes, el único que nos podría limitar sería Unity3D, pero acuerdo de licencia estipula que es un software gratuito siempre que se utilice con fines educativos.
 
 \subsection{Viabilidad legal}
 
-
+Este proyecto ha sido realizado utilizando recursos de software, cada uno con su licencia. A continuación procedo a analizar cada uno de ellos:
+\begin{itemize}
+    \item Scikit-Learn: sujeto a la licencia de tipo BSD, que permite la redistribución con o sin modificaciones simpre que los autores originales sen mencionados y se mantenga el mismo tipo de licencia.
+    \item Deap: se encuentra bajo licencia GNU GPL, que permite usar, copiar, modificar el software y redistribuirlo.
+\end{itemize}

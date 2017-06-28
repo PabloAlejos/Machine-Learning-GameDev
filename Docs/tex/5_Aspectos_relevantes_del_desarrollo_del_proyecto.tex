@@ -60,7 +60,7 @@ En primer lugar estudié la posibilidad de integrar Python en c\#, de tal forma 
 
 
 \subsection{IronPython}
-La siguiente herramienta con la que se estuvo trabajando fue \enph{IronPython}. \enph{IronPython} prometía unas utilidades muy similares a Pythonet, o incluso mejores, pero tras varias horas de lectura de la documentación encuentro algo que tira por tierra mis expectativas, \enph{IronPython} aún no es compatible al cien por cien con Scikit-learn.
+La siguiente herramienta con la que se estuvo trabajando fue \emph{IronPython}. \emph{IronPython} prometía unas utilidades muy similares a Pythonet, o incluso mejores, pero tras varias horas de lectura de la documentación encuentro algo que tira por tierra mis expectativas, \emph{IronPython} aún no es compatible al cien por cien con Scikit-learn.
 
 \subsection{Pipes o tuberías}
 Comienza una nuevas vía de investigación, era el turno de los pipes (o tuberías) de Python. En internet no había demasiada información y la poca que había no era muy clara, pero aún así me puse manos a la obra y a las pocas horas ya tenía dos scripts de Python comunicándose entre ellos. Bien, ahora solo quedaba que se comunicase con mi aplicación en .net. Este ultimo paso no hubo forma de llevarlo a cabo, no conseguí que ambas aplicaciones intercambiasen mensajes de forma correcta.
@@ -197,7 +197,7 @@ La primera opción barajada fueron los árboles de decisión. Este es uno de los
  La implementación de este modelo consta de varios scripts de Python que realizarán las tareas de entrenamiento, procesado de instancias y predicción. En el apartado de entrenamiento ambos tienen una implementación idéntica, sólo vamos a cambiar la invocación al un método u otro a la hora de generar el modelo.
  
  
- Para utilizar este modelo de entrenamiento he implementado dos scripts. El primero de ellos, denominado «Trainer.py» tiene la función de generar y guardar el modelo. El segundo, «Predictor.py» , mucho mas simple, se limita a llamar a la función \enph{predict} del modelo. A pesar de ser un script muy elemental, se decidió dejarlo por separado por si era necesario un preprocesado antes de devolver el resultado, cosa que finalmente sí que ocurrió. 
+ Para utilizar este modelo de entrenamiento he implementado dos scripts. El primero de ellos, denominado «Trainer.py» tiene la función de generar y guardar el modelo. El segundo, «Predictor.py» , mucho mas simple, se limita a llamar a la función \emph{predict} del modelo. A pesar de ser un script muy elemental, se decidió dejarlo por separado por si era necesario un preprocesado antes de devolver el resultado, cosa que finalmente sí que ocurrió. 
  
 
 \section{Entrenamiento con algoritmo evolutivo}
@@ -215,7 +215,7 @@ En el proceso de neuroevolución hay que preparar el entorno en el que vamos a t
 
 Para la definición de los individuos se utiliza un array conformado por los pesos de la red neuronal del MLP. Dado que los pesos de la red neuronal no tienen estructura de array, ha sido necesario implementar una función que realice esa tarea. Ahora, cuando la red neuronal genere un individuo lo hará en forma de array pero, cuando se proceda a probar el modelo, se volverá a convertir para que pueda ser utilizado por la red neuronal.
 
-La función de \enph{fitness} viene dada por la media de los $n$ intentos por cada partida jugada. La media de las partidas jugadas se calcula de la siguiente manera: Cada individuo juega una partida. Una partida se compone de $n$ intentos. En cada partida, el juego genera un \enph{csv} en el que se va almacenando la puntuación de cada intento. Al final de todos los intentos, la función de \enph{fitness} lee el fichero y hace la media. Esa media es el valor de \enph{fitness} que buscamos.
+La función de \emph{fitness} viene dada por la media de los $n$ intentos por cada partida jugada. La media de las partidas jugadas se calcula de la siguiente manera: Cada individuo juega una partida. Una partida se compone de $n$ intentos. En cada partida, el juego genera un \emph{csv} en el que se va almacenando la puntuación de cada intento. Al final de todos los intentos, la función de \emph{fitness} lee el fichero y hace la media. Esa media es el valor de \emph{fitness} que buscamos.
 
 
 Hay que definir, también, una función que genere la población inicial de acuerdo a nuestras demandas. En este caso la función generará $n$ arrays con valores aleatorios acotados a nuestro gusto.
@@ -280,10 +280,10 @@ gen & nevals & avg     & std     & min      & max     \\ \hline
 
 
 \subsection{Bot de Telegram}
-Fueron muchas la pruebas que se realizaron en el apartado de algoritmos evolutivos. Estas pruebas requerían mucho tiempo y cierta supervisión, así que, por mera curiosidad, quise ver si podía programar un bot que me enviase mensajes a través de la aplicación de mensajería \enph{Telegram}. 
-En teoría un bot de \enph{Telegram} debería estar sempre activo e ir almacenando las \enph{id}  de los usuarios que quieren interactuar con el. Yo no quería dedicarle demasiado tiempo a ello, ya que no era materia fundamental de este proyecto, por lo que me limité a obtener mi \enph{id} de usuario, almacenarlo y utilizar únicamente la función de «Enviar mensaje» para avisarme de determinados eventos.
+Fueron muchas la pruebas que se realizaron en el apartado de algoritmos evolutivos. Estas pruebas requerían mucho tiempo y cierta supervisión, así que, por mera curiosidad, quise ver si podía programar un bot que me enviase mensajes a través de la aplicación de mensajería \emph{Telegram}. 
+En teoría un bot de \emph{Telegram} debería estar sempre activo e ir almacenando las \emph{id}  de los usuarios que quieren interactuar con el. Yo no quería dedicarle demasiado tiempo a ello, ya que no era materia fundamental de este proyecto, por lo que me limité a obtener mi \emph{id} de usuario, almacenarlo y utilizar únicamente la función de «Enviar mensaje» para avisarme de determinados eventos.
 
 
 \section{Mini-proyectos Unity3D}
 
-A lo largo de la tarea de investigación, hubo que realizar pequeños proyectos en Unity con una funcionalidad muy concreta. Los proyectos tenían como finalidad probar si se podían realizar determinadas tareas en el entorno de desarrollo de Unity. El primero que se creó, fue el que sirvió como campo de pruebas para testear la conexiones entre los scripts de Unity y los scripts de \enph{Python}. Por otro lado, tuve que hacer otro mini-proyecto para probar cómo podía lanzar mi juego desde la terminal y qué capacidad tenía para pasarle parámetros al mismo. Este último surgió a raíz de la necesidad de lanzar el juego desde \enph{Python}, ya que el algoritmo evolutivo tenía que tener la capacidad de lanzar el juego para calcular el \enpg{fitness} del individuo.
+A lo largo de la tarea de investigación, hubo que realizar pequeños proyectos en Unity con una funcionalidad muy concreta. Los proyectos tenían como finalidad probar si se podían realizar determinadas tareas en el entorno de desarrollo de Unity. El primero que se creó, fue el que sirvió como campo de pruebas para testear la conexiones entre los scripts de Unity y los scripts de \emph{Python}. Por otro lado, tuve que hacer otro mini-proyecto para probar cómo podía lanzar mi juego desde la terminal y qué capacidad tenía para pasarle parámetros al mismo. Este último surgió a raíz de la necesidad de lanzar el juego desde \emph{Python}, ya que el algoritmo evolutivo tenía que tener la capacidad de lanzar el juego para calcular el \enpg{fitness} del individuo.
