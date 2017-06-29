@@ -17,21 +17,21 @@ Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameD
 Loading C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\RedesNeuronales\AI_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\RedesNeuronales\AI_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\RedesNeuronales\AI_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.042 seconds
+- Completed reload, in  0.044 seconds
 Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\RedesNeuronales\AI_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Pablo Alejos\Documents\GitHub\Machine-Learning-GameDev\RedesNeuronales\AI_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
 <RI> Initialized touch support.
-UnloadTime: 1.239045 ms
+UnloadTime: 1.279366 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 5.405145 ms
+UnloadTime: 5.607066 ms
 
 Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 746.
-Total: 0.445762 ms (FindLiveObjects: 0.031360 ms CreateObjectMapping: 0.038720 ms MarkObjects: 0.367681 ms  DeleteObjects: 0.005760 ms)
+Total: 0.473282 ms (FindLiveObjects: 0.033280 ms CreateObjectMapping: 0.031360 ms MarkObjects: 0.389441 ms  DeleteObjects: 0.016320 ms)
 
-12752
+4324
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -70,12 +70,12 @@ InvalidOperationException: Process has exited, so the requested information is n
  
 (Filename:  Line: -1)
 
-UnloadTime: 8.998444 ms
+UnloadTime: 9.333484 ms
 
 Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 781.
-Total: 1.100805 ms (FindLiveObjects: 0.104960 ms CreateObjectMapping: 0.032000 ms MarkObjects: 0.950084 ms  DeleteObjects: 0.012160 ms)
+Total: 0.944964 ms (FindLiveObjects: 0.086400 ms CreateObjectMapping: 0.035200 ms MarkObjects: 0.808963 ms  DeleteObjects: 0.012800 ms)
 
-5084
+13056
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -112,12 +112,12 @@ InvalidOperationException: Process has exited, so the requested information is n
  
 (Filename:  Line: -1)
 
-UnloadTime: 7.941798 ms
+UnloadTime: 7.831397 ms
 
 Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 781.
-Total: 1.145925 ms (FindLiveObjects: 0.079680 ms CreateObjectMapping: 0.031680 ms MarkObjects: 1.022724 ms  DeleteObjects: 0.010880 ms)
+Total: 0.951044 ms (FindLiveObjects: 0.086400 ms CreateObjectMapping: 0.032640 ms MarkObjects: 0.808323 ms  DeleteObjects: 0.022400 ms)
 
-7896
+10200
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -154,12 +154,12 @@ InvalidOperationException: Process has exited, so the requested information is n
  
 (Filename:  Line: -1)
 
-UnloadTime: 7.752677 ms
+UnloadTime: 8.151078 ms
 
 Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 781.
-Total: 1.664007 ms (FindLiveObjects: 0.108480 ms CreateObjectMapping: 0.039360 ms MarkObjects: 1.495047 ms  DeleteObjects: 0.018560 ms)
+Total: 1.009604 ms (FindLiveObjects: 0.082560 ms CreateObjectMapping: 0.032960 ms MarkObjects: 0.849284 ms  DeleteObjects: 0.043840 ms)
 
-11916
+7876
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -191,8 +191,8 @@ InvalidOperationException: Process has exited, so the requested information is n
 (Filename:  Line: -1)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 2780 -> priority: 1 
-  Thread -> id: 3404 -> priority: 1 
+  Thread -> id: 12d0 -> priority: 1 
+  Thread -> id: 3788 -> priority: 1 
 InvalidOperationException: Process has exited, so the requested information is not available.
   at System.Diagnostics.Process.get_ProcessName () [0x00000] in <filename unknown>:0 
   at System.Diagnostics.Process.ToString () [0x00000] in <filename unknown>:0 

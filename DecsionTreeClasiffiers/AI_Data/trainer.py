@@ -91,11 +91,20 @@ class trainer:
     def __str__(self):
         return str(self.df.head(2))
 
+
+    def train(self):
+        forest = tree.DecisionTreeClassifier(max_depth=50)
+        #forest = RandomForestClassifier(n_estimators = 100,max_depth = 10)
+        forest = forest.fit(self.train_data, self.target_data.astype(str))
+        pickle.dump(forest, open('..\\decisionclf.sav', 'wb'))
+
+
 if __name__ == "__main__":
     t = trainer()
     t.load_file('gameStates.csv')
     t.set_train_data()
-    forest = tree.DecisionTreeClassifier(max_depth=50)
-    #forest = RandomForestClassifier(n_estimators = 100,max_depth = 10)
-    forest = forest.fit(t.train_data, t.target_data.astype(str))
-    pickle.dump(forest, open('..\\decisionclf.sav', 'wb'))
+    t.train()
+    
+    
+    
+    
