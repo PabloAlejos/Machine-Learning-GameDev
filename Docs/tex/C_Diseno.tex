@@ -8,7 +8,7 @@
 A continuación, se procede a explicar algunas nociones relevantes de cómo interactúan entre sí los diferentes elementos que conforman el proyecto. Dado que no es una aplicación al uso, sino que se compone de múltiples elementos, mostraré un diagrama de despliegue y un diagrama de secuencias.
 
 \subsection{Diagrama de despliegue}
-La estructura que ha acabado adoptando el proyecto puede resultar algo compleja, por lo que explicaré, en primer lugar, cómo está organizado.
+La estructura que ha acabado adoptando el proyecto puede resultar algo compleja, por lo que explicaré, en primer lugar, cómo está organizado \ref{fig:d_desp}.
 
 Para empezar es muy importante aclarar que hay dos implementaciones del juego. Por un lado está el juego que recibirán los usuarios. El juego que reciben los usuarios es lo que consideraríamos un juego real, es decir, el jugador dispone del menú de inicio y banda sonora. Por el otro lado, tenemos el juego que va a utilizar el agente inteligente. Este juego no dispone de menú principal, la partida comienza directamente e intenta conectarse al \emph{socket}. La banda sonora se decidió retirar por comodidad a la hora de trabajar, ya que acababa resultando cargante.
 
@@ -26,7 +26,7 @@ Para la creación de los modelos los agentes inteligentes se han seguido dos ver
 \subsection {Diagrama de secuencias}
 En esta sección se pretende aclarar el funcionamiento de, al menos, uno de los agentes, ya que el otro es muy similar.
 
-El entrenamiento y explotación del modelo de agente inteligente se realizan tres acciones. La captura de datos, para el entrenamiento por imitación, en entrenamiento utilizando el clasificador preferido y, para finalizar, la utilización del modelo entrenado sobre el juego. 
+El entrenamiento y explotación del modelo de agente inteligente se realizan tres acciones. La captura de datos, para el entrenamiento por imitación, en entrenamiento utilizando el clasificador preferido y, para finalizar, la utilización del modelo entrenado sobre el juego \ref{fig:d_sec}. 
 
 
 \begin{figure}
@@ -35,8 +35,6 @@ El entrenamiento y explotación del modelo de agente inteligente se realizan tre
     \caption{Diagrama de secuencias (Arboles de decisión)}
     \label{fig:d_sec}
 \end{figure}
-
-\section{Diseño arquitectónico}
 
 La captura de datos es muy sencilla: el jugador utiliza el juego normalmente y el juego crea un «log» con todas las instancias que se han ido generando a lo largo del juego. EL usuario deberá enviar al programador los resultados de la captura de datos de la partida para que este pueda trabajar con ellos.
 
@@ -56,3 +54,4 @@ La explotación del modelo entrenado ya es algo más sofisticada, aunque sigue s
 
 Este proceso de envío, procesado y predicción se hace en bucle hasta que el jugador muera o se cierre el juego. El bucle se realiza cuatro veces por segundo.
 
+\section{Diseño arquitectónico}

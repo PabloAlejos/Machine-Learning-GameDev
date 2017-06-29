@@ -4,9 +4,25 @@
 En este apartado se detallará cómo entrenar nuestros agentes inteligentes y como hacerlos funcionar en el entorno del videojuego. 
 
 \section{Estructura de directorios}
+A continuación se va a explicar la estructura de directorios para no perder el tiempo buscándolo todo.
+
+Los principales directorios del proyecto son:
+\begin{itemize}
+    \item Proyectos Unity
+    \item Redes Neuronales
+    \item DecicionTreeClasiffiers
+\end{itemize}
+
+En el directorio de «proyectos Unity»  encontraremos los dos principales proyectos de videojuego con los que se ha trabajado. En primer lugar podemos encontrar el proyecto «Juego». Este proyecto contiene el juego principal, el que van a utilizar los usuarios para obtener los datos de las partidas. Por otro lado tenemos el proyecto «Juego\_lite». Esta segunda versión de la implementación es una versión reducida del primero, carece de menús y sonido, ya que únicamente está destinado a ser jugado por la máquina. Finalmente tenemos un último directorio en el que encontramos los proyectos de que probaban funcionalidades muy concretas, como las pruebas de conexión de sockets y el lanzamiento del juego con parámetros desde terminal.
+
+En los directorio «DecsionTreeClasiffiers» y «RedesNeuronales», encontramos una \empg{build} del juego lista para funcionar, cada una referente a su tipo de algorimo. Los scripts de Python deben ir dentro del directorio AI\_Data y los modelos entrenados los he colocado junto al ejecutable pero, como se va a referenciar con una ruta relativa, se pueden colocar donde más nos guste. Junto al ejecutable he creado un acceso directo al mismo, esto es porque el juego ha de lanzarse con parámetros y esto nos facilita la tarea.
 
 \section{Manual del programador}
 
+
+
 \section{Compilación, instalación y ejecución del proyecto}
+
+
 
 \section{Pruebas del sistema}
