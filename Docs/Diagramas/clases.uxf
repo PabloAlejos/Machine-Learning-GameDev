@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>666</x>
+      <y>186</y>
+      <w>102</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>BackGroundScroller
+--
+- mr: MeshRenderer
+- mat: Material
++ speed: float
+--
++ Start(): void
++ Update(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>762</x>
+      <y>216</y>
+      <w>60</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;120.0;40.0;120.0;40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>810</x>
+      <y>210</y>
+      <w>258</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>MonoBehabiour
+--
+
+--
++ Awake(): void
++ Start(): void
++ Update(): void
++ OnTriggerEnter(Collider): void
++ OnBecameInvisible()
++ OnGUI(): void
++ OnDestroy(): void
++ FixedUpdate(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>576</x>
+      <y>570</y>
+      <w>102</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Bullet
+--
++ damage: float
++ hitEffect: GameObject
++ speed: float
+--
++ OnTriggerEnter(Collider hit)
++ OnBecameInvisible()
++ Update(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>414</y>
+      <w>228</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>360.0;10.0;360.0;50.0;10.0;50.0;10.0;260.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>774</x>
+      <y>78</y>
+      <w>126</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Destroyer
+--
+--
++ DestroyGameObject(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>852</x>
+      <y>102</y>
+      <w>18</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;180.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>906</x>
+      <y>108</y>
+      <w>126</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>DropItems
+--
++ drop: GameObject
+--
++ OnDestroy(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>150</y>
+      <w>18</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>708</x>
+      <y>498</y>
+      <w>162</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>Enemy
+--
++ deathEvent: DeathDelegate
++ passTroughEvent: PassTroughDelegate
++ health: float
++ maxHealth: float
++ HealthBar: Image
++ festroyAnimation: GameObject
++ scorePoints: float
+- sc:ScoreController
+- sound: SoundController
+--
++ Start(): void
++ Update(): void
++ IsDead(): bool
++ TakeDamage(amount:float): void
++ PlayHitEffect()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>780</x>
+      <y>414</y>
+      <w>114</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>170.0;10.0;170.0;70.0;10.0;70.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>894</x>
+      <y>510</y>
+      <w>126</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>EnemyMovement
+--
++ maxSpeed: float
++ minSpeed: float
++ speed: float
+- target: Vector2
+--
++ Start(): void
++ Update(): void
++ OnBecameInvisible() void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>696</x>
+      <y>474</y>
+      <w>342</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=.
+Enemy: GameObject
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>876</x>
+      <y>444</y>
+      <w>90</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;130.0;20.0;130.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1086</x>
+      <y>486</y>
+      <w>168</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>EnemySpawner
+--
++ MAX_ENEMIES: int
++ boss: GameObject
++ enemies: GameObject [ ]
++ spawnRate: float
++ maxEnemiesOnScreen:int
++ nextWave: float
++ bossSpawnRateiInSecs: float
++ powerUps: GameObject [ ]
+- nextSpawnTime: float
+- nextBossSpawnTime: float
+- bossSpawn: bool
+--
++ Start(): void
++ Update(): void
++ randomEnemy() GameObject
++ CountenemiesOnScreen(): int
++ SpawnPowerUp(): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>978</x>
+      <y>414</y>
+      <w>186</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;290.0;50.0;290.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1086</x>
+      <y>672</y>
+      <w>102</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>_SpanwPowerUp()_
+En la implementación
+está comentado porque
+finalmente no se utilizó</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1272</x>
+      <y>486</y>
+      <w>126</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>Fading
+--
++ fadeOutTexture: Texture2D
++ fadeSpeed: float
+- drawDepth: int
+- alpha: float
+- fadeDir: int
+--
++ Start(): void
++ OnGUI(): void
++ BeginFade() float
++ Awake(): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>996</x>
+      <y>414</y>
+      <w>312</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;500.0;30.0;500.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1218</x>
+      <y>150</y>
+      <w>126</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>GameConfig
+--
++ arguments: String [ ]
++ iterations: int
++ maxTime: int
+- n: float
+- sc: ScoreController
+--
++ Awake(): void
++ Start(): void
++ Update(): void
++ GameOver(): void
++ getIteration(): int
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1032</x>
+      <y>570</y>
+      <w>66</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1248</x>
+      <y>282</y>
+      <w>168</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>GameOver
+--
++ gameOverScreen: GameObject
++ score: Text
++ gameOver: bool
++ sc: ScoreController
++ gsc: GameStateController
++ gconfig: GameConfig
+--
++ Start(): void
++ Update(): void
++ OnGameOver(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1062</x>
+      <y>150</y>
+      <w>168</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;240.0;110.0;240.0;110.0;10.0;260.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1194</x>
+      <y>156</y>
+      <w>66</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>90.0;330.0;10.0;330.0;10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>828</x>
+      <y>762</y>
+      <w>336</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>GameState
+--
+- playerPosition: Vector2
+- enemies: Enemy [ ]
+- Vkey: KeyCode
+- Hkey: KeyCode
+- timeStamp: String
+- isShooting: bool
+- maxEnemies: int
+- HeatGunValue: float
+- powerUps: PowerUp [ ]
+- surroundingEnemies: float [ ]
+- score: int
+--
++ GameState( nota )
++ State2csv(): String
++ MakeValueCsvFriendly(value:Object): string
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1176</x>
+      <y>858</y>
+      <w>126</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>nota
+-
+string timeStamp,
+Vector2 playerPosition,
+float HeatGunValue,
+PowerUp[] powerUps,
+Enemy[] enemies,
+float[] surroundingEnemies,
+int score,
+KeyCode VKey,
+KeyCode HKey,
+bool isShooting,</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>384</x>
+      <y>810</y>
+      <w>192</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>GameStateController
+--
+- sfm: StatesFileManager
+- player: playerController
+- heatValue: float
+- nextStateRead: float
++ stateReadRate: float
++ recordStates: bool
++ isShooting: bool
++ VerticalInput: KeyCode
++ HorizontalInput: KeyCode
+--
++ Start(): void
++ playerShooting(k: KeyCode): void
++ playerVertical(k: KeyCode): void
++ playerHorizontal(k: KeyCode): void
++ FixedUpdate(): void
++ MakeEnemyList(): Enemy [ ]
++ ResetKeys(): void
++ GenerateTimeStamp(): String
++ toggleRecordStates(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>714</y>
+      <w>126</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>Gun
+--
++ bulletType: GameObject
++ fireRate: float
+- nextShootTime: float
+- bar: HeatBar
+- heatValue: float
+- coolingTime: float
+- startCoolingTime: float
+- maxHeatValue: float
++ overHeat: bool
++ sounds: SoundController
+--
++ Start(): void
++ Shoot(): void
++ Update): void
++ CoolGun(val: float)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>546</x>
+      <y>414</y>
+      <w>318</w>
+      <h>408</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>510.0;10.0;510.0;40.0;10.0;40.0;10.0;660.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>654</y>
+      <w>18</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>342</y>
+      <w>288</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>HearBar
+--
+- fillAmount: float
+- contentt: Image
++ MaxValue: float
++ value: float
+--
++ Update(): void
++ HandleBa(): void
+- Map(value:float, inMin: float, inMax :float ,outMin:float ,outMax:float): float</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>312</x>
+      <y>360</y>
+      <w>510</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>830.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>624</x>
+      <y>306</y>
+      <w>102</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>LoadMainScene
+--
+
+--
++ Start(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>330</y>
+      <w>102</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>150.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>492</x>
+      <y>222</y>
+      <w>126</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>MainMenuController
+--
+
+--
++ StartGame(): void
++ QuitGame(): void
++ ChangeLevel(): IEnumerator
++ OptionsButton(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>612</x>
+      <y>294</y>
+      <w>210</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>330.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>186</x>
+      <y>522</y>
+      <w>156</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>Player
+--
++ playerDeath: DeathDelegate
++ CoolGun: PowerUpDelegate
++ OverPower: PowerUpDelegate
+- sounds: SoundController
++ destroyAnimation: GameObject
+--
++ Start(): void
++ OnTriggerEnter(col: Collider): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>378</x>
+      <y>522</y>
+      <w>162</w>
+      <h>246</h>
+    </coordinates>
+    <panel_attributes>PlayerController
+--
++ lasHitKey: KeyCode
+- botActive: bool
++ animSprites: Sprite [ ]
++ speed: float
++ guns: GameObject [ ]
++ gunsOP: GameObject
++ opTime: float
++ heatValue: float
++ firing: float
+- ScreenHalfSizeInWorldUnits: float
++ movement: Vector2
++ playerShoot: PlayerInputDelegate
++ playerHorizontal: PlayerInputDelegate
++ PlayerVertical: PlayerInputDelegate
+--
++ Awake(): void
++ Start(): void
++ Update(): void
++ InputRead(): void
++ shoot(): void
++ eventInput(movement: Vector2): void
++ PlayerAnimation(dirX: float): void
++ findGuns(): void
++ toogleOnlineSocket(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>372</y>
+      <w>498</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>810.0;10.0;10.0;10.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>450</x>
+      <y>396</y>
+      <w>372</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>600.0;10.0;10.0;10.0;10.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>216</x>
+      <y>636</y>
+      <w>156</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>PlayerVision
+--
+- directions: Vector3 [ ]
+- nrays: int
+- enemiesProcedence: float [ ]
+--
++ Start(): void
++ getRayAmount(): int
++ getSuroundingEnemies(): float [ ]
++ ScanForEnemies(): float [ ]
+- shootRayCast(dir: Vectro3, hit RayvastHit): float
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>354</x>
+      <y>384</y>
+      <w>468</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>760.0;10.0;10.0;10.0;10.0;420.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>180</x>
+      <y>492</y>
+      <w>366</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=.
+Player: GameObject
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1230</x>
+      <y>18</y>
+      <w>102</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>PowerUp
+--
++ type: int
++ sounds: Soundcontroller
++ cool: PowerUpEvent
++ overPower: PowerUpEvent
+--
++ Start(): void
++ Activate(type: int): void
++ OnTriggerEnter(col: Collider): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>306</x>
+      <y>774</y>
+      <w>90</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>130.0;200.0;10.0;200.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>678</x>
+      <y>408</y>
+      <w>144</w>
+      <h>318</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>220.0;10.0;10.0;10.0;10.0;510.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1062</x>
+      <y>324</y>
+      <w>198</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;310.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1062</x>
+      <y>84</y>
+      <w>180</w>
+      <h>186</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;290.0;70.0;290.0;70.0;10.0;280.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1350</x>
+      <y>36</y>
+      <w>126</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>PowerUpMovement
+--
++ target: Vector2
++ speed: float
+--
++ Start(): void
++ Update(): void
++ OnBecameInvisible(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1062</x>
+      <y>108</y>
+      <w>300</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;280.0;90.0;280.0;90.0;10.0;480.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1218</x>
+      <y>0</y>
+      <w>282</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>lt=.
+PowerUp: GameObject
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>564</x>
+      <y>72</y>
+      <w>126</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>ScoreController
+--
+- score: double
++ highScore: int
+- highScoreKey: string 
+--
+Start()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

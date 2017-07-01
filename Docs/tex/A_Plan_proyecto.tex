@@ -9,7 +9,7 @@
 Antes de empezar a practicar la metodología basada en sprints, hubo aproximadamente un mes de planificación de las mecánicas del juego. A pesar de que fuesen evolucionando a lo largo del proyecto, era indispensable tener claro dónde quería llegar.
 
 
-\subsection{Sprint 0: [- al 02/02] }
+\subsection{Sprint 0: [02/01 al 02/02] }
 Tareas:
 \begin{itemize}
     \item Crear la mecánica del juego mínima
@@ -118,12 +118,27 @@ Se ha observado que el método que captura los estado busca los enemigos aleator
 
 En este sprint se pretende tener el Bot entrenado con el nuevo conjunto de datos. Como hemos introducido una forma de diferente de procesar los enemigos, hay que adaptar los scripts a las nuevas instancias.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{sprint7}
+    \caption{Sprint 7}
+    \label{fig:s7}
+\end{figure}
+
+
 
 \subsection{Sprint 8: [18/04 al 25/04]}
 
 Se tiene que hacer un preprocesado del estado del juego a la hora de pasárselo al bot entrenado. (Me entran dudas de si seguiré siendo capaz de procesar 4 estados por segundo). Finalmente si que es posible, aunque en ocasiones pierde fotogramas. Esta pérdida la atribuyo a que mi ordenador es de gama baja.
 
 El juego ya tiene la capacidad de jugar solo aunque sin demasiado acierto. Una vez completado el preprocesado se harán grupos de $n$ estados con el fin de tener en cuenta los $n$ estados anteriores a la toma de decisión, tal y como lo haría un humano. Esto se ha de hacer en python ya que a partir de ahora los estados generados por el juego es conveniente que sean invariables.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{sprint8}
+    \caption{Sprint 8}
+    \label{fig:s8}
+\end{figure}
 
 \subsection{Sprint 9: [25/04 al 05/05]}
 
@@ -137,17 +152,30 @@ Se han barajado mejoras de aprendizaje supervisado:
   A la vista de los resultados se opta por añadir un array que indique la proximidad a los enemigos. esto en teoría debería reforzar la tendencia a conductas suicidas
   
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{sprint9}
+    \caption{Sprint 9}
+    \label{fig:s9}
+\end{figure}
+
 \subsection{Sprint 10: [05/05 al 16/05]}
 
 Ésta semana no ha habido grandes avances, se ha incorporado la detección de enemigos cercanos y se han analizado las posibles alternativas para seguir mejorando el aprendizaje.
 
 Para este sprint se pretende refactorizar el código de los «power-up» : Fijar el código en una clase propia y no en el Player Controller.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{sprint10}
+    \caption{Sprint 10}
+    \label{fig:s10}
+\end{figure}
+
 
 \subsection{Sprint 11: [16/05 al 23/05]}
 
 Se han aprobado los cambios. pasamos a la fase de entrenamiento con algoritmos evolutivos.
-
 Propuestas:
 \begin{itemize}
     \item Crear una pequeña aplicación unity que permita ser ejecutada desde línea de comando para ver si podemos lanzar el juego para el entrenamiento con algoritmos evolutivos.
@@ -155,6 +183,13 @@ Propuestas:
     \item Hacer un script que nos haga de entrenador, generando el modelo del agente inteligente.
     \item Implementar un perceptrón sencillo para ver de qué soy capaz.
 \end{itemize} 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{sprint11}
+    \caption{Sprint 11}
+    \label{fig:s11}
+\end{figure}
 
 \subsection{Sprint 12: [23/05 al 30/05]}
 
@@ -166,7 +201,12 @@ En este sprint se debe:
     \item Añadir información a las instancias: Actualmente solo ve a lo enemigos y su distancia relativa, hay que añadir la distancia relativa a paredes y power ups en la instancia. 
 \end{itemize}
 
-
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{sprint12}
+    \caption{Sprint 12}
+    \label{fig:s12}
+\end{figure}
 
 \subsection{Sprint 13: [30/05 al 10/06]}
 
@@ -176,6 +216,13 @@ En este sprint se trabajará principalmente en la documentación. Hacer la expli
 \subsection{Sprint 14:  10/06, 13/06}
 
 Como en el sprint anterior no se pudo hacer el apartado Conceptos teóricos, queda pendiente para este. Si es posible se acabará el apartado Aspectos relevantes y se comenzará a trabajar con los anexos. Se han seguido haciendo pruebas con los algoritmos evolutivos.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{sprint14}
+    \caption{Sprint 14}
+    \label{fig:s14}
+\end{figure}
 
 \subsection{Sprint 15: [13/06 al 19/06]}
 
@@ -191,17 +238,31 @@ En este sprint se han realizado las siguientes tareas:
 
 Se pretende completar la documentación y corregir ciertos aspectos de los scripts.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{sprint16}
+    \caption{Sprint 16}
+    \label{fig:s16}
+\end{figure}
+
+
 \section{Estudio de viabilidad}
 
 \subsection{Viabilidad económica}
 Este proyecto nunca estuvo pensado para obtener un beneficio económico. Este proyecto tenía un objetivo claro, ampliar mis conocimientos en el campo de la inteligencia artificial y, de algún modo, dotar a futuros estudiantes de un entorno de trabajo mas vistoso sobre el que probar sus agentes inteligentes, y así, animar a los estudiante a descubrir el maravilloso mundo de la inteligencia artificial.
 
-Analizando los costes, el único que nos podría limitar sería Unity3D, pero acuerdo de licencia estipula que es un software gratuito siempre que se utilice con fines educativos.
+Analizando los costes, el único que nos podría limitar sería Unity3D, pero el acuerdo de licencia estipula que el uso de su software gratuito siempre que se utilice con fines educativos.
 
 \subsection{Viabilidad legal}
 
 Este proyecto ha sido realizado utilizando recursos de software, cada uno con su licencia. A continuación procedo a analizar cada uno de ellos:
 \begin{itemize}
-    \item Scikit-Learn: sujeto a la licencia de tipo BSD, que permite la redistribución con o sin modificaciones siempre que los autores originales sen mencionados y se mantenga el mismo tipo de licencia.
+    \item Scikit-Learn: sujeto a la licencia de tipo BSD, que permite la redistribución con o sin modificaciones siempre que los autores originales sean mencionados y se mantenga el mismo tipo de licencia.
     \item Deap: se encuentra bajo licencia GNU GPL, que permite usar, copiar, modificar el software y redistribuirlo.
+    \item Pandas: Pandas, al igual que scikit-learn, está sujeto a licencia BSD y, por lo tanto, conlleva el mismo tipo de permisos y restricciones.
+    \item Pickle: 
+    \item Unity3D: Unity3D 
 \end{itemize}
+
+
+Debido a las restricciones de las licencias antes mencionadas mi proyecto, de ser distribuido, debería ser publicado bajo una licencia BSD.
