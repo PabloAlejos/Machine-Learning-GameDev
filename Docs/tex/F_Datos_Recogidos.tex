@@ -1,3 +1,70 @@
 \apendice{Datos recogidos}
 
 
+\section{Introducción}
+En esta sección se ponen en comparativa algunos de los resultados obtenidos. Estos resultados están extraídos de un conjunto no muy grande de datos que tuve que generar yo mismo. La intención era que muchos usuarios jugasen y me entregasen los datos,pero esto no ha sido posible debido a la continua mutación del proyecto. Los datos tomados una semana a la siguiente ya no servían. 
+
+\subsection{Algoritmos evolutivos}
+
+Para el primer entrenamiento con redes neuronales se emplea un perceptrón multicapa. El algoritmo utilizado es el \emph{eaSimple}.
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+gen & nevals & avg      & std     & min     & max    \\ \hline
+0   & 10     & -738.945 & 1093.75 & -2913.4 & 706.7  \\ \hline
+1   & 10     & 464.033  & 397.032 & -394    & 1043.6 \\ \hline
+2   & 8      & 576.64   & 332.162 & -67.5   & 1048   \\ \hline
+3   & 6      & 590.65   & 434.868 & -549    & 1048   \\ \hline
+4   & 10     & 323.44   & 543.768 & -573.7  & 1180.3 \\ \hline
+5   & 4      & 849.94   & 280.792 & 510.1   & 1180.3 \\ \hline
+6   & 6      & 729.28   & 580.734 & -698.4  & 1263.5 \\ \hline
+7   & 8      & 783.804  & 266.751 & 479.909 & 1263.5 \\ \hline
+8   & 5      & 712.796  & 544.912 & -312.7  & 1263.5 \\ \hline
+9   & 8      & 604.24   & 549.538 & -326    & 1263.5 \\ \hline
+10  & 4      & 1082.16  & 285.419 & 579.091 & 1294.4 \\ \hline
+\end{tabular}
+\caption{Entrenamiento 1}
+\label{tab:entr1}
+\end{table}
+
+
+
+En este segundo entrenamiento se ha partido como invididuo inicial el mejor del anterior entrenamiento. El modelo de algoritmo evolutivo es igual que el anterior.
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+gen & nevals & avg      & std     & min     & max                              \\ \hline
+0   & 10     & -222.475 & 1515.29 & -3194.5 & 2281.1                           \\ \hline
+1   & 10     & 1292.45  & 1194.07 & -1305.2 & 2830.4                           \\ \hline
+2   & 8      & 2094.54  & 776.345 & 172.8   & 3143.55                          \\ \hline
+3   & 6      & 2432.41  & 1110.06 & -558.8  & 3650.6                           \\ \hline
+4   & 10     & 1653.41  & 1149.34 & -515.3  & 3162                             \\ \hline
+5   & 4      & 2733.52  & 435.733 & 1907.9  & 3250.9                           \\ \hline
+6   & 6      & 2502.06  & 952.354 & -80     & 3250.9                           \\ \hline
+7   & 8      & 2429.7   & 509.653 & 1850.7  & 3250.9                           \\ \hline
+8   & 5      & 2694.2   & 781.888 & 614.5   & 3250.9                           \\ \hline
+9   & 8      & 1929.75  & 1149.92 & -539.7  & 3250.9                           \\ \hline
+10  & 4      & 2952.38  & 515.971 & 1728.09 & 3250.9 \textless/pre\textgreater \\ \hline
+\end{tabular}
+\caption{Entrenamiento 2}
+\label{tab:entr2}
+\end{table}
+
+
+
+Haciendo el análisis de datos me percaté de que mi función de \emph{fitness} no era todo lo buena que yo esperaba. Al analizarlo con detenimiento me di cuenta de que no me interesa tener un individuo con mucha suerte, me interesa un individuo que siempre juega bien. Hasta el momento, toda la evolución ha tenido como meta maximizar la media de las partidas que juega un individuo, una función de evaluación a primera vista válida, pero ¿qué ocurre si dos individuos muy parecidos juegas sendas partidas, y uno es más afortunado que el otro en una única ronda? La media de este individuo sera ligeramente mayor y será marcado como más apto, y todo por azar. llegado a este punto pensé que yo no quiero saber quién tiene mas suerte, sino quién juega de una forma más regular. A partir de ahora, le voy a aplicar una penalización en función de la desviación estándar, con la esperanza de obtener como resultado individuos mas regulares.
+
+
+

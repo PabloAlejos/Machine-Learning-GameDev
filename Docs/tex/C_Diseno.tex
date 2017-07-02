@@ -55,3 +55,15 @@ La explotación del modelo entrenado ya es algo más sofisticada, aunque sigue s
 \end{itemize}
 
 Este proceso de envío, procesado y predicción se hace en bucle hasta que el jugador muera o se cierre el juego. El bucle se realiza cuatro veces por segundo.
+
+
+\subsection {Diagrama de clases}
+A continuación se muestra el diagrama de clases. Considero que es un diagrama de clases «especial», ya que Unity3D no trabaja con las clases tipo java que podemos conocer, Unity3D trabaja con GameObjects que, a su vez están formados por una o varias clases de .net y otros tipos de objetos, incluso un GameObject puede no tener ninguna clase .net. Este hecho me ha dificultado el desarrollo del diagrama de clases. Finalmente he decidido crear yo mi propio tipo de diagrama para poder englobar las clases que todos conocemos y los GameObject de Unity3D.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{clases}
+    \caption{Diagrama de clases}
+    \label{fig:d_clases}
+\end{figure}
