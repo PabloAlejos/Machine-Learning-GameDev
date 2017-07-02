@@ -2,12 +2,14 @@ import pickle
 import instancia as i
 
 class classifier():
+    
     def __init__(self,filename):
         self.pipe = pickle.load(open(filename, 'rb'))
-    
+    # devuelve una predicción procesada
     def predict(self,instancia):
         return self._procesar(self.pipe.predict(instancia)[0])
     
+    # Procesa la predicción para simplificar su lectura
     def _procesar(self,data):
         retorno = []
         for i in (data):

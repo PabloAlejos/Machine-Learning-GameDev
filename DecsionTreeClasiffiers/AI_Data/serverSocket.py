@@ -1,23 +1,19 @@
 import sys
 import socket
-import predictor as p
-import randomPredictor as rndp
-import instancia as inst
+import predictorMLP as p
+import instanciaMLP as inst
 from queue import Queue
 from sklearn.ensemble import RandomForestClassifier
 
 class ServerSocket:
 
-    def __init__ (self,host,port, clf="..\\decisionclf.sav", rand=0):
+    def __init__ (self,host,port,clf="..\\pipe.sav"):
     	self._HOST = 'localhost'
     	self._PORT = 8888         # Arbitrary non-privileged port
-    	if rand:
-    		self._p = rndp.classifier()
-    	else:
-    		self._p = p.classifier(clf)
-    	
+    	self._p = p.classifier(clf)
     	self._instancia = inst.instancia()
     	with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+	        
 	        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) #esto sirve para reiniciar el socket sin cerrarlo
 	        s.bind((self._HOST, self._PORT))
 	        print ('Socket bind complete')

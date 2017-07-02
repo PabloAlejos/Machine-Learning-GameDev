@@ -7,13 +7,13 @@ from sklearn.ensemble import RandomForestClassifier
 
 class ServerSocket:
 
-    def __init__ (self,host,port,clf="pipe.sav"):
+    def __init__ (self,host,port,clf="..\\pipe.sav"):
     	self._HOST = 'localhost'
     	self._PORT = 8888         # Arbitrary non-privileged port
-    	#self._p = p.Predictor("randomForest.sav")
     	self._p = p.classifier(clf)
     	self._instancia = inst.instancia()
-    	with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s: 
+    	with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+	        
 	        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) #esto sirve para reiniciar el socket sin cerrarlo
 	        s.bind((self._HOST, self._PORT))
 	        print ('Socket bind complete')
