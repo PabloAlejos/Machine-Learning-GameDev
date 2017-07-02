@@ -206,7 +206,7 @@ En primer lugar, nuestra idea era evolucionar un modelo entrenado para que funci
 
 Todo este proceso lo vamos a realizar utilizando un \emph{pipeline}. Un \emph{pipeline} nos permite realizar varios pasos para crear un modelo de forma automática. En este caso nuestro \emph{pipeline} consta de dos pasos. El primero es un \emph{Standard Scaler}, que nos va a tomar los elementos del conjunto de datos y nos los va a normalizar entre $0$ y $1$. Este paso se realiza para reducir el ruido que nos podemos encontrar, haciendo que los valores más alejados del conjunto principal tengan menos efecto en la toma de decisiones. El segundo paso es el clasificador, que va a conformar el modelo. Este clasificador, que nos proporciona la biblioteca scikit-learn, tiene unos parámetros definidos por defecto, pero podemos indicar los nuestros para conseguir que se adapte mejor a nuestro problema.
 
-Los primeros entrenamientos se realizaron con los parámetros por defecto del MLP que nos proporciona la biblioteca sckit-learn. Los resultados de estos entrenamientos eran desastrosos por lo que se procedió a realizar un calibrado de parámetros del MLP. Para el calibrado de parámetros se utilizó una de las herramientas que nos ofrece scikit-learn. De las dos fórmulas que nos ofrece me decanté por el Randomized Parameter Optimization. Ésta herramienta lo que hace es que, dados unas posibilidade de determinados parámetros, él los va combinado y probando aleatoriamente, de manera que finalmente te indique cuál ha dado mejores resultados. No podemos tener la certeza de que esa combinación de parámetros vaya a ser la mejor, pero ahorra tiempo.
+Los primeros entrenamientos se realizaron con los parámetros por defecto del MLP que nos proporciona la biblioteca sckit-learn. Los resultados de estos entrenamientos eran desastrosos por lo que se procedió a realizar un calibrado de parámetros del MLP. Para el calibrado de parámetros se utilizó una de las herramientas que nos ofrece scikit-learn. De las dos fórmulas que nos ofrece me decanté por el Randomized Parameter Optimization. Ésta herramienta lo que hace es que, dadas unas posibilidades de determinados parámetros, él los va combinado y probando aleatoriamente, de manera que finalmente te indique cuál ha dado mejores resultados. No podemos tener la certeza de que esa combinación de parámetros vaya a ser la mejor, pero ahorra tiempo.
 
 Una vez calibrados los parámetros del MLP se procede a la neuroevolución de la red. Para este proceso se utilizaron las herramientas que nos proporciona DEAP\footnote{Se habla de esta biblioteca en el apartado Técnicas y herramientas}. 
 
@@ -254,7 +254,7 @@ gen & nevals & avg     & std         & min      & max     \\ \hline
 
 
 
-Realicé un segundo entrenamiento, esta vez, el modelo inicial sería el mejor modelo procedente del primer entrenamiento. Del mismo modo que se procedió la primera vez, diez generaciones, poblaciones de diez individuos, ect. En la tabla \ref{result_segundo_entr} vemos que ahora converge más rapido incluso que antes y, además, incrementa la puntuación media hasta casi cuatro veces la mejor obtenida en el anterior entrenamiento \footnote{Se detalla un poco más en la sección F de los anexos}.
+Realicé un segundo entrenamiento, esta vez, el modelo inicial sería el mejor modelo procedente del primer entrenamiento. Del mismo modo que se procedió la primera vez, diez generaciones, poblaciones de diez individuos, ect. En la tabla \ref{result_segundo_entr} vemos que ahora converge más rápido incluso que antes y, además, incrementa la puntuación media hasta casi cuatro veces la mejor obtenida en el anterior entrenamiento \footnote{Se detalla más en la sección F de los anexos}.
 
 
 \begin{table}[]
@@ -282,7 +282,7 @@ gen & nevals & avg     & std     & min      & max     \\ \hline
 
 \subsection{Bot de Telegram}
 Fueron muchas la pruebas que se realizaron en el apartado de algoritmos evolutivos. Estas pruebas requerían mucho tiempo y cierta supervisión, así que, por mera curiosidad, quise ver si podía programar un bot que me enviase mensajes a través de la aplicación de mensajería \emph{Telegram}. 
-En teoría un bot de \emph{Telegram} debería estar sempre activo e ir almacenando las \emph{id}  de los usuarios que quieren interactuar con el. Yo no quería dedicarle demasiado tiempo a ello, ya que no era materia fundamental de este proyecto, por lo que me limité a obtener mi \emph{id} de usuario, almacenarlo y utilizar únicamente la función de «Enviar mensaje» para avisarme de determinados eventos.
+En teoría un bot de \emph{Telegram} debería estar siempre activo e ir almacenando las \emph{id}  de los usuarios que quieren interactuar con el. Yo no quería dedicarle demasiado tiempo a ello, ya que no era materia fundamental de este proyecto, por lo que me limité a obtener mi \emph{id} de usuario, almacenarlo y utilizar únicamente la función de «Enviar mensaje» para avisarme de determinados eventos.
 
 
 \section{Mini-proyectos Unity3D}
