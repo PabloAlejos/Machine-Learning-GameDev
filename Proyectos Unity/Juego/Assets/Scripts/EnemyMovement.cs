@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour {
     public float minSpeed = 0.5f;
     float speed = 1;
     Vector2 target;
+
     void Start()
     {
     speed = Random.Range(minSpeed,maxSpeed); 

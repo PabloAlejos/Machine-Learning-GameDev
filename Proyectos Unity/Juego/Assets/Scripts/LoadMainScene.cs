@@ -10,7 +10,7 @@ public class LoadMainScene : MonoBehaviour {
     //como el contador de partidas consecutivas
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
         SceneManager.LoadScene(1);
     }
 	

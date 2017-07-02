@@ -18,12 +18,12 @@ public class HeatBar : MonoBehaviour
     Gun[] gun;
     */
 
-    public float MaxValue { get; set; }
-    public float Value
+    public float maxValue { get; set; }
+    public float value
     {
         set
         {
-            fillAmount = Map(value, 0, MaxValue, 0, 1);
+            fillAmount = Map(value, 0, maxValue, 0, 1);
         }
 
     }

@@ -10,7 +10,7 @@ public class GameConfig : MonoBehaviour
     String[] arguments; //donde se van a almacenar los parámetros
     public int iterations = 5; //Numero de partidas que juega un individuo
     public int maxTime = 60;
-    public static int n;
+    private static int n;
     ScoreController sc;
 
     private void Awake()
@@ -18,8 +18,6 @@ public class GameConfig : MonoBehaviour
         Application.runInBackground = true;
         DontDestroyOnLoad(this.gameObject);
         arguments = Environment.GetCommandLineArgs();
-       
-       
     }
 
     void Start()

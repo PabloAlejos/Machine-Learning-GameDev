@@ -55,7 +55,7 @@ public void OnGameOver()
     iteration++;
     using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"myData.csv", true))
     {
-        file.WriteLine((FindObjectOfType<ScoreController>().GetScore() + 5 * Time.timeSinceLevelLoad).ToString());
+        file.WriteLine(Mathf.RoundToInt(FindObjectOfType<ScoreController>().GetScore() + 5 * Time.timeSinceLevelLoad));
     }
     checkEndGame();
 }

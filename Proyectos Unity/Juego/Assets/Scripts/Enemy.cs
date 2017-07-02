@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour
 
     public float Health { get { return health; } }
 
-    void PlayHitEffect()
+    public void PlayHitEffect()
     {
         if (!sounds.enemieHit.isPlaying)
             sounds.enemieHit.Play();

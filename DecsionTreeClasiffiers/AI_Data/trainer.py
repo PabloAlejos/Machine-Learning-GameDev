@@ -17,7 +17,7 @@ class trainer:
     #Carga el fichero con el nombre indicado y nombra las columnas
     def load_file(self,fileName):
         self.df = pd.read_csv(fileName, sep=',', header=None)
-        self.df = self.df[1:9000]
+        self.df = self.df[1:4000]
         self.df.columns = ['timeStamp','Px', 'Py', 'heat', 'Exp1','Eyp1','Exp2','Eyp2', 'Ex1', 'Ey1', 'Eh1', 'Ex2', 'Ey2', 'Eh2', 'Ex3', 'Ey3', 'Eh3', 'Ex4', 'Ey4','Eh4','Ex5', 'Ey5','Eh5','Ex6', 'Ey6','Eh6','ray1','ray2','ray3','ray4','ray5','ray6','ray7','ray8','ray9','ray10','ray11','ray12','ray13','ray14','ray15','ray16','ray17','ray18','ray19','ray20','ray21','ray22','ray23','ray24','ray25','ray26','ray27','score',"VKey","HKey","Shooting"]
         self.df[['Eh1','Eh2','Eh3','Eh4','Eh5','Eh6']] = self.df[['Eh1','Eh2','Eh3','Eh4','Eh5','Eh6']].astype(float) 
     
@@ -92,7 +92,7 @@ class trainer:
 
     def train(self):
         #forest = tree.DecisionTreeClassifier(max_depth=100)
-        forest = RandomForestClassifier(n_estimators = 100,max_depth = 10)
+        forest = RandomForestClassifier(n_estimators = 100)
         forest = forest.fit(self.train_data, self.target_data.astype(str))
         pickle.dump(forest, open('..\\randomf.sav', 'wb'))
 

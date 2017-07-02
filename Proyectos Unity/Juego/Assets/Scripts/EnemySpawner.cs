@@ -11,13 +11,13 @@ public class EnemySpawner : MonoBehaviour
     public int MAX_ENEMIES = 6;
     public GameObject boss;
     public GameObject[] enemies;
-    public float SpwanRate = 1;
+    public float spwanRate = 1;
     public int maxEnemiesOnScreen;
     public float nextWave;
-    public float BossSpawnRateiInSecs = 60;
+    public float bossSpawnRateiInSecs = 60;
 
     //PowerUps
-    public GameObject[] PowerUps;
+    public GameObject[] powerUps;
 
     private float nextSpawnTime;
     private float nextBossSpawnTime;
@@ -27,8 +27,8 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         Random.InitState(1600);
-        nextBossSpawnTime = Time.time + BossSpawnRateiInSecs;
-        nextSpawnTime = Time.time + SpwanRate / 10;
+        nextBossSpawnTime = Time.time + bossSpawnRateiInSecs;
+        nextSpawnTime = Time.time + spwanRate / 10;
         nextWave = 5;
         maxEnemiesOnScreen = Mathf.FloorToInt((Random.value * MAX_ENEMIES) + 2);
     }
@@ -47,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 GameObject enemy = (GameObject)Instantiate(randomEnemy(), spawnPosition, Quaternion.identity);
                 spawnEvent(enemy.GetComponent<Enemy>());
-                nextSpawnTime = Time.time + SpwanRate / 20;
+                nextSpawnTime = Time.time + spwanRate / 20;
             }
             else
             {
@@ -56,7 +56,7 @@ public class EnemySpawner : MonoBehaviour
                 myBoss.GetComponent<Enemy>().maxHealth = Mathf.RoundToInt(Time.timeSinceLevelLoad / 4);
                 myBoss.GetComponent<Enemy>().health = myBoss.GetComponent<Enemy>().maxHealth;
                 myBoss.GetComponent<Enemy>().scorePoints = Mathf.RoundToInt(10);
-                nextBossSpawnTime = Time.time + BossSpawnRateiInSecs;
+                nextBossSpawnTime = Time.time + bossSpawnRateiInSecs;
                 bossSpawn = false;
             }
             //Hay cierta probabilidad de que aparezca un power up a la vez que un enemigo

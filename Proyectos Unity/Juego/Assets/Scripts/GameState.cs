@@ -48,7 +48,6 @@ public class GameState
         sb.Append(MakeValueCsvFriendly(enemies));
         sb.Append(MakeValueCsvFriendly(surroundingEnemies));
         sb.Append(score).Append(",");
-
         sb.Append(MakeValueCsvFriendly(VKey)).Append(",");
         sb.Append(MakeValueCsvFriendly(HKey)).Append(",");
         sb.Append(isShooting);

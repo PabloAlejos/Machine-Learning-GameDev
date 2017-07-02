@@ -100,7 +100,7 @@ public class GameStateController : MonoBehaviour
         HorizontalInput = KeyCode.None;
     }
 
-    String GenerateTimeStamp()
+    public String GenerateTimeStamp()
     {
         StringBuilder sb = new StringBuilder();
         DateTime now = DateTime.Now;

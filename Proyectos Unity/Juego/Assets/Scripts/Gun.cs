@@ -83,7 +83,7 @@ public class Gun : MonoBehaviour
         {
             
             this.heatValue = value;   
-            bar.Value = heatValue;
+            bar.value = heatValue;
         }
     }
 
@@ -97,7 +97,7 @@ public class Gun : MonoBehaviour
         set
         {
             this.maxHeatValue = value;
-            bar.MaxValue = maxHeatValue;
+            bar.maxValue = maxHeatValue;
         }
     }
 }

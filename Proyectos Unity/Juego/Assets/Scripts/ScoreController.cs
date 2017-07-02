@@ -6,7 +6,7 @@ public class ScoreController : MonoBehaviour
 
     private double score;
     public int highScore;
-    string highScoreKey = "HighScore";
+    private string highScoreKey = "HighScore";
     // Use this for initialization
     void Start()
     {

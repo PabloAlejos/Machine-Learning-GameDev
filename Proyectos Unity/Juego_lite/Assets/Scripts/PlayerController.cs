@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
     {
         firing = values.z;
         movement = new Vector2(values.x, values.y);
-
     }
 
     void Update()

@@ -22,9 +22,6 @@ public class PlayerVision : MonoBehaviour
             new Vector3(-1, 0, 0)};
     }
 
-    void Update()
-    {
-    }
 
     public int getRayAmount()
     {
@@ -87,7 +84,6 @@ public class PlayerVision : MonoBehaviour
                 //Debug.Log("PU1");
             }
         }
-
         return retorno;
     }
 }

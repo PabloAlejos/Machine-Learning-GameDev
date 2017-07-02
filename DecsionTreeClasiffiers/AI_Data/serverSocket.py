@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 class ServerSocket:
 
-    def __init__ (self,host,port, clf="..\\randomForest.sav", rand=0):
+    def __init__ (self,host,port, clf="..\\decisionclf.sav", rand=0):
     	self._HOST = 'localhost'
     	self._PORT = 8888         # Arbitrary non-privileged port
     	if rand:

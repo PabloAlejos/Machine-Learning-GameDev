@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUpMovement : MonoBehaviour {
 
-    Vector2 target;
+    public Vector2 target;
     public float speed;
 
     // Use this for initialization

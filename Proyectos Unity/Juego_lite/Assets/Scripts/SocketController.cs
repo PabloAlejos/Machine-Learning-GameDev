@@ -16,7 +16,7 @@ public class SocketController : MonoBehaviour
     public delegate void OnlineEvent();
     public event OnlineEvent ToggleOnline;
 
-    Process p;
+    private Process p;
     public bool online = false;
     //Variable del editor
     public Text ConnectionText;
@@ -26,17 +26,14 @@ public class SocketController : MonoBehaviour
     // Codifica data string into a byte array.
     private byte[] msg = null;
     //Socket para la conexión
-    Socket sender;
-    int processID;
+    private Socket sender;
+    private int processID;
     // Data buffer para el incoming data.
-    byte[] bytes = new byte[1024];
-    char[] delimiterChars = { ',', '[', ']', '(', ')', ' ' };
+    private byte[] bytes = new byte[1024];
+    private char[] delimiterChars = { ',', '[', ']', '(', ')', ' ' };
     [HideInInspector]
-
-    public string[] sPrueba = new string[8] { " 0", "0", " 0", "0", " 0", "0", " 0", "0" };
-
-
-    float nextConnTry = 0;
+    public string[] myString = new string[8] { " 0", "0", " 0", "0", " 0", "0", " 0", "0" };
+    private float nextConnTry = 0;
 
     private void Start()
     {
@@ -57,6 +54,7 @@ public class SocketController : MonoBehaviour
 
     }
 
+    //Lanza el socket
     public void StartClient()
     {
         if (online == false)
@@ -108,6 +106,7 @@ public class SocketController : MonoBehaviour
 
     }
 
+    //Establece el mensaje que quiero enviar
     public void SetMsg(string message)
     {
         msg = Encoding.ASCII.GetBytes(message);
@@ -120,8 +119,8 @@ public class SocketController : MonoBehaviour
         {
             // Send the data through the socket.
             sender.Send(msg);
-            sPrueba = receiveMessage().Split(delimiterChars);
-            returnText.text = retorno2string(sPrueba);
+            myString = receiveMessage().Split(delimiterChars);
+            returnText.text = retorno2string(myString);
             //UnityEngine.Debug.Log(returnText.text);
 
         }
@@ -132,7 +131,7 @@ public class SocketController : MonoBehaviour
 
     }
 
-    string receiveMessage()
+    public string receiveMessage()
     {
         // Receive the response from the remote device.
         int bytesRec = sender.Receive(bytes);
@@ -155,6 +154,8 @@ public class SocketController : MonoBehaviour
 
     }
 
+
+    //Este es el método que lanza el script de python con nuestro socket
     public void RunSocketServer()
     {
         String myArguments = "serverSocket.py" + " " + FindObjectOfType<GameConfig>().getClasiffier(); 
@@ -184,20 +185,20 @@ public class SocketController : MonoBehaviour
 
 
     //Mato el proceso de pythom
-    void OnApplicationQuit()
+    public void OnApplicationQuit()
     {
         //UnityEngine.Debug.Log("process-Kill on Quit");
         KillProcess();
     }
 
     //
-    void OnDestroy()
+    public void OnDestroy()
     {
         //UnityEngine.Debug.Log("process-Kill on Destroy");
         KillProcess();
     }
 
-    void KillProcess()
+    public void KillProcess()
     {
         UnityEngine.Debug.Log(Process.GetProcessById(processID));
         if (Process.GetProcessById(processID) != null)
@@ -208,7 +209,7 @@ public class SocketController : MonoBehaviour
         }
     }
 
-    string retorno2string(string[] s)
+    private string retorno2string(string[] s)
     {
         StringBuilder sb = new StringBuilder();
         if (s.Length >= 5 )
